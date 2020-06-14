@@ -4,6 +4,10 @@ using UnityEngine;
 
 public abstract class APawn : MonoBehaviour
 {
+    [HideInInspector]
+    public Player PlayerRef = null;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +18,10 @@ public abstract class APawn : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Init(Player player)
+    {
+        PlayerRef = player;
     }
 }

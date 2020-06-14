@@ -4,6 +4,9 @@ using UnityEngine;
 
 public abstract class APlayerController : MonoBehaviour
 {
+    [HideInInspector]
+    public Player PlayerRef = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,4 +18,10 @@ public abstract class APlayerController : MonoBehaviour
     {
         
     }
+
+    public void Init(Player player)
+    {
+        PlayerRef = player;
+    }
+
 }
