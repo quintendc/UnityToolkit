@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -135,11 +136,75 @@ public class GameManager : MonoBehaviour
     #region Player Methods
 
     /// <summary>
-    /// this method creates a new player(Pawn + PlayerController)
+    /// this method creates a new player "PlayerController" Pawn is optional
     /// </summary>
-    public void CreatePlayer()
+    /// <param name="spawnPawn">optional parameter should pawn be instantiated?</param>
+    public void CreatePlayer(bool spawnPawn = false)
     {
+        // playerController is always created, Pawn is optional
+        AGameMode gm = currentGameMode.GetComponent<AGameMode>();
 
+        GameObject pawn = null;
+
+        if (spawnPawn == true)
+        {
+            pawn = GameObject.Instantiate(gm.DefaultPawn);
+        }
+        
+        GameObject pc = GameObject.Instantiate(gm.DefaultPlayerController);
+
+        Player newPlayer = new Player(Players.Count, pawn.gameObject.GetComponent<APawn>(), pc.GetComponent<APlayerController>());
+
+        // add to players array
+        Players.Add(newPlayer);
+    }
+
+
+    /// <summary>
+    /// destroy player pawn, playercontroller or both
+    /// </summary>
+    /// <param name="id">index of player</param>
+    /// <param name="destroyPawn">should pawn be destroyed</param>
+    /// <param name="destroyPlayerController">should playercntroller be destroyed</param>
+    public void DestroyPlayerById(int id, bool destroyPawn = true, bool destroyPlayerController = true)
+    {
+        if (destroyPawn == true)
+        {
+            Destroy(Players.ElementAt(id).Pawn.gameObject);
+        }
+
+        if (destroyPlayerController == true)
+        {
+            Destroy(Players.ElementAt(id).PlayerController.gameObject);
+        }
+
+        // destroy player poco class when both pawn and Playercontroller are destroyed
+        if (destroyPawn == true && destroyPlayerController == true)
+        {
+            Players.RemoveAt(id);
+        }
+    }
+
+    /// <summary>
+    /// this method will replace all pawn and playerscontrollers to the currentGameMode default Pawn and PlayerController
+    /// </summary>
+    public void UpdatePlayersForGameMode()
+    {
+        foreach (var player in Players)
+        {
+            // track playerid
+            int id = player.Id;
+
+            // destroy current gameobjects for pawn and playercontroller
+            Destroy(player.Pawn.gameObject);
+            Destroy(player.PlayerController.gameObject);
+
+            // instantiate new pawn and new playercontroller
+            GameObject newPawn = GameObject.Instantiate(currentGameMode.GetComponent<AGameMode>().DefaultPawn);
+            GameObject newPlayerController = GameObject.Instantiate(currentGameMode.GetComponent<AGameMode>().DefaultPlayerController);
+
+            player.UpdatePlayer(id, newPawn.GetComponent<APawn>(), newPlayerController.GetComponent<APlayerController>());
+        }
     }
 
     #endregion

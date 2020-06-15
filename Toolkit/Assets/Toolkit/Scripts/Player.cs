@@ -12,7 +12,7 @@ public class Player
     public APawn Pawn { get; private set; }
     public APlayerController PlayerController { get; private set; }
 
-    public Player(int id, APawn pawn, APlayerController playerController)
+    public Player(int id, APawn pawn = null, APlayerController playerController = null)
     {
         Id = id;
         Pawn = pawn;
@@ -26,7 +26,7 @@ public class Player
     /// <param name="id">change the player Id</param>
     /// <param name="pawn">change the player Pawn</param>
     /// <param name="playerController">change the player PlayerController</param>
-    public void ChangePlayer(int? id, APawn pawn = null, APlayerController playerController = null)
+    public void UpdatePlayer(int? id, APawn pawn = null, APlayerController playerController = null)
     {
         if (id != null)
         {
