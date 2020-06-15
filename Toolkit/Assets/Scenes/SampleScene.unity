@@ -457,6 +457,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 08ddc52eaef25b84fb44dfa396555bc2,
         type: 2}
+    - target: {fileID: 1578059006167325649, guid: f9854fa22a332bb46987366ce0617d7e,
+        type: 3}
+      propertyPath: SaveGameManagerPrefab
+      value: 
+      objectReference: {fileID: 1459316034744286350, guid: cc0588d2fe163584fae599dec2f90eef,
+        type: 3}
+    - target: {fileID: 1578059006167325649, guid: f9854fa22a332bb46987366ce0617d7e,
+        type: 3}
+      propertyPath: WidgetManagerPrefab
+      value: 
+      objectReference: {fileID: 5100918874118508386, guid: af34f1e6967eb7649b1b53c2bbd964cf,
+        type: 3}
     - target: {fileID: 6555457972291682985, guid: f9854fa22a332bb46987366ce0617d7e,
         type: 3}
       propertyPath: m_Name
