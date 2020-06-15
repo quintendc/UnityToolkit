@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
 
     private void SetupInitialScene()
     {
-        // do stuuf with InitialSceneSettingsObject
+        // do stuff with InitialSceneSettingsObject
     }
 
 
@@ -113,4 +113,12 @@ public class GameManager : MonoBehaviour
         WidgetManager.Instance.ShowWidget(sceneSettingsObject.WidgetType);
 
     }
+
+
+    #region Player Methods
+
+
+
+    #endregion
+
 }

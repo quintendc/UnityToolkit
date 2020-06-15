@@ -12,6 +12,6 @@ public class SceneSettingsObject : ScriptableObject
     public Camera Camera = null;
 
     // gameMode to instantiate
-
+    public GameObject GameMode = null;
 
 }
