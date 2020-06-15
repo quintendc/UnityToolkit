@@ -12,6 +12,7 @@ TagManager:
   - Widget
   - SceneSettingsManager
   - GameMode
+  - Spawnpoint
   layers:
   - Default
   - TransparentFX
