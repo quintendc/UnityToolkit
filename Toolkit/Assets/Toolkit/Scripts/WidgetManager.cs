@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class WidgetManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class WidgetManager : MonoBehaviour
     public List<GameObject> Widgets = new List<GameObject>();
     private GameObject currentWidget = null;
 
+    public Camera WidgetRenderCamera = null;
 
 
     private void Awake()
@@ -35,17 +37,52 @@ public class WidgetManager : MonoBehaviour
     }
 
 
-    public void ShowWidget(Widgets widgetType)
+    public void ShowWidget(WidgetTypes widgetType)
     {
         // destroy current widget
         if (currentWidget != null)
         {
-            Destroy(currentWidget);
+
+            // destroy widget when new WidgetType is not equel to currentWidget
+            if (widgetType != currentWidget.GetComponent<AWidget>().WidgetType)
+            {
+                Destroy(currentWidget);
+            }
         }
 
-
-        // instantiate new widget
-        currentWidget = GameObject.Instantiate(Widgets.Find(w => w.GetComponent<AWidget>().WidgetType == widgetType));
+        if (widgetType == WidgetTypes.Default)
+        {
+            Debug.LogWarning("Widget type is Default.");
+        }
+        else
+        {
+            // instantiate new widget
+            currentWidget = GameObject.Instantiate(Widgets.Find(w => w.GetComponent<AWidget>().WidgetType == widgetType));
+        }
 
     }
+
+    /// <summary>
+    /// Set render Camera for Widget
+    /// </summary>
+    /// <param name="camera">if Camera is null the MainCamera will be picked</param>
+    public void SetRenderCamera(Camera camera = null)
+    {
+        if (camera == null)
+        {
+            // pick main camera
+            WidgetRenderCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        }
+        else
+        {
+            // set RenderCamera to camera
+            WidgetRenderCamera = camera;
+        }
+
+        // set camera
+        currentWidget.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
+        currentWidget.GetComponent<Canvas>().worldCamera = WidgetRenderCamera;
+
+    }
+
 }

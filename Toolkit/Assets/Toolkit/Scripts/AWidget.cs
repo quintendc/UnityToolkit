@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class AWidget : MonoBehaviour
 {
-    public Widgets WidgetType;
+    public WidgetTypes WidgetType;
 }

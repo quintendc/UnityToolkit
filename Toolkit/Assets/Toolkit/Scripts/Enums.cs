@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public enum Widgets
+public enum WidgetTypes
 {
     Default,    // fall-back never use this state
     MainMenu,

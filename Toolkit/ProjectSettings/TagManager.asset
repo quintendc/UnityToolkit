@@ -11,6 +11,7 @@ TagManager:
   - WidgetManager
   - Widget
   - SceneSettingsManager
+  - GameMode
   layers:
   - Default
   - TransparentFX

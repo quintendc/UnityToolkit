@@ -29,7 +29,7 @@ public class SceneSettingsManager : MonoBehaviour
         }
         else
         {
-            if (SceneSettings.WidgetType == Widgets.Default)
+            if (SceneSettings.WidgetType == WidgetTypes.Default)
             {
                 Debug.LogWarning("WidgetType is set to Default!");
             }

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public List<Player> Players = new List<Player>();
     public PersistentData PersistentData = null;
     public SceneSettingsObject InitialSceneSettings = null;
+    private GameObject currentGameMode = null;
 
     public GameObject SaveGameManagerPrefab = null;
     public GameObject WidgetManagerPrefab = null;
@@ -46,6 +47,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        SetupInitialScene();
     }
 
     // Update is called once per frame
@@ -88,16 +91,26 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogWarning("No InitialSceneSettings object is provided!");
         }
-        else
-        {
-            SetupInitialScene();
-        }
     }
 
 
+    /// <summary>
+    /// the scene will be setup by the provided InitialSceneSettingsObject
+    /// </summary>
     private void SetupInitialScene()
     {
-        // do stuff with InitialSceneSettingsObject
+        // spawn widget
+        if (InitialSceneSettings != null)
+        {
+            // spawn widget
+            WidgetManager.Instance.ShowWidget(InitialSceneSettings.WidgetType);
+
+            // spawn gameMode
+            currentGameMode = GameObject.Instantiate(InitialSceneSettings.GameMode);
+
+            // setup playercontrollers and pawns
+
+        }
     }
 
 
@@ -109,15 +122,25 @@ public class GameManager : MonoBehaviour
         // get sceneSettingsObject
         SceneSettingsObject sceneSettingsObject = GameObject.FindGameObjectWithTag("SceneSettingsManager").GetComponent<SceneSettingsManager>().SceneSettings;
 
+        // set WidgetRenderCamera first before instantiating a widget
+        WidgetManager.Instance.SetRenderCamera();
+
         // handle SceneSettingsObject
         WidgetManager.Instance.ShowWidget(sceneSettingsObject.WidgetType);
 
+        
     }
 
 
     #region Player Methods
 
+    /// <summary>
+    /// this method creates a new player(Pawn + PlayerController)
+    /// </summary>
+    public void CreatePlayer()
+    {
 
+    }
 
     #endregion
 

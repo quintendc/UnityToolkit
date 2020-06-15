@@ -6,7 +6,7 @@ using UnityEngine;
 public class SceneSettingsObject : ScriptableObject
 {
     [Tooltip("define which Widget should be shown when the scene is loaded.")]
-    public Widgets WidgetType;
+    public WidgetTypes WidgetType;
 
     // widgetRenderCamera -> get maincamera when no RenderCamera is provided
     public Camera Camera = null;
