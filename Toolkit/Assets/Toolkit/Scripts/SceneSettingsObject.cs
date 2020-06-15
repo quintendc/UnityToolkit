@@ -9,6 +9,7 @@ public class SceneSettingsObject : ScriptableObject
     public Widgets WidgetType;
 
     // widgetRenderCamera -> get maincamera when no RenderCamera is provided
+    public Camera Camera = null;
 
     // gameMode to instantiate
 
