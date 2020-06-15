@@ -17,6 +17,10 @@ public class Player
         Id = id;
         Pawn = pawn;
         PlayerController = playerController;
+
+        // set playerRefs
+        Pawn.PlayerRef = this;
+        PlayerController.PlayerRef = this;
     }
 
 

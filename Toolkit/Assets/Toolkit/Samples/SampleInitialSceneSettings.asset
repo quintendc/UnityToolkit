@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WidgetType: 1
   Camera: {fileID: 0}
-  GameMode: {fileID: 0}
+  GameMode: {fileID: 6948868477842781782, guid: 6ec05e1668ef62147a2b41232d08ab59,
+    type: 3}

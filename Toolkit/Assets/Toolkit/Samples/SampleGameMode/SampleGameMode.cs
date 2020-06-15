@@ -7,7 +7,7 @@ public class SampleGameMode : AGameMode
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameManager.Instance.CreatePlayer(true);
     }
 
     // Update is called once per frame
