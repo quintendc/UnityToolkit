@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// this method will replace all pawn and playerscontrollers to the currentGameMode default Pawn and PlayerController
+    /// this method will replace all pawns and playerscontrollers to the currentGameMode default Pawn and PlayerController
     /// </summary>
     public void UpdatePlayersForGameMode()
     {
