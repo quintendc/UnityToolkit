@@ -9,7 +9,10 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance = null;
     public List<Player> Players = new List<Player>();
+    public PersistentData PersistentData = null;
 
+    public GameObject SaveGameManager = null;
+    public GameObject WidgetManager = null;
 
     private void Awake()
     {
@@ -33,6 +36,8 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
 
         #endregion
+
+        Validate();
     }
 
 
@@ -47,6 +52,30 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+
+    /// <summary>
+    /// validate whether all necessary files have been delivered
+    /// </summary>
+    private void Validate()
+    {
+        // check for SaveGameManager, WidgetManager, PersistentData and InitialSceneData
+        if (SaveGameManager == null)
+        {
+            Debug.LogWarning("no SaveGameManager Provided");
+        }
+
+        if (WidgetManager == null)
+        {
+            Debug.LogWarning("no WidgetManager Provided");
+        }
+
+        if (PersistentData == null)
+        {
+            Debug.LogWarning("no PersistentDataObject Provided");
+        }
+    }
+
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
