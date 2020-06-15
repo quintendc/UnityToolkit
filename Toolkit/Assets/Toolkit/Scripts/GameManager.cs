@@ -10,9 +10,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance = null;
     public List<Player> Players = new List<Player>();
     public PersistentData PersistentData = null;
+    public SceneSettingsObject InitialSceneSettings = null;
 
-    public GameObject SaveGameManager = null;
-    public GameObject WidgetManager = null;
+    public GameObject SaveGameManagerPrefab = null;
+    public GameObject WidgetManagerPrefab = null;
 
     private void Awake()
     {
@@ -60,28 +61,43 @@ public class GameManager : MonoBehaviour
     private void Validate()
     {
         // check for SaveGameManager, WidgetManager, PersistentData and InitialSceneData
-        if (SaveGameManager == null)
+        if (SaveGameManagerPrefab == null)
         {
-            Debug.LogWarning("no SaveGameManager Provided!");
+            Debug.LogWarning("No SaveGameManager Provided! Some functionality may not work.");
         }
         else
         {
-            GameObject.Instantiate(SaveGameManager);
+            GameObject.Instantiate(SaveGameManagerPrefab);
         }
 
-        if (WidgetManager == null)
+        if (WidgetManagerPrefab == null)
         {
-            Debug.LogWarning("no WidgetManager Provided!");
+            Debug.LogWarning("No WidgetManager Provided! Some functionality may not work.");
         }
         else
         {
-            GameObject.Instantiate(WidgetManager);
+            GameObject.Instantiate(WidgetManagerPrefab);
         }
 
         if (PersistentData == null)
         {
-            Debug.LogWarning("no PersistentDataObject Provided!");
+            Debug.LogWarning("No PersistentDataObject Provided! Some functionality may not work.");
         }
+
+        if (InitialSceneSettings == null)
+        {
+            Debug.LogWarning("No InitialSceneSettings object is provided!");
+        }
+        else
+        {
+            SetupInitialScene();
+        }
+    }
+
+
+    private void SetupInitialScene()
+    {
+        // do stuuf with InitialSceneSettingsObject
     }
 
 
@@ -89,5 +105,12 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("scene loaded");
         //do stuff
+
+        // get sceneSettingsObject
+        SceneSettingsObject sceneSettingsObject = GameObject.FindGameObjectWithTag("SceneSettingsManager").GetComponent<SceneSettingsManager>().SceneSettings;
+
+        // handle SceneSettingsObject
+        WidgetManager.Instance.ShowWidget(sceneSettingsObject.WidgetType);
+
     }
 }
