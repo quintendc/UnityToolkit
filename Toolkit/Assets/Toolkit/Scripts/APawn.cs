@@ -4,8 +4,16 @@ using UnityEngine;
 
 public abstract class APawn : MonoBehaviour
 {
+    #region Properties
+
     [HideInInspector]
     public Player PlayerRef = null;
+
+    public float Health = 100f;
+    public float MoveSpeed = 1f;
+    public float RotationSpeed = 1f;
+
+    #endregion
 
 
     // Start is called before the first frame update
