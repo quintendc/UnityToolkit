@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WidgetManager : MonoBehaviour
 {
-    public WidgetManager Instance = null;
+    public static WidgetManager Instance = null;
     public List<GameObject> Widgets = new List<GameObject>();
     private GameObject currentWidget = null;
 

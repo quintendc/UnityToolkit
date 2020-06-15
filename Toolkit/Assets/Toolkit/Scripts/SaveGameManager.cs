@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class SaveGameManager : MonoBehaviour
 {
 
-    private SaveGameManager Instance = null;
+    public static SaveGameManager Instance = null;
     public string SaveGameBaseDirectory = "";
     private SaveGameObject currentSaveGame = null;
 

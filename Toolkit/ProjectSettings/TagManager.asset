@@ -8,6 +8,8 @@ TagManager:
   - Pawn
   - PlayerController
   - SaveGameManager
+  - WidgetManager
+  - Widget
   layers:
   - Default
   - TransparentFX
