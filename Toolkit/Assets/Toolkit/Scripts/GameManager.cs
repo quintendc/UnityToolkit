@@ -55,24 +55,32 @@ public class GameManager : MonoBehaviour
 
 
     /// <summary>
-    /// validate whether all necessary files have been delivered
+    /// validate whether all necessary files have been delivered, if object is provided it will be instantiated.
     /// </summary>
     private void Validate()
     {
         // check for SaveGameManager, WidgetManager, PersistentData and InitialSceneData
         if (SaveGameManager == null)
         {
-            Debug.LogWarning("no SaveGameManager Provided");
+            Debug.LogWarning("no SaveGameManager Provided!");
+        }
+        else
+        {
+            GameObject.Instantiate(SaveGameManager);
         }
 
         if (WidgetManager == null)
         {
-            Debug.LogWarning("no WidgetManager Provided");
+            Debug.LogWarning("no WidgetManager Provided!");
+        }
+        else
+        {
+            GameObject.Instantiate(WidgetManager);
         }
 
         if (PersistentData == null)
         {
-            Debug.LogWarning("no PersistentDataObject Provided");
+            Debug.LogWarning("no PersistentDataObject Provided!");
         }
     }
 

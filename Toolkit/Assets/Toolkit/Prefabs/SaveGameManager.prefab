@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SaveGameBaseDirectory: 
+  SaveGameObject: {fileID: 11400000, guid: 8abd874157c39d846a04c94ad1bdd61c, type: 2}

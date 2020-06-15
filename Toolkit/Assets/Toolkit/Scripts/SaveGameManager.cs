@@ -8,6 +8,7 @@ public class SaveGameManager : MonoBehaviour
 
     public static SaveGameManager Instance = null;
     public string SaveGameBaseDirectory = "";
+    public SaveGameObject SaveGameObject = null;
     private SaveGameObject currentSaveGame = null;
 
 
@@ -45,6 +46,18 @@ public class SaveGameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+
+    /// <summary>
+    /// validate whether all necessary files have been delivered
+    /// </summary>
+    private void Validate()
+    {
+        if (SaveGameObject == null)
+        {
+            Debug.LogWarning("No SaveGameObject provided to the SaveGameManager!");
+        }
     }
 
 

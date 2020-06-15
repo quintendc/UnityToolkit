@@ -358,6 +358,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1578059006167325649, guid: f9854fa22a332bb46987366ce0617d7e,
+        type: 3}
+      propertyPath: PersistentData
+      value: 
+      objectReference: {fileID: 11400000, guid: 66d0200ded39a7a49b0057b4fa52b5b6,
+        type: 2}
+    - target: {fileID: 1578059006167325649, guid: f9854fa22a332bb46987366ce0617d7e,
+        type: 3}
+      propertyPath: SaveGameManager
+      value: 
+      objectReference: {fileID: 1459316034744286350, guid: cc0588d2fe163584fae599dec2f90eef,
+        type: 3}
+    - target: {fileID: 1578059006167325649, guid: f9854fa22a332bb46987366ce0617d7e,
+        type: 3}
+      propertyPath: WidgetManager
+      value: 
+      objectReference: {fileID: 5100918874118508386, guid: af34f1e6967eb7649b1b53c2bbd964cf,
+        type: 3}
     - target: {fileID: 6555457972291682985, guid: f9854fa22a332bb46987366ce0617d7e,
         type: 3}
       propertyPath: m_Name
