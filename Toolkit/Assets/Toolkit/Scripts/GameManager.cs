@@ -141,22 +141,31 @@ public class GameManager : MonoBehaviour
     /// <param name="spawnPawn">optional parameter should pawn be instantiated?</param>
     public void CreatePlayer(bool spawnPawn = false)
     {
-        // playerController is always created, Pawn is optional
-        AGameMode gm = currentGameMode.GetComponent<AGameMode>();
 
-        GameObject pawn = null;
-
-        if (spawnPawn == true)
+        // check if there are still playersslots left for the currentGameMode
+        if (Players.Count > currentGameMode.GetComponent<AGameMode>().MaxPlayers)
         {
-            pawn = GameObject.Instantiate(gm.DefaultPawn);
+            // playerController is always created, Pawn is optional
+            AGameMode gm = currentGameMode.GetComponent<AGameMode>();
+
+            GameObject pawn = null;
+
+            if (spawnPawn == true)
+            {
+                pawn = GameObject.Instantiate(gm.DefaultPawn);
+            }
+
+            GameObject pc = GameObject.Instantiate(gm.DefaultPlayerController);
+
+            Player newPlayer = new Player(Players.Count, pawn.gameObject.GetComponent<APawn>(), pc.GetComponent<APlayerController>());
+
+            // add to players array
+            Players.Add(newPlayer);
         }
-        
-        GameObject pc = GameObject.Instantiate(gm.DefaultPlayerController);
-
-        Player newPlayer = new Player(Players.Count, pawn.gameObject.GetComponent<APawn>(), pc.GetComponent<APlayerController>());
-
-        // add to players array
-        Players.Add(newPlayer);
+        else
+        {
+            Debug.LogWarning("Can't create player because there are no empty player slots for the current GameMode.");
+        }
     }
 
 
