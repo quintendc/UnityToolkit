@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 8182635245904849530}
   - component: {fileID: 1706289570933028109}
   - component: {fileID: 728164977455608115}
-  - component: {fileID: 2008701567011150786}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Pawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,19 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2008701567011150786
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 135123863182917030}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1849783391122146227
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,10 +90,9 @@ GameObject:
   - component: {fileID: 8582838909592861297}
   - component: {fileID: 8449613120091657757}
   - component: {fileID: 8500180122900276596}
-  - component: {fileID: 6742579989730929303}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Pawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,20 +159,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &6742579989730929303
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1849783391122146227}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3347751004049115584
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,6 +170,7 @@ GameObject:
   - component: {fileID: 1933448864187868795}
   - component: {fileID: 537543462666712521}
   - component: {fileID: 1976873591495051651}
+  - component: {fileID: 3292852567227264605}
   m_Layer: 0
   m_Name: SamplePawn
   m_TagString: Pawn
@@ -233,6 +205,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8fa8a0cff5a524484ee0d9beeed726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 100
+  MoveSpeed: 1
+  RotationSpeed: 1
 --- !u!54 &1976873591495051651
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -249,3 +224,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!136 &3292852567227264605
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3347751004049115584}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}

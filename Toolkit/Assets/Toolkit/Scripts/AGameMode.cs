@@ -9,7 +9,7 @@ public abstract class AGameMode : MonoBehaviour
     public GameObject DefaultPawn = null;
     public GameObject DefaultPlayerController = null;
 
-    public int MaxPlayers = 0;
+    public int MaxPlayers = 1;
 
 
     // Start is called before the first frame update

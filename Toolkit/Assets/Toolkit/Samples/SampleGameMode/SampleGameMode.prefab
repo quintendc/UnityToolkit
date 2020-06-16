@@ -47,3 +47,4 @@ MonoBehaviour:
     type: 3}
   DefaultPlayerController: {fileID: 8489360536102688366, guid: f98258edeb41c624ea5d23c6c6bc0f17,
     type: 3}
+  MaxPlayers: 4

@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour
     {
 
         // check if there are still playersslots left for the currentGameMode
-        if (Players.Count > currentGameMode.GetComponent<AGameMode>().MaxPlayers)
+        if (Players.Count < currentGameMode.GetComponent<AGameMode>().MaxPlayers)
         {
             // playerController is always created, Pawn is optional
             AGameMode gm = currentGameMode.GetComponent<AGameMode>();
