@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneSettingsManager : MonoBehaviour
+public class SceneSettingsProvider : MonoBehaviour
 {
 
     public SceneSettingsObject SceneSettings = null;

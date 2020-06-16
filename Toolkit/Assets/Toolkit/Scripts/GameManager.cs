@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
         //do stuff
 
         // get sceneSettingsObject
-        SceneSettingsObject sceneSettingsObject = GameObject.FindGameObjectWithTag("SceneSettingsManager").GetComponent<SceneSettingsManager>().SceneSettings;
+        SceneSettingsObject sceneSettingsObject = GameObject.FindGameObjectWithTag("SceneSettingsProvider").GetComponent<SceneSettingsProvider>().SceneSettings;
 
         // set WidgetRenderCamera first before instantiating a widget
         WidgetManager.Instance.SetRenderCamera();
