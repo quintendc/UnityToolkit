@@ -32,4 +32,16 @@ public abstract class APawn : MonoBehaviour
     {
         PlayerRef = player;
     }
+
+    protected virtual void Hit(Damager damager)
+    {
+        if (damager.InstantKill == true)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Health -= damager.Damage;
+        }
+    }
 }
