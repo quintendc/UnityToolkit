@@ -10,10 +10,11 @@ TagManager:
   - SaveGameManager
   - WidgetManager
   - Widget
-  - SceneSettingsManager
   - GameMode
   - Spawnpoint
   - KillZ
+  - SceneSettingsProvider
+  - SceneSettingsManager
   layers:
   - Default
   - TransparentFX

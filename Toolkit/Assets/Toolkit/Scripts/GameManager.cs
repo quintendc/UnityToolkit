@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -110,7 +111,7 @@ public class GameManager : MonoBehaviour
             currentGameMode = GameObject.Instantiate(InitialSceneSettings.GameMode);
 
             // setup playercontrollers and pawns
-
+            
         }
     }
 
@@ -217,5 +218,10 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+
+    public GameObject GetCurrentGameMode()
+    {
+        return currentGameMode;
+    }
 
 }

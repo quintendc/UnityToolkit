@@ -44,4 +44,6 @@ public abstract class APawn : MonoBehaviour
             Health -= damager.Damage;
         }
     }
+
+
 }

@@ -25,7 +25,7 @@ public abstract class AGameMode : MonoBehaviour
     }
 
 
-    #region Methods
+    #region spawnpoint Methods
 
 
     /// <summary>
