@@ -4,7 +4,7 @@ using UnityEditor.UIElements;
 using UnityEngine;
 
 // objects that enter the KillZ will be destroyed
-public class KillZ : MonoBehaviour
+public class KillZ : Toolkit
 {
 
 
