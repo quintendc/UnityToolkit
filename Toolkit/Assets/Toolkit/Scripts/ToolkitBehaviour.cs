@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class ToolkitBehaviour : MonoBehaviour
 {
@@ -109,6 +110,11 @@ public class ToolkitBehaviour : MonoBehaviour
     public static void LoadGameById(int id)
     {
         //SaveGameManager.Instance.LoadGame();
+    }
+
+    public List<SaveGame> GetAllSaveGames()
+    {
+        return SaveGameManager.Instance.GetAllSaveGames();
     }
 
     #endregion

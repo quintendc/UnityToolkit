@@ -23,6 +23,11 @@ public class Settings : AWidget
         LoadGameByName(saveGameName);
     }
 
+    public void ListSaveGamesBtn()
+    {
+        List<SaveGame> x = GetAllSaveGames();
+    }
+
     public void saveGameNameInput(string input)
     {
         saveGameName = input;

@@ -5,6 +5,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine.UIElements;
 using System;
+using System.Linq;
 
 public class SaveGameManager : MonoBehaviour
 {
@@ -38,7 +39,10 @@ public class SaveGameManager : MonoBehaviour
 
         #endregion
 
-        SaveGameBaseDirectory = Application.persistentDataPath;
+        // remove productName from the SaveGameBaseDirectory
+        string tempPath = Application.persistentDataPath;
+        SaveGameBaseDirectory = tempPath.Replace(Application.productName, "");
+
     }
 
     // Start is called before the first frame update
@@ -68,52 +72,41 @@ public class SaveGameManager : MonoBehaviour
 
     #region Save & Load Methods
 
-    [Obsolete]
-    public List<SaveGameObject> GetAllSaveGames()
+    public List<SaveGame> GetAllSaveGames()
     {
-        List<SaveGameObject> foundedSaveGames = new List<SaveGameObject>();
+        List<SaveGame> foundedSaveGames = new List<SaveGame>();
 
+        if (Directory.Exists(SaveGameBaseDirectory))
+        {
+
+            List<string> saveGameDirectories = Directory.GetFiles(SaveGameBaseDirectory, "*.*", SearchOption.AllDirectories).ToList();
+
+            // remove files that don't have the fileExtension .save
+            saveGameDirectories.RemoveAll(s => !s.Contains(".save"));
+
+            List<SaveGame> deserializedSaveGames = new List<SaveGame>();
+
+            foreach (var saveGameDirectory in saveGameDirectories)
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream stream = new FileStream(saveGameDirectory, FileMode.Open);
+
+                SaveGame sg = formatter.Deserialize(stream) as SaveGame;
+                deserializedSaveGames.Add(sg);
+
+                stream.Close();
+            }
+
+            return deserializedSaveGames;
+
+        }
+        else
+        {
+            Debug.LogError("Save file not found in " + SaveGameBaseDirectory);
+        }
 
         return foundedSaveGames;
     }
-
-    [Obsolete]
-    public SaveGameObject GetSaveGameById(int id)
-    {
-
-        List<SaveGameObject> saveGames = GetAllSaveGames();
-
-        SaveGameObject saveGame = saveGames.Find(s => s.Id == id);
-
-
-        return saveGame;
-    }
-
-    [Obsolete]
-    public SaveGameObject GetSaveGameByName(string name)
-    {
-        List<SaveGameObject> saveGames = GetAllSaveGames();
-
-        SaveGameObject saveGame = saveGames.Find(s => s.Name == name);
-
-        return saveGame;
-    }
-
-
-    [Obsolete]
-    public void SaveNewGame(PersistentData persistentData, string saveGameName)
-    {
-        SaveGameObject saveGame = new SaveGameObject(persistentData);
-
-        saveGame.Id = GetAllSaveGames().Count + 1;
-    }
-
-    [Obsolete]
-    public void SaveCurrentGame(PersistentData persistentData)
-    {
-        // override properties in the currentSaveGameObject then save
-    }
-
 
 
     public void SaveGame(PersistentData persistentData, string saveGameName)
