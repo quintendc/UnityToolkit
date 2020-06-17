@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Settings : AWidget
 {
+
+    public string saveGameName = "";
+
     public void ShowMainMenu()
     {
         WidgetManager.Instance.ShowWidget(WidgetTypes.MainMenu);
@@ -11,11 +14,17 @@ public class Settings : AWidget
 
     public void SaveGameBtn()
     {
-        SaveGame();
+        SaveGame(saveGameName);
     }
 
     public void LoadSaveGameBtn()
     {
-        LoadGameById(0);
+        //LoadGameById(0);
+        LoadGameByName(saveGameName);
+    }
+
+    public void saveGameNameInput(string input)
+    {
+        saveGameName = input;
     }
 }

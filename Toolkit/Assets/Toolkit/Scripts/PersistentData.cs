@@ -6,4 +6,5 @@ using UnityEngine;
 public class PersistentData : ScriptableObject
 {
     // place variables that your need throughout the entire game session here
+    public int Example;
 }

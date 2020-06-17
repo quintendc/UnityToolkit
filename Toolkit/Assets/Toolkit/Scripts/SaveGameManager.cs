@@ -116,21 +116,21 @@ public class SaveGameManager : MonoBehaviour
 
 
 
-    public void SaveGame(PersistentData persistentData)
+    public void SaveGame(PersistentData persistentData, string saveGameName)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = SaveGameBaseDirectory + "TestSaveGame.save";
+        string path = SaveGameBaseDirectory + saveGameName + ".save";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        SaveGame saveGame = new SaveGame();
+        SaveGame saveGame = new SaveGame(persistentData);
 
         formatter.Serialize(stream, saveGame);
         stream.Close();
     }
 
-    public void LoadGame()
+    public void LoadGame(string saveGameName)
     {
-        string path = SaveGameBaseDirectory + "TestSaveGame.save";
+        string path = SaveGameBaseDirectory + saveGameName + ".save";
 
         if (File.Exists(path))
         {

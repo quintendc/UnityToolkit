@@ -84,22 +84,22 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <summary>
     /// this will save the current Game
     /// </summary>
-    public static void SaveGame()
+    public static void SaveGame(string saveGameName)
     {
         // get persistentDat from GameManager
         PersistentData persistentData = GameManager.Instance.PersistentData;
 
         // pass persistentData to SaveGameManager
-        SaveGameManager.Instance.SaveGame(persistentData);
+        SaveGameManager.Instance.SaveGame(persistentData, saveGameName);
     }
 
     /// <summary>
     /// load game by name
     /// </summary>
-    /// <param name="name"></param>
-    public static void LoadGameByName(string name)
+    /// <param name="saveGameName"></param>
+    public static void LoadGameByName(string saveGameName)
     {
-
+        SaveGameManager.Instance.LoadGame(saveGameName);
     }
 
     /// <summary>
@@ -108,7 +108,7 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <param name="id"></param>
     public static void LoadGameById(int id)
     {
-        SaveGameManager.Instance.LoadGame();
+        //SaveGameManager.Instance.LoadGame();
     }
 
     #endregion

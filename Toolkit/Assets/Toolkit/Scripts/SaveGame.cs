@@ -7,5 +7,13 @@ using System.Threading.Tasks;
 [System.Serializable]
 public class SaveGame
 {
+
+    int Example;
+
+    public SaveGame(PersistentData persistentData)
+    {
+        Example = persistentData.Example;
+    }
+
 }
 
