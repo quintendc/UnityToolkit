@@ -122,7 +122,7 @@ public class SaveGameManager : MonoBehaviour
         string path = SaveGameBaseDirectory + "TestSaveGame.save";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        SaveGameObject saveGame = new SaveGameObject(persistentData);
+        SaveGame saveGame = new SaveGame();
 
         formatter.Serialize(stream, saveGame);
         stream.Close();
@@ -131,15 +131,14 @@ public class SaveGameManager : MonoBehaviour
     public void LoadGame()
     {
         string path = SaveGameBaseDirectory + "TestSaveGame.save";
+
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
-            SaveGameObject saveGame = formatter.Deserialize(stream) as SaveGameObject;
+            SaveGame saveGame = formatter.Deserialize(stream) as SaveGame;
             stream.Close();
-
-            currentSaveGame = saveGame;
         }
         else
         {

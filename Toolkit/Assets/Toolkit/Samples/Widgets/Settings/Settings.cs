@@ -8,4 +8,14 @@ public class Settings : AWidget
     {
         WidgetManager.Instance.ShowWidget(WidgetTypes.MainMenu);
     }
+
+    public void SaveGameBtn()
+    {
+        SaveGame();
+    }
+
+    public void LoadSaveGameBtn()
+    {
+        LoadGameById(0);
+    }
 }

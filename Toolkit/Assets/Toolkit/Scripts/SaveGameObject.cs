@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 [CreateAssetMenu(fileName = "MySaveGameObject", menuName = "Toolkit/SaveGameObject", order = 1)]
+[System.Serializable]
 public class SaveGameObject : ScriptableObject
 {
     public int Id { get; set; }

@@ -86,7 +86,11 @@ public class ToolkitBehaviour : MonoBehaviour
     /// </summary>
     public static void SaveGame()
     {
+        // get persistentDat from GameManager
+        PersistentData persistentData = GameManager.Instance.PersistentData;
 
+        // pass persistentData to SaveGameManager
+        SaveGameManager.Instance.SaveGame(persistentData);
     }
 
     /// <summary>
@@ -104,7 +108,7 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <param name="id"></param>
     public static void LoadGameById(int id)
     {
-
+        SaveGameManager.Instance.LoadGame();
     }
 
     #endregion
