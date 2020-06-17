@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public abstract class AGameMode : MonoBehaviour
+public abstract class AGameMode : ToolkitBehaviour
 {
 
     public GameObject DefaultPawn = null;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class APawn : MonoBehaviour
+public abstract class APawn : ToolkitBehaviour
 {
     #region Properties
 

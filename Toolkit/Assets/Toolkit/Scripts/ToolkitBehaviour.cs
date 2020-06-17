@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Toolkit : MonoBehaviour
+public class ToolkitBehaviour : MonoBehaviour
 {
 
     #region Player, Pawn and PlayerController Methods

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AWidget : MonoBehaviour
+public abstract class AWidget : ToolkitBehaviour
 {
     public WidgetTypes WidgetType;
 }

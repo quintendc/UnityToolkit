@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class APlayerController : MonoBehaviour
+public abstract class APlayerController : ToolkitBehaviour
 {
     [HideInInspector]
     public Player PlayerRef = null;
