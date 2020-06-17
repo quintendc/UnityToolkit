@@ -10,8 +10,8 @@ public class SaveGameManager : MonoBehaviour
 {
 
     public static SaveGameManager Instance = null;
-    public string SaveGameBaseDirectory = Application.persistentDataPath;
     public SaveGameObject SaveGameObject = null;
+    private string SaveGameBaseDirectory;
     private SaveGameObject currentSaveGame = null;
 
 
@@ -37,6 +37,8 @@ public class SaveGameManager : MonoBehaviour
         DontDestroyOnLoad(this);
 
         #endregion
+
+        SaveGameBaseDirectory = Application.persistentDataPath;
     }
 
     // Start is called before the first frame update
