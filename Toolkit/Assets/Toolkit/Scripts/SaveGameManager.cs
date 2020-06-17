@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine.UIElements;
+using System;
 
 public class SaveGameManager : MonoBehaviour
 {
 
     public static SaveGameManager Instance = null;
-    public string SaveGameBaseDirectory = "";
+    public string SaveGameBaseDirectory = Application.persistentDataPath;
     public SaveGameObject SaveGameObject = null;
     private SaveGameObject currentSaveGame = null;
 
@@ -63,6 +66,7 @@ public class SaveGameManager : MonoBehaviour
 
     #region Save & Load Methods
 
+    [Obsolete]
     public List<SaveGameObject> GetAllSaveGames()
     {
         List<SaveGameObject> foundedSaveGames = new List<SaveGameObject>();
@@ -71,7 +75,7 @@ public class SaveGameManager : MonoBehaviour
         return foundedSaveGames;
     }
 
-
+    [Obsolete]
     public SaveGameObject GetSaveGameById(int id)
     {
 
@@ -83,7 +87,7 @@ public class SaveGameManager : MonoBehaviour
         return saveGame;
     }
 
-
+    [Obsolete]
     public SaveGameObject GetSaveGameByName(string name)
     {
         List<SaveGameObject> saveGames = GetAllSaveGames();
@@ -94,17 +98,51 @@ public class SaveGameManager : MonoBehaviour
     }
 
 
-
+    [Obsolete]
     public void SaveNewGame(PersistentData persistentData, string saveGameName)
     {
-        SaveGameObject saveGame = new SaveGameObject();
+        SaveGameObject saveGame = new SaveGameObject(persistentData);
 
         saveGame.Id = GetAllSaveGames().Count + 1;
     }
 
+    [Obsolete]
     public void SaveCurrentGame(PersistentData persistentData)
     {
-        // override properties in teh currentSaveGameObject then save
+        // override properties in the currentSaveGameObject then save
+    }
+
+
+
+    public void SaveGame(PersistentData persistentData)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = SaveGameBaseDirectory + "TestSaveGame.save";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        SaveGameObject saveGame = new SaveGameObject(persistentData);
+
+        formatter.Serialize(stream, saveGame);
+        stream.Close();
+    }
+
+    public void LoadGame()
+    {
+        string path = SaveGameBaseDirectory + "TestSaveGame.save";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            SaveGameObject saveGame = formatter.Deserialize(stream) as SaveGameObject;
+            stream.Close();
+
+            currentSaveGame = saveGame;
+        }
+        else
+        {
+            Debug.LogError("Save file not found in " + path);
+        }
     }
 
     #endregion
