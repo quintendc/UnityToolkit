@@ -12,3 +12,10 @@ public enum WidgetTypes
     Pause,
     Settings,
 }
+
+public enum InputState
+{
+    Default,    // fall-back never use this state
+    Pawn,       // send input from playerController to pawn
+    Widget      // send input from playerController to Widgets
+}
