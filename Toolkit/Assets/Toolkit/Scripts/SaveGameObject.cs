@@ -9,7 +9,7 @@ public class SaveGameObject : ScriptableObject
     public int Id { get; set; }
     public string Name { get; set; }
 
-    public SaveGameObject(PersistentData persistentData, string? name = null, int? id = null)
+    public SaveGameObject(PersistentData persistentData, string name = null, int? id = null)
     {
 
         // override id and/or name
