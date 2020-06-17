@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Settings : AWidget
 {
 
     public string saveGameName = "";
+    public Text sliderValue = null;
 
     public void ShowMainMenu()
     {
@@ -31,5 +33,15 @@ public class Settings : AWidget
     public void saveGameNameInput(string input)
     {
         saveGameName = input;
+    }
+
+    public void Slider(float value)
+    {
+        Debug.Log(value);
+        sliderValue.text = value.ToString();
+
+        PersistentData data = GetPersistentData();
+        data.Example = value;
+
     }
 }

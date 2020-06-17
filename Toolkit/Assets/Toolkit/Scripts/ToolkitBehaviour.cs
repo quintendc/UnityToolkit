@@ -67,6 +67,15 @@ public class ToolkitBehaviour : MonoBehaviour
 
     #endregion
 
+    #region PersistentData
+
+    public PersistentData GetPersistentData()
+    {
+        return GameManager.Instance.PersistentData;
+    }
+
+    #endregion
+
     #region Widget Methods
 
     /// <summary>

@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 using System;
 using System.Linq;
 
-public class SaveGameManager : MonoBehaviour
+public class SaveGameManager : ToolkitBehaviour
 {
 
     public static SaveGameManager Instance = null;
@@ -132,6 +132,11 @@ public class SaveGameManager : MonoBehaviour
 
             SaveGame saveGame = formatter.Deserialize(stream) as SaveGame;
             stream.Close();
+
+            // set current persistent Data with SaveGame Data
+            PersistentData x = GetPersistentData();
+            x.Example = saveGame.Example;
+
         }
         else
         {

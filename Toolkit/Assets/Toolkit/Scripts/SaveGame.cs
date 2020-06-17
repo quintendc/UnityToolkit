@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 public class SaveGame
 {
 
-    int Example;
+    public float Example;
 
     public SaveGame(PersistentData persistentData)
     {
