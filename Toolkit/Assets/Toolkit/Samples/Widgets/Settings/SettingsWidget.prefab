@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -364.8, y: 223.8}
+  m_AnchoredPosition: {x: -364.8, y: 236.4}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7383348775545855610
@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
-    m_SelectOnUp: {fileID: 6578088871650684373}
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 4355275542889759408}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 2855258862386971390}
@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 3
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 3964830425813580049}
     m_SelectOnLeft: {fileID: 0}
@@ -677,7 +677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 3
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 6578088871650684373}
@@ -761,7 +761,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -363.7, y: 48.6}
+  m_AnchoredPosition: {x: -364.7, y: 48.6}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1473808254004029288
@@ -814,7 +814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 3
     m_SelectOnUp: {fileID: 4355275542889759408}
     m_SelectOnDown: {fileID: 922221721927776387}
     m_SelectOnLeft: {fileID: 0}
@@ -1492,7 +1492,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -364.5, y: 94}
+  m_AnchoredPosition: {x: -364.8, y: 94}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9175821069810796793
@@ -1545,7 +1545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 3
     m_SelectOnUp: {fileID: 3964830425813580049}
     m_SelectOnDown: {fileID: 9135194281919568859}
     m_SelectOnLeft: {fileID: 0}
@@ -1857,8 +1857,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba7ddfb1df3b25458d0c65e5d0c778a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialSelectedElement: {fileID: 3964830425813580049}
   WidgetType: 4
+  EventSystem: {fileID: 1663986263837819341}
   saveGameName: 
   sliderValue: {fileID: 2781105953588897638}
 --- !u!1 &8835631646830492464
@@ -1950,7 +1950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 4
+    m_Mode: 3
     m_SelectOnUp: {fileID: 9135194281919568859}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}

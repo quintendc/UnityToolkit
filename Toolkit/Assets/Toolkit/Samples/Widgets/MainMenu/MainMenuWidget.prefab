@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2952070587416145838}
   - component: {fileID: 7771039574156320201}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SettingsBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,8 +175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c7d6cc7d0b0a746b6728a355409e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialSelectedElement: {fileID: 7771039574156320201}
   WidgetType: 1
+  EventSystem: {fileID: 856326362404035859}
 --- !u!1 &7731495722996596386
 GameObject:
   m_ObjectHideFlags: 0
