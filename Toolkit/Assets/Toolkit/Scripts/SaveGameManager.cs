@@ -136,6 +136,8 @@ public class SaveGameManager : ToolkitBehaviour
             SaveGame saveGame = formatter.Deserialize(stream) as SaveGame;
             stream.Close();
 
+            currentSaveGame = saveGame;
+
             // set current persistent Data with SaveGame Data
             PersistentData x = new PersistentData(saveGame); // fill new PersistentData object with saveGame data
             OverridePersistentData(x);
@@ -152,6 +154,8 @@ public class SaveGameManager : ToolkitBehaviour
         List<SaveGame> saveGames = GetAllSaveGames();
 
         SaveGame saveGame = saveGames.ElementAt(index);
+
+        currentSaveGame = saveGame;
 
         // set current persistent Data with SaveGame Data
         PersistentData x = new PersistentData(saveGame); // fill new PersistentData object with saveGame data
