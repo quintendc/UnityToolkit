@@ -16,7 +16,7 @@ public abstract class AWidget : ToolkitBehaviour
         }
         else
         {
-            Debug.LogWarning("No initial selected element provided some functions may not work");
+            Debug.LogWarning("No initial selected element provided, Some functions may not work");
         }
     }
 }

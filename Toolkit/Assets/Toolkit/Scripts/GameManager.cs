@@ -50,6 +50,9 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
 
+        // set persistentData
+        PersistentData = new PersistentData(null);
+
         SetupInitialScene();
     }
 
@@ -82,11 +85,6 @@ public class GameManager : MonoBehaviour
         else
         {
             GameObject.Instantiate(WidgetManagerPrefab);
-        }
-
-        if (PersistentData == null)
-        {
-            Debug.LogWarning("No PersistentDataObject Provided! Some functionality may not work.");
         }
 
         if (InitialSceneSettings == null)

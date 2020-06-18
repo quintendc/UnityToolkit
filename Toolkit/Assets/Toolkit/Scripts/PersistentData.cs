@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MyPersistentDataObject", menuName = "Toolkit/PeristentDataObject", order = 0)]
-public class PersistentData : ScriptableObject
+public class PersistentData
 {
     // extend this class to your needs
     #region Varbiables
@@ -23,7 +22,13 @@ public class PersistentData : ScriptableObject
         // example
         // int x = saveGame.x;
 
-        Example = saveGame.Example;
+        if (saveGame != null)
+        {
+
+            Example = saveGame.Example;
+
+        }
+
     }
 
 }
