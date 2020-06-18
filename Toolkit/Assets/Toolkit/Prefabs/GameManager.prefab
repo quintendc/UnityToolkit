@@ -43,3 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f34249e539b5647a5efcd161040d8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitialSceneSettings: {fileID: 11400000, guid: 3aad84d8685c21343b1c0ee441f574be,
+    type: 2}
+  SaveGameManagerPrefab: {fileID: 1459316034744286350, guid: cc0588d2fe163584fae599dec2f90eef,
+    type: 3}
+  WidgetManagerPrefab: {fileID: 5100918874118508386, guid: af34f1e6967eb7649b1b53c2bbd964cf,
+    type: 3}
