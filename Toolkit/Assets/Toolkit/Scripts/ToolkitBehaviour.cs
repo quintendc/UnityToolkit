@@ -69,6 +69,10 @@ public class ToolkitBehaviour : MonoBehaviour
 
     #region PersistentData
 
+    /// <summary>
+    /// get the persistentData object from the GameManager
+    /// </summary>
+    /// <returns>current persistent data object from the gameManager</returns>
     public PersistentData GetPersistentData()
     {
         return GameManager.Instance.PersistentData;
@@ -95,6 +99,16 @@ public class ToolkitBehaviour : MonoBehaviour
     public void ShowWidget(WidgetTypes widget)
     {
         WidgetManager.Instance.ShowWidget(widget);
+    }
+
+
+    /// <summary>
+    /// get current widget that is displayed
+    /// </summary>
+    /// <returns>current AWidget object</returns>
+    public AWidget GetCurrentWidget()
+    {
+        return WidgetManager.Instance.GetCurrentWidget();
     }
 
     #endregion

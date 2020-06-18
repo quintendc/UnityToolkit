@@ -85,4 +85,10 @@ public class WidgetManager : MonoBehaviour
 
     }
 
+
+    public AWidget GetCurrentWidget()
+    {
+        return currentWidget.GetComponent<AWidget>();
+    }
+
 }
