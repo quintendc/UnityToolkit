@@ -137,9 +137,8 @@ public class SaveGameManager : ToolkitBehaviour
             stream.Close();
 
             // set current persistent Data with SaveGame Data
-            PersistentData x = GetPersistentData();
-            x.Example = saveGame.Example;
-
+            PersistentData x = new PersistentData(saveGame); // fill new PersistentData object with saveGame data
+            OverridePersistentData(x);
         }
         else
         {
@@ -152,10 +151,11 @@ public class SaveGameManager : ToolkitBehaviour
     {
         List<SaveGame> saveGames = GetAllSaveGames();
 
-        // get elementAt(index)
-        // pass saveGame to persistentData
+        SaveGame saveGame = saveGames.ElementAt(index);
 
-
+        // set current persistent Data with SaveGame Data
+        PersistentData x = new PersistentData(saveGame); // fill new PersistentData object with saveGame data
+        OverridePersistentData(x);
 
     }
 

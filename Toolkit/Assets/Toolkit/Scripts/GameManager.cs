@@ -219,9 +219,25 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+
+    #region PersistentData Methods
+
+    public void OverridePersistentData(PersistentData persistentData)
+    {
+
+        PersistentData = persistentData;
+
+    }
+
+    #endregion
+
+    #region GameMode Methods
     public GameObject GetCurrentGameMode()
     {
         return currentGameMode;
     }
+
+    #endregion
+
 
 }

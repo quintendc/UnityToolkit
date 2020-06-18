@@ -74,6 +74,16 @@ public class ToolkitBehaviour : MonoBehaviour
         return GameManager.Instance.PersistentData;
     }
 
+
+    /// <summary>
+    /// override the PersistentData in the GameManager -> call this methdo after loading a saveGame
+    /// </summary>
+    /// <param name="persistentData">new persistentData object</param>
+    public void OverridePersistentData(PersistentData persistentData)
+    {
+        GameManager.Instance.OverridePersistentData(persistentData);
+    }
+
     #endregion
 
     #region Widget Methods
