@@ -4,6 +4,70 @@ using UnityEngine;
 public class ToolkitBehaviour : MonoBehaviour
 {
 
+    #region General Methods
+
+    /// <summary>
+    /// pause or unpause the game
+    /// 
+    /// default settings when paused are:
+    /// timeScale 0
+    /// GamePaused boolean in persistentData is true
+    /// default widget to show "Pause"
+    /// 
+    /// default settinsg when unpaused
+    /// time scale 1
+    /// GamePaused boolean in PersistentData is false
+    /// default widget to show "HUD"
+    /// 
+    /// </summary>
+    /// <param name="overrideDefaultWidgetType">override the default WidgetType (pause)</param>
+    public void PauseGame(WidgetTypes? overrideDefaultWidgetType = null)
+    {
+
+        if (GameManager.Instance.PersistentData.Paused == false)
+        {
+            Time.timeScale = 0;
+
+            GameManager.Instance.PersistentData.Paused = true;
+
+            // show pause widget (default setting)
+            if (overrideDefaultWidgetType == null)
+            {
+                ShowWidget(WidgetTypes.Pause);
+            }
+            else
+            {
+                ShowWidget((WidgetTypes)overrideDefaultWidgetType);
+            }
+        }
+        else
+        {
+            Time.timeScale = 1;
+            GameManager.Instance.PersistentData.Paused = false;
+
+            // show HUD again (default setting)
+            if (overrideDefaultWidgetType == null)
+            {
+                ShowWidget(WidgetTypes.HUD);
+            }
+            else
+            {
+                ShowWidget((WidgetTypes)overrideDefaultWidgetType);
+            }
+        }
+    }
+
+    /// <summary>
+    /// get a boolean if the game is set to pause
+    /// </summary>
+    /// <returns></returns>
+    public bool IsGamePaused()
+    {
+        return GameManager.Instance.PersistentData.Paused;
+    }
+
+    #endregion
+
     #region Player, Pawn and PlayerController Methods
 
 

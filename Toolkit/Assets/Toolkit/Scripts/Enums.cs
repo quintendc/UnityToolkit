@@ -11,6 +11,7 @@ public enum WidgetTypes
     Loading,
     Pause,
     Settings,
+    HUD,
 }
 
 public enum InputState
