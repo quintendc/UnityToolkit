@@ -6,6 +6,7 @@ public abstract class APlayerController : ToolkitBehaviour
 {
     [HideInInspector]
     public Player PlayerRef = null;
+    public InputState InputState;
 
     // Start is called before the first frame update
     void Start()

@@ -12,12 +12,20 @@ public class SamplePlayerController : APlayerController
     // Start is called before the first frame update
     void Start()
     {
-        
+        InputState = InputState.Widget;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            AWidget widget = GetCurrentWidget();
+            widget.NavigateDown();
+        }
+
+
         // input
         // gives float value between -1 and 1
         if (PlayerRef.Pawn != null)
