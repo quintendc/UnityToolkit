@@ -17,11 +17,12 @@ public abstract class AWidget : ToolkitBehaviour
         {
             //InitialSelectedElement.Select();
             selectedElement = EventSystem.firstSelectedGameObject.GetComponent<Selectable>();
+            EventSystem.firstSelectedGameObject.GetComponent<Selectable>().Select();
 
-            selectedElement.FindSelectableOnUp();
-            selectedElement.FindSelectableOnDown();
-            selectedElement.FindSelectableOnLeft();
-            selectedElement.FindSelectableOnRight();
+            //selectedElement.FindSelectableOnUp();
+            //selectedElement.FindSelectableOnDown();
+            //selectedElement.FindSelectableOnLeft();
+            //selectedElement.FindSelectableOnRight();
         }
         else
         {
