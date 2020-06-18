@@ -11,9 +11,8 @@ public class SaveGameManager : ToolkitBehaviour
 {
 
     public static SaveGameManager Instance = null;
-    public SaveGameObject SaveGameObject = null;
     private string SaveGameBaseDirectory;
-    private SaveGameObject currentSaveGame = null;
+    private SaveGame currentSaveGame = null;
 
 
     private void Awake()
@@ -58,21 +57,14 @@ public class SaveGameManager : ToolkitBehaviour
     }
 
 
-    /// <summary>
-    /// validate whether all necessary files have been delivered
-    /// </summary>
-    private void Validate()
-    {
-        if (SaveGameObject == null)
-        {
-            Debug.LogWarning("No SaveGameObject provided to the SaveGameManager!");
-        }
-    }
-
-
     #region Save & Load Methods
 
-    public List<SaveGame> GetAllSaveGames()
+
+    /// <summary>
+    /// get a list of all saveGames found in the SaveGameBaseDirectory
+    /// </summary>
+    /// <returns>list of saveGames</returns>
+    public new List<SaveGame> GetAllSaveGames()
     {
         List<SaveGame> foundedSaveGames = new List<SaveGame>();
 
@@ -108,9 +100,16 @@ public class SaveGameManager : ToolkitBehaviour
         return foundedSaveGames;
     }
 
-
-    public void SaveGame(PersistentData persistentData, string saveGameName)
+    /// <summary>
+    /// Save the game
+    /// </summary>
+    /// <param name="persistentData">PeristentData from the GameManager</param>
+    /// <param name="saveGameName">name of the SaveGame</param>
+    public new void SaveGame(string saveGameName)
     {
+
+        PersistentData persistentData = GetPersistentData();
+
         BinaryFormatter formatter = new BinaryFormatter();
         string path = SaveGameBaseDirectory + saveGameName + ".save";
         FileStream stream = new FileStream(path, FileMode.Create);
@@ -121,7 +120,11 @@ public class SaveGameManager : ToolkitBehaviour
         stream.Close();
     }
 
-    public void LoadGame(string saveGameName)
+    /// <summary>
+    /// load saveGame based on the name, the persistentData will be overrided by the loaded SaveGame
+    /// </summary>
+    /// <param name="saveGameName">name of saveGame</param>
+    public new void LoadGameByName(string saveGameName)
     {
         string path = SaveGameBaseDirectory + saveGameName + ".save";
 
@@ -144,6 +147,19 @@ public class SaveGameManager : ToolkitBehaviour
         }
     }
 
+
+    public new void LoadGameByIndex(int index) 
+    {
+        List<SaveGame> saveGames = GetAllSaveGames();
+
+        // get elementAt(index)
+        // pass saveGame to persistentData
+
+
+
+    }
+
     #endregion
+
 
 }

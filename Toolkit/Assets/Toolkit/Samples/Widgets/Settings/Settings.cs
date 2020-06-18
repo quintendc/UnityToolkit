@@ -21,8 +21,8 @@ public class Settings : AWidget
 
     public void LoadSaveGameBtn()
     {
-        //LoadGameById(0);
-        LoadGameByName(saveGameName);
+        //LoadGameByName(saveGameName);
+        LoadGameByIndex(0);
     }
 
     public void ListSaveGamesBtn()

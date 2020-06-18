@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1533a4b3fa5413469f27b52d7bc2d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SaveGameBaseDirectory: 
-  SaveGameObject: {fileID: 11400000, guid: 8abd874157c39d846a04c94ad1bdd61c, type: 2}
+  SaveGameObject:
+    Example: 0

@@ -21,7 +21,7 @@ public class ToolkitBehaviour : MonoBehaviour
     /// </summary>
     /// <param name="id">player id</param>
     /// <returns>poco item from Players list</returns>
-    public static Player GetPlayerById(int id)
+    public Player GetPlayerById(int id)
     {
         return GameManager.Instance.Players.Find(p => p.Id == id);
     }
@@ -33,7 +33,7 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <param name="playerIndex">player index</param>
     /// <param name="position">pawn location in the scene</param>
     /// <param name="rotation">set rotation of the pawn</param>
-    public static void PlacePawn(int playerIndex, Vector3 position, Quaternion rotation)
+    public void PlacePawn(int playerIndex, Vector3 position, Quaternion rotation)
     {
         // get player by id
         Player player = GameManager.Instance.Players.Find(p => p.Id == playerIndex);
@@ -49,7 +49,7 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <param name="pawn">player pawn</param>
     /// <param name="position">pawn location in the scene</param>
     /// <param name="rotation">set rotation of the pawn</param>
-    public static void PlacePawn(GameObject pawn, Vector3 position, Quaternion rotation)
+    public void PlacePawn(GameObject pawn, Vector3 position, Quaternion rotation)
     {
         pawn.transform.position = position;
         pawn.transform.rotation = rotation;
@@ -60,7 +60,7 @@ public class ToolkitBehaviour : MonoBehaviour
 
     #region GameModeMethods
 
-    public static GameObject GetCurrentGameMode()
+    public GameObject GetCurrentGameMode()
     {
         return GameManager.Instance.GetCurrentGameMode();
     }
@@ -82,7 +82,7 @@ public class ToolkitBehaviour : MonoBehaviour
     /// this will ask the WidgetManager to show Widget X
     /// </summary>
     /// <param name="widget">widget to show</param>
-    public static void ShowWidget(WidgetTypes widget)
+    public void ShowWidget(WidgetTypes widget)
     {
         WidgetManager.Instance.ShowWidget(widget);
     }
@@ -94,31 +94,28 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <summary>
     /// this will save the current Game
     /// </summary>
-    public static void SaveGame(string saveGameName)
+    public void SaveGame(string saveGameName)
     {
-        // get persistentDat from GameManager
-        PersistentData persistentData = GameManager.Instance.PersistentData;
-
-        // pass persistentData to SaveGameManager
-        SaveGameManager.Instance.SaveGame(persistentData, saveGameName);
+        // pass saveGameName to SaveGameManager
+        SaveGameManager.Instance.SaveGame(saveGameName);
     }
 
     /// <summary>
     /// load game by name
     /// </summary>
     /// <param name="saveGameName"></param>
-    public static void LoadGameByName(string saveGameName)
+    public void LoadGameByName(string saveGameName)
     {
-        SaveGameManager.Instance.LoadGame(saveGameName);
+        SaveGameManager.Instance.LoadGameByName(saveGameName);
     }
 
     /// <summary>
     /// load game by id
     /// </summary>
     /// <param name="id"></param>
-    public static void LoadGameById(int id)
+    public void LoadGameByIndex(int index)
     {
-        //SaveGameManager.Instance.LoadGame();
+        SaveGameManager.Instance.LoadGameByIndex(index);
     }
 
     public List<SaveGame> GetAllSaveGames()
