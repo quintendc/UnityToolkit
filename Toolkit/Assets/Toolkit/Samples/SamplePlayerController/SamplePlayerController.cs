@@ -19,20 +19,43 @@ public class SamplePlayerController : APlayerController
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (InputState == InputState.Widget)
         {
+
             AWidget widget = GetCurrentWidget();
-            widget.NavigateDown();
+
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                widget.NavigateUp();
+            }
+
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                widget.NavigateDown();
+            }
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                widget.NavigateLeft();
+            }
+
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                widget.NavigateRight();
+            }
+
         }
-
-
-        // input
-        // gives float value between -1 and 1
-        if (PlayerRef.Pawn != null)
+        else
         {
-            movement.x = Input.GetAxisRaw("Horizontal");
-            movement.z = Input.GetAxisRaw("Vertical");
+            // input
+            // gives float value between -1 and 1
+            if (PlayerRef.Pawn != null)
+            {
+                movement.x = Input.GetAxisRaw("Horizontal");
+                movement.z = Input.GetAxisRaw("Vertical");
+            }
         }
+
     }
 
     // handle input

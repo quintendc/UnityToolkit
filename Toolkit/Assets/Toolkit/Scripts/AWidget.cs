@@ -7,12 +7,14 @@ public abstract class AWidget : ToolkitBehaviour
 {
     public Selectable InitialSelectedElement = null;
     public WidgetTypes WidgetType;
+    private Selectable selectedElement = null;
 
     public void Start()
     {
         if (InitialSelectedElement != null)
         {
-            InitialSelectedElement.Select();
+            //InitialSelectedElement.Select();
+            selectedElement = InitialSelectedElement;
         }
         else
         {
@@ -25,40 +27,41 @@ public abstract class AWidget : ToolkitBehaviour
 
     public void NavigateUp()
     {
-        Selectable currentSelectable = InitialSelectedElement;
-        Selectable newSelectable = InitialSelectedElement.navigation.selectOnUp;
-        InitialSelectedElement = newSelectable;
-        InitialSelectedElement.Select();
-
+        Selectable x = InitialSelectedElement.navigation.selectOnUp;
+        selectedElement = x;
     }
 
     public void NavigateDown()
     {
-        Selectable currentSelectable = InitialSelectedElement;
-        Selectable newSelectable = InitialSelectedElement.navigation.selectOnDown;
-        InitialSelectedElement = newSelectable;
-        InitialSelectedElement.Select();
-
+        Selectable x = InitialSelectedElement.navigation.selectOnDown;
+        selectedElement = x;
     }
 
     public void NavigateLeft()
     {
-        Selectable currentSelectable = InitialSelectedElement;
-        Selectable newSelectable = InitialSelectedElement.navigation.selectOnLeft;
-        InitialSelectedElement = newSelectable;
-        InitialSelectedElement.Select();
-
+        Selectable x = InitialSelectedElement.navigation.selectOnLeft;
+        selectedElement = x;
     }
 
     public void NavigateRight()
     {
-        Selectable currentSelectable = InitialSelectedElement;
-        Selectable newSelectable = InitialSelectedElement.navigation.selectOnRight;
-        InitialSelectedElement = newSelectable;
-        InitialSelectedElement.Select();
-
+        Selectable x = InitialSelectedElement.navigation.selectOnRight;
+        selectedElement = x;
     }
 
     #endregion
+
+
+    private void FixedUpdate()
+    {
+        if (selectedElement != null)
+        {
+            selectedElement.Select();
+        }
+        else
+        {
+            Debug.Log("SelectedElement is null");
+        }
+    }
 
 }
