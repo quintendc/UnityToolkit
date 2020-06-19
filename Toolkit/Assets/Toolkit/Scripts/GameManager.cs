@@ -109,7 +109,7 @@ public class GameManager : ToolkitBehaviour
             currentGameMode = GameObject.Instantiate(InitialSceneSettings.GameMode);
 
             // spawn at least 1 PlayerController
-            CreatePlayer();
+            CreatePlayer(true);
         }
     }
 
