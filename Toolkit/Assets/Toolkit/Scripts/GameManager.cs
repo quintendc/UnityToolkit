@@ -18,6 +18,10 @@ public class GameManager : ToolkitBehaviour
     public GameObject SaveGameManagerPrefab = null;
     public GameObject WidgetManagerPrefab = null;
 
+    [Header("Initial player")]
+    [Tooltip("there will at least be one playercontroller initialized")]
+    public bool SpawnPawn = false;
+
     private void Awake()
     {
         #region Singleton Pattern GameManager instance
@@ -109,7 +113,7 @@ public class GameManager : ToolkitBehaviour
             currentGameMode = GameObject.Instantiate(InitialSceneSettings.GameMode);
 
             // spawn at least 1 PlayerController
-            CreatePlayer(false);
+            CreatePlayer(SpawnPawn);
         }
     }
 
@@ -220,6 +224,30 @@ public class GameManager : ToolkitBehaviour
 
             player.UpdatePlayer(id, newPawn.GetComponent<APawn>(), newPlayerController.GetComponent<APlayerController>());
         }
+    }
+
+
+    /// <summary>
+    /// create a pawn for a player that doesn't have a pawn yet, the pawn that will be instantiated is from the currentGameMode
+    /// </summary>
+    /// <param name="playerId">id of the player</param>
+    /// <param name="position">position in the scene</param>
+    /// <param name="rotation">rotation of the pawn</param>
+    public new void CreatePawnForPlayer(int playerId, Vector3 position, Quaternion rotation)
+    {
+        Player player = Players.Find(p => p.Id == playerId);
+
+        if (player.Pawn != null)
+        {
+            Debug.LogWarning("the player with Id:" + playerId + " already has a pawn assigned, call is aborted!");
+        }
+        else
+        {
+            GameObject pawn = GameObject.Instantiate(currentGameMode.GetComponent<AGameMode>().DefaultPawn, position, rotation);
+
+            player.UpdatePlayer(null, pawn.GetComponent<APawn>(), null);
+        }
+
     }
 
     #endregion

@@ -120,6 +120,43 @@ public class ToolkitBehaviour : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// check if player with id ahs a pawn assigned
+    /// </summary>
+    /// <param name="playerId"></param>
+    /// <returns>true player has a pawn assigned, false player doesn't have a pawn assigned, null player doesn't exists</returns>
+    public bool? DoesPlayerHasPawn(int playerId)
+    {
+
+        Player player = GameManager.Instance.Players.Find(p => p.Id == playerId);
+
+        if (player == null)
+        {
+            return null;
+        }
+
+        if (player.Pawn != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// create a pawn for a player that doesn't have a pawn yet, the pawn that will be instantiated is from the currentGameMode
+    /// </summary>
+    /// <param name="playerId">id of the player</param>
+    /// <param name="position">position in the scene</param>
+    /// <param name="rotation">rotation of the pawn</param>
+    public void CreatePawnForPlayer(int playerId, Vector3 position, Quaternion rotation)
+    {
+        GameManager.Instance.CreatePawnForPlayer(playerId, position, rotation);
+    }
+
+
     #endregion
 
     #region GameModeMethods
