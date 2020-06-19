@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DemoPawn : APawn
+public class Scene1GameMode : AGameMode
 {
     // Start is called before the first frame update
     void Start()

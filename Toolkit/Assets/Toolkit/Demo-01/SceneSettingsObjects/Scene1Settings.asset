@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9468a85ee13bd04eb728e4c0dd76e82, type: 3}
   m_Name: Scene1Settings
   m_EditorClassIdentifier: 
-  WidgetType: 0
+  WidgetType: 5
   Camera: {fileID: 0}
   GameMode: {fileID: 0}
   OverridePlayerPawns: 1
