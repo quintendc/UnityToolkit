@@ -46,4 +46,5 @@ MonoBehaviour:
   Widgets:
   - {fileID: 9049893122982319198, guid: 6e5f2def249750f4895120b8e211b69e, type: 3}
   - {fileID: 6418431269658244595, guid: ecda6cb6e0cec0f45885cb1848198807, type: 3}
+  - {fileID: 6615349043092274269, guid: 7f0ef768d1555a44194053187616acc8, type: 3}
   WidgetRenderCamera: {fileID: 0}

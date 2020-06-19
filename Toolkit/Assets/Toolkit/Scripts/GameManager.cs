@@ -132,7 +132,7 @@ public class GameManager : ToolkitBehaviour
         SceneSettingsObject sceneSettingsObject = GameObject.FindGameObjectWithTag("SceneSettingsProvider").GetComponent<SceneSettingsProvider>().SceneSettings;
 
         // set WidgetRenderCamera first before instantiating a widget
-        WidgetManager.Instance.SetRenderCamera();
+        //WidgetManager.Instance.SetRenderCamera();
 
         // handle SceneSettingsObject
         // set widget to be shown
