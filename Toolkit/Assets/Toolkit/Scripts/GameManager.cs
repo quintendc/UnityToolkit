@@ -142,7 +142,7 @@ public class GameManager : ToolkitBehaviour
         currentGameMode = GameObject.Instantiate(sceneSettingsObject.GameMode);
 
         // replace Pawns and playerControllers
-        UpdatePlayersForGameMode();        
+        UpdatePlayersForGameMode(sceneSettingsObject.OverridePlayerPawns, sceneSettingsObject.OverridePlayerPlayerControllers);        
     }
 
 
@@ -212,7 +212,7 @@ public class GameManager : ToolkitBehaviour
     /// <summary>
     /// this method will replace all pawns and playerscontrollers to the currentGameMode default Pawn and PlayerController
     /// </summary>
-    public void UpdatePlayersForGameMode()
+    public void UpdatePlayersForGameMode(bool updatePawn, bool updatePlayerController)
     {
         foreach (var player in Players)
         {
@@ -223,9 +223,19 @@ public class GameManager : ToolkitBehaviour
             Destroy(player.Pawn.gameObject);
             Destroy(player.PlayerController.gameObject);
 
+            GameObject newPawn = null;
+            GameObject newPlayerController = null;
+
             // instantiate new pawn and new playercontroller
-            GameObject newPawn = GameObject.Instantiate(currentGameMode.GetComponent<AGameMode>().DefaultPawn);
-            GameObject newPlayerController = GameObject.Instantiate(currentGameMode.GetComponent<AGameMode>().DefaultPlayerController);
+            if (updatePawn == true)
+            {
+                newPawn = GameObject.Instantiate(currentGameMode.GetComponent<AGameMode>().DefaultPawn);
+            }
+
+            if (updatePlayerController == true)
+            {
+                newPlayerController = GameObject.Instantiate(currentGameMode.GetComponent<AGameMode>().DefaultPlayerController);
+            }
 
             player.UpdatePlayer(id, newPawn.GetComponent<APawn>(), newPlayerController.GetComponent<APlayerController>());
         }
