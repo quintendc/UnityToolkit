@@ -16,4 +16,11 @@ public class SceneSettingsObject : ScriptableObject
     // gameMode to instantiate
     public GameObject GameMode = null;
 
+    [Header("Player Settings")]
+    [Tooltip("when set to true the existing pawns will be replaced by the defaultPawn of the currentGameMode")]
+    public bool OverridePlayerPawns = true;
+    [Tooltip("when set to true the existing playercontrollers will be replaced by the defaultPlayerController of the currentGameMode")]
+    public bool OverridePlayerPlayerControllers = true;
+
+
 }

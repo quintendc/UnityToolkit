@@ -135,9 +135,14 @@ public class GameManager : ToolkitBehaviour
         WidgetManager.Instance.SetRenderCamera();
 
         // handle SceneSettingsObject
+        // set widget to be shown
         WidgetManager.Instance.ShowWidget(sceneSettingsObject.WidgetType);
 
-        
+        // set currentGameMode to new GameMode
+        currentGameMode = GameObject.Instantiate(sceneSettingsObject.GameMode);
+
+        // replace Pawns and playerControllers
+        UpdatePlayersForGameMode();        
     }
 
 
