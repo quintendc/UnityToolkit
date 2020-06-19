@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 741346675252130271}
   m_Layer: 0
   m_Name: MainMenuDemoWidget
-  m_TagString: Untagged
+  m_TagString: Widget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -627,5 +627,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a519810dda935c4db42eca013dfcd3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WidgetType: 0
-  EventSystem: {fileID: 0}
+  WidgetType: 1
+  EventSystem: {fileID: 6277553493196486999}
