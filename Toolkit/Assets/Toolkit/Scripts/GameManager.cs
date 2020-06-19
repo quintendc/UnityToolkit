@@ -142,6 +142,7 @@ public class GameManager : ToolkitBehaviour
         currentGameMode = GameObject.Instantiate(sceneSettingsObject.GameMode);
 
         // replace Pawns and playerControllers
+        Debug.Log("log" + sceneSettingsObject);
         UpdatePlayersForGameMode(sceneSettingsObject.OverridePlayerPawns, sceneSettingsObject.OverridePlayerPlayerControllers);        
     }
 
@@ -220,8 +221,15 @@ public class GameManager : ToolkitBehaviour
             int id = player.Id;
 
             // destroy current gameobjects for pawn and playercontroller
-            Destroy(player.Pawn.gameObject);
-            Destroy(player.PlayerController.gameObject);
+            if (player.Pawn != null)
+            {
+                Destroy(player.Pawn.gameObject);
+            }
+
+            if (player.PlayerController != null)
+            {
+                Destroy(player.PlayerController.gameObject);
+            }
 
             GameObject newPawn = null;
             GameObject newPlayerController = null;

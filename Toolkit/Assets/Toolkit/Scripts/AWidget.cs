@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -13,20 +14,29 @@ public abstract class AWidget : ToolkitBehaviour
 
     public void Start()
     {
-        if (EventSystem.firstSelectedGameObject != null)
+        if (EventSystem != null)
         {
-            //InitialSelectedElement.Select();
-            selectedElement = EventSystem.firstSelectedGameObject.GetComponent<Selectable>();
-            EventSystem.firstSelectedGameObject.GetComponent<Selectable>().Select();
 
-            //selectedElement.FindSelectableOnUp();
-            //selectedElement.FindSelectableOnDown();
-            //selectedElement.FindSelectableOnLeft();
-            //selectedElement.FindSelectableOnRight();
+            if (EventSystem.firstSelectedGameObject != null)
+            {
+                //InitialSelectedElement.Select();
+                selectedElement = EventSystem.firstSelectedGameObject.GetComponent<Selectable>();
+                EventSystem.firstSelectedGameObject.GetComponent<Selectable>().Select();
+
+                //selectedElement.FindSelectableOnUp();
+                //selectedElement.FindSelectableOnDown();
+                //selectedElement.FindSelectableOnLeft();
+                //selectedElement.FindSelectableOnRight();
+            }
+            else
+            {
+                Debug.LogWarning("No initial selected element provided, Some functions may not work");
+            }
+        
         }
         else
         {
-            Debug.LogWarning("No initial selected element provided, Some functions may not work");
+            Debug.LogWarning("No EventSystem provided");
         }
     }
 
