@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WidgetType: 5
   Camera: {fileID: 0}
-  GameMode: {fileID: 0}
+  GameMode: {fileID: 4828764518458112823, guid: 41f258a9a3a054f4dbdffbdb17ecef7b,
+    type: 3}
   OverridePlayerPawns: 1
   OverridePlayerPlayerControllers: 1
