@@ -43,3 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1ff9c87bd6ba641aed20e9b89f3e82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DefaultPawn: {fileID: 5944837505181384071, guid: 223a64042815b7b4ca184290de6ff86c,
+    type: 3}
+  DefaultPlayerController: {fileID: 4276829381822656595, guid: f0b57e28c1594d3499f1f0af78cf2c93,
+    type: 3}
+  MaxPlayers: 1
