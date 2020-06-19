@@ -109,7 +109,7 @@ public class GameManager : ToolkitBehaviour
             currentGameMode = GameObject.Instantiate(InitialSceneSettings.GameMode);
 
             // spawn at least 1 PlayerController
-            CreatePlayer(true);
+            CreatePlayer(false);
         }
     }
 
@@ -161,7 +161,9 @@ public class GameManager : ToolkitBehaviour
 
             GameObject pc = GameObject.Instantiate(gm.DefaultPlayerController);
 
-            Player newPlayer = new Player(Players.Count, pawn.gameObject.GetComponent<APawn>(), pc.GetComponent<APlayerController>());
+            // bug pawn is not set -> can't get component of null object
+            Player newPlayer = new Player(Players.Count, pawn != null ? pawn.gameObject.GetComponent<APawn>() : null, pc.GetComponent<APlayerController>());
+            //Player newPlayer = new Player(Players.Count, pawn.gameObject.GetComponent<APawn>(), pc.GetComponent<APlayerController>());
 
             // add to players array
             Players.Add(newPlayer);

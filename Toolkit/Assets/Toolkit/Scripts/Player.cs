@@ -19,7 +19,10 @@ public class Player
         PlayerController = playerController;
 
         // set playerRefs
-        Pawn.PlayerRef = this;
+        if (Pawn != null)
+        {
+            Pawn.PlayerRef = this;
+        }
         PlayerController.PlayerRef = this;
     }
 
