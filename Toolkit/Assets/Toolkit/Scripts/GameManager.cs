@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : ToolkitBehaviour
 {
 
     public static GameManager Instance = null;
@@ -108,12 +108,17 @@ public class GameManager : MonoBehaviour
             // spawn gameMode
             currentGameMode = GameObject.Instantiate(InitialSceneSettings.GameMode);
 
-            // setup playercontrollers and pawns
-            
+            // spawn at least 1 PlayerController
+            CreatePlayer();
         }
     }
 
 
+    /// <summary>
+    /// callback when scene is loaded
+    /// </summary>
+    /// <param name="scene"></param>
+    /// <param name="mode"></param>
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("scene loaded");
@@ -138,7 +143,7 @@ public class GameManager : MonoBehaviour
     /// this method creates a new player "PlayerController" Pawn is optional
     /// </summary>
     /// <param name="spawnPawn">optional parameter should pawn be instantiated?</param>
-    public void CreatePlayer(bool spawnPawn = false)
+    public new void CreatePlayer(bool spawnPawn = false)
     {
 
         // check if there are still playersslots left for the currentGameMode
@@ -220,7 +225,7 @@ public class GameManager : MonoBehaviour
 
     #region PersistentData Methods
 
-    public void OverridePersistentData(PersistentData persistentData)
+    public new void OverridePersistentData(PersistentData persistentData)
     {
 
         PersistentData = persistentData;
@@ -229,8 +234,9 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+
     #region GameMode Methods
-    public GameObject GetCurrentGameMode()
+    public new GameObject GetCurrentGameMode()
     {
         return currentGameMode;
     }

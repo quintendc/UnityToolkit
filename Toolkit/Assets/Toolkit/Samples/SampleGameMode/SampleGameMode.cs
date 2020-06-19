@@ -9,7 +9,7 @@ public class SampleGameMode : AGameMode
     void Start()
     {
         //GameManager.Instance.CreatePlayer(true);
-        ToolkitBehaviour.CreatePlayer(true); // shorthand method
+        //CreatePlayer(true); // shorthand method
     }
 
     // Update is called once per frame
