@@ -1,7 +1,7 @@
 # UnityToolkit
 
 
-
+- Auther: [Quinten De Clerck](https://github.com/quintendc)
 - [Documentation]()
 - [Discord](https://discord.gg/vNBex5F)
 
