@@ -16,7 +16,7 @@ public abstract class AGameMode : ToolkitBehaviour
     public bool StartDirectly = false;
 
     public bool InfiniteTime = false;
-    [Tooltip("1 == 1sec")]
+    [Tooltip("in seconds")]
     public float RoundTime = 300f;
     
     private float timeElapsed;
@@ -83,13 +83,13 @@ public abstract class AGameMode : ToolkitBehaviour
 
     #region Round time
 
-    public IEnumerator StartRound()
+    public virtual IEnumerator StartRound()
     {
         roundStarted = true;
         yield return StartCoroutine(RoundTimer());
     }
 
-    public void EndRound()
+    public virtual void EndRound()
     {
         roundStarted = false;
         StopCoroutine(RoundTimer());
@@ -117,11 +117,14 @@ public abstract class AGameMode : ToolkitBehaviour
         while (timeElapsed < RoundTime)
         {
             yield return new WaitForSeconds(0.01f);
-            Debug.Log("GameMode time elapsed: " + timeElapsed);
+            Debug.Log("GameMode time elapsed: " + TimeElapsed());
             timeElapsed += 0.01f;
         }
 
-        EndRound();
+        if (InfiniteTime != true)
+        {
+            EndRound();
+        }
     }
 
 }
