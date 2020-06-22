@@ -130,7 +130,7 @@ public class SaveGameManager : ToolkitBehaviour
     /// load saveGame based on the name, the persistentData will be overrided by the loaded SaveGame
     /// </summary>
     /// <param name="saveGameName">name of saveGame</param>
-    public new void LoadGameByName(string saveGameName)
+    public new bool LoadGameByName(string saveGameName)
     {
         string path = SaveGameBaseDirectory + saveGameName + ".save";
 
@@ -147,25 +147,40 @@ public class SaveGameManager : ToolkitBehaviour
             // set current persistent Data with SaveGame Data
             PersistentData data = new PersistentData(saveGame); // fill new PersistentData object with saveGame data
             OverridePersistentData(data);
+
+            return true;
         }
         else
         {
             Debug.LogError("Save file not found in " + path);
+            return false;
         }
+
     }
 
 
-    public new void LoadGameByIndex(int index) 
+    public new bool LoadGameByIndex(int index) 
     {
-        List<SaveGame> saveGames = GetAllSaveGames();
 
-        SaveGame saveGame = saveGames.ElementAt(index);
+        try
+        {
+            List<SaveGame> saveGames = GetAllSaveGames();
 
-        currentSaveGame = saveGame;
+            SaveGame saveGame = saveGames.ElementAt(index);
 
-        // set current persistent Data with SaveGame Data
-        PersistentData data = new PersistentData(saveGame); // fill new PersistentData object with saveGame data
-        OverridePersistentData(data);
+            currentSaveGame = saveGame;
+
+            // set current persistent Data with SaveGame Data
+            PersistentData data = new PersistentData(saveGame); // fill new PersistentData object with saveGame data
+            OverridePersistentData(data);
+
+            return true;
+        }
+        catch (Exception)
+        {
+            Debug.LogError("Can't load game by index " + index);
+            return false;
+        }
 
     }
 

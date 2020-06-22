@@ -231,20 +231,27 @@ public class ToolkitBehaviour : MonoBehaviour
     /// load game by name
     /// </summary>
     /// <param name="saveGameName">name of the saveGame you want to be loaded</param>
-    public void LoadGameByName(string saveGameName)
+    /// <returns>is loading teh saveGame successfull</returns>
+    public bool LoadGameByName(string saveGameName)
     {
-        SaveGameManager.Instance.LoadGameByName(saveGameName);
+        return SaveGameManager.Instance.LoadGameByName(saveGameName);
     }
 
     /// <summary>
-    /// load game by id
+    /// load game by index
     /// </summary>
-    /// <param name="id"></param>
-    public void LoadGameByIndex(int index)
+    /// <param name="index">index of saveGame</param>
+    /// <returns>is loading the saveGame successfull</returns>
+    public bool LoadGameByIndex(int index)
     {
-        SaveGameManager.Instance.LoadGameByIndex(index);
+        return SaveGameManager.Instance.LoadGameByIndex(index);
     }
 
+
+    /// <summary>
+    /// get a list of all saveGames found on the local Disk
+    /// </summary>
+    /// <returns>list of saveGames</returns>
     public List<SaveGame> GetAllSaveGames()
     {
         return SaveGameManager.Instance.GetAllSaveGames();
