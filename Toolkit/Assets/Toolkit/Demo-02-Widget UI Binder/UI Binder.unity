@@ -133,7 +133,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIBinderSample
       objectReference: {fileID: 0}
+    - target: {fileID: 734329846165056915, guid: 30659453785ab01408e0660cc07ac093,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1816723129587805090, guid: 30659453785ab01408e0660cc07ac093,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2217563521218678942, guid: 30659453785ab01408e0660cc07ac093,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534106706771871458, guid: 30659453785ab01408e0660cc07ac093,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
