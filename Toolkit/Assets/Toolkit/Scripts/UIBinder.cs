@@ -33,6 +33,19 @@ public class UIBinder : MonoBehaviour
         Target.text = text;
     }
 
+
+    public void OnCheckboxClicked(bool check)
+    {
+        if (check == true)
+        {
+            Target.text = "checked";
+        }
+        else
+        {
+            Target.text = "unchecked";
+        }
+    }
+
     #endregion
 
 
