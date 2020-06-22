@@ -7,7 +7,7 @@ using UnityEngine;
 public class KillZ : ToolkitBehaviour
 {
 
-
+    [Tooltip("GameObjects with a tag from this list will not be destroyed.")]
     public List<string> tags = new List<string>();
 
     private void OnTriggerEnter(Collider other)
