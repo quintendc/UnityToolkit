@@ -122,16 +122,14 @@ public class GameManager : ToolkitBehaviour
 
 
     /// <summary>
-    /// callback when scene is loaded
+    /// callback when scene is loaded, setup scene by the provided SceneSettingsObject, not triggered when the Initial Scene is loaded
     /// </summary>
     /// <param name="scene"></param>
     /// <param name="mode"></param>
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log("scene loaded");
-        //do stuff
-
-        // get sceneSettingsObject
+        Debug.Log("scene is loaded");
+        // get sceneSettingsObject from the Scene
         SceneSettingsObject sceneSettingsObject = GameObject.FindGameObjectWithTag("SceneSettingsProvider").GetComponent<SceneSettingsProvider>().SceneSettings;
 
         // set WidgetRenderCamera first before instantiating a widget
@@ -141,12 +139,22 @@ public class GameManager : ToolkitBehaviour
         // set widget to be shown
         WidgetManager.Instance.ShowWidget(sceneSettingsObject.WidgetType);
 
-        // set currentGameMode to new GameMode
+        // Instantiate GameMode and set currentGameMode to new instantiated GameMode
         currentGameMode = GameObject.Instantiate(sceneSettingsObject.GameMode);
 
         // replace Pawns and playerControllers
         Debug.Log("log" + sceneSettingsObject);
-        UpdatePlayersForGameMode(sceneSettingsObject.OverridePlayerPawns, sceneSettingsObject.OverridePlayerPlayerControllers);        
+        UpdatePlayersForGameMode(sceneSettingsObject.OverridePlayerPawns, sceneSettingsObject.OverridePlayerPlayerControllers);
+
+        // place pawns to there spawnpoints
+
+
+
+        // start round when scene is loaded -> make sure to call this as last first handle all player stuff
+        if (sceneSettingsObject.StartRoundWhenSceneIsLoaded == true)
+        {
+            currentGameMode.GetComponent<AGameMode>().StartRound();
+        }
     }
 
 

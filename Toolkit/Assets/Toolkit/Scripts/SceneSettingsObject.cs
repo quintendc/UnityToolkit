@@ -28,4 +28,8 @@ public class SceneSettingsObject : ScriptableObject
     public bool OverridePlayerPlayerControllers = true;
 
 
+    [Header("GameMode")]
+    [Tooltip("The GameManager will call the StartRound when scene is loaded.")]
+    public bool StartRoundWhenSceneIsLoaded = false;
+
 }
