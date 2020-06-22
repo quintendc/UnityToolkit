@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 public enum WidgetTypes
 {
     Default,    // fall-back never use this state
-    MainMenu,
-    Loading,
-    Pause,
-    Settings,
-    HUD,
+    MainMenu,   // main menu
+    Loading,    // loading screen
+    Pause,      // pause screen
+    Settings,   // settings menu
+    HUD,        // HUD
+    GameOver,   // GameOver / end of round
 }
 
 public enum InputState
