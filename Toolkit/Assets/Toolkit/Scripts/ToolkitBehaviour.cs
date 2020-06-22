@@ -24,11 +24,11 @@ public class ToolkitBehaviour : MonoBehaviour
     public void PauseGame(WidgetTypes? overrideDefaultWidgetType = null)
     {
 
-        if (GameManager.Instance.PersistentData.Paused == false)
+        if (GameState.Paused == false)
         {
             Time.timeScale = 0;
 
-            GameManager.Instance.PersistentData.Paused = true;
+            GameState.Paused = true;
 
             // show pause widget (default setting)
             if (overrideDefaultWidgetType == null)
@@ -43,7 +43,7 @@ public class ToolkitBehaviour : MonoBehaviour
         else
         {
             Time.timeScale = 1;
-            GameManager.Instance.PersistentData.Paused = false;
+            GameState.Paused = false;
 
             // show HUD again (default setting)
             if (overrideDefaultWidgetType == null)
@@ -63,7 +63,7 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <returns></returns>
     public bool IsGamePaused()
     {
-        return GameManager.Instance.PersistentData.Paused;
+        return GameState.Paused;
     }
 
     #endregion
@@ -87,7 +87,7 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <returns>poco item from Players list</returns>
     public Player GetPlayerById(int id)
     {
-        return GameManager.Instance.Players.Find(p => p.Id == id);
+        return GameState.Players.Find(p => p.Id == id);
     }
 
 
@@ -100,7 +100,7 @@ public class ToolkitBehaviour : MonoBehaviour
     public void PlacePawn(int playerIndex, Vector3 position, Quaternion rotation)
     {
         // get player by id
-        Player player = GameManager.Instance.Players.Find(p => p.Id == playerIndex);
+        Player player = GameState.Players.Find(p => p.Id == playerIndex);
 
         // set position and rotation of pawn
         player.Pawn.gameObject.transform.position = position;
@@ -121,14 +121,14 @@ public class ToolkitBehaviour : MonoBehaviour
 
 
     /// <summary>
-    /// check if player with id ahs a pawn assigned
+    /// check if player with id has a pawn assigned
     /// </summary>
     /// <param name="playerId"></param>
     /// <returns>true player has a pawn assigned, false player doesn't have a pawn assigned, null player doesn't exists</returns>
     public bool? DoesPlayerHasPawn(int playerId)
     {
 
-        Player player = GameManager.Instance.Players.Find(p => p.Id == playerId);
+        Player player = GameState.Players.Find(p => p.Id == playerId);
 
         if (player == null)
         {

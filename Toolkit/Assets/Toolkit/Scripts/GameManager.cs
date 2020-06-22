@@ -10,7 +10,7 @@ public class GameManager : ToolkitBehaviour
 {
 
     public static GameManager Instance = null;
-    public List<Player> Players = new List<Player>();
+    //public List<Player> Players = new List<Player>();
     public PersistentData PersistentData = null;
     public SceneSettingsObject InitialSceneSettings = null;
     private GameObject currentGameMode = null;
@@ -99,7 +99,7 @@ public class GameManager : ToolkitBehaviour
 
 
     /// <summary>
-    /// the scene will be setup by the provided InitialSceneSettingsObject
+    /// the InitialSceneObject will setup the Initial Scene
     /// </summary>
     private void SetupInitialScene()
     {
@@ -111,6 +111,9 @@ public class GameManager : ToolkitBehaviour
 
             // spawn gameMode
             currentGameMode = GameObject.Instantiate(InitialSceneSettings.GameMode);
+
+            // set input state
+            GameState.InputState = InitialSceneSettings.InputState;
 
             // spawn at least 1 PlayerController
             CreatePlayer(SpawnPawn);
@@ -157,7 +160,7 @@ public class GameManager : ToolkitBehaviour
     {
 
         // check if there are still playersslots left for the currentGameMode
-        if (Players.Count < currentGameMode.GetComponent<AGameMode>().MaxPlayers)
+        if (GameState.Players.Count < currentGameMode.GetComponent<AGameMode>().MaxPlayers)
         {
             // playerController is always created, Pawn is optional
             AGameMode gm = currentGameMode.GetComponent<AGameMode>();
@@ -172,11 +175,11 @@ public class GameManager : ToolkitBehaviour
             GameObject pc = GameObject.Instantiate(gm.DefaultPlayerController);
 
             // bug pawn is not set -> can't get component of null object
-            Player newPlayer = new Player(Players.Count, pawn != null ? pawn.gameObject.GetComponent<APawn>() : null, pc.GetComponent<APlayerController>());
+            Player newPlayer = new Player(GameState.Players.Count, pawn != null ? pawn.gameObject.GetComponent<APawn>() : null, pc.GetComponent<APlayerController>());
             //Player newPlayer = new Player(Players.Count, pawn.gameObject.GetComponent<APawn>(), pc.GetComponent<APlayerController>());
 
             // add to players array
-            Players.Add(newPlayer);
+            GameState.Players.Add(newPlayer);
         }
         else
         {
@@ -195,18 +198,18 @@ public class GameManager : ToolkitBehaviour
     {
         if (destroyPawn == true)
         {
-            Destroy(Players.ElementAt(id).Pawn.gameObject);
+            Destroy(GameState.Players.ElementAt(id).Pawn.gameObject);
         }
 
         if (destroyPlayerController == true)
         {
-            Destroy(Players.ElementAt(id).PlayerController.gameObject);
+            Destroy(GameState.Players.ElementAt(id).PlayerController.gameObject);
         }
 
         // destroy player poco class when both pawn and Playercontroller are destroyed
         if (destroyPawn == true && destroyPlayerController == true)
         {
-            Players.RemoveAt(id);
+            GameState.Players.RemoveAt(id);
         }
     }
 
@@ -215,7 +218,7 @@ public class GameManager : ToolkitBehaviour
     /// </summary>
     public void UpdatePlayersForGameMode(bool updatePawn, bool updatePlayerController)
     {
-        foreach (var player in Players)
+        foreach (var player in GameState.Players)
         {
             // track playerid
             int id = player.Id;
@@ -258,7 +261,7 @@ public class GameManager : ToolkitBehaviour
     /// <param name="rotation">rotation of the pawn</param>
     public new void CreatePawnForPlayer(int playerId, Vector3 position, Quaternion rotation)
     {
-        Player player = Players.Find(p => p.Id == playerId);
+        Player player = GameState.Players.Find(p => p.Id == playerId);
 
         if (player.Pawn != null)
         {

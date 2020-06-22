@@ -16,6 +16,8 @@ public class SceneSettingsObject : ScriptableObject
     // gameMode to instantiate
     public GameObject GameMode = null;
 
+    [Tooltip("set the InputState when this scene is loaded")]
+    public InputState InputState;
 
     [Header("Player Settings")]
     [Header("has no impact on the Initial scene")]

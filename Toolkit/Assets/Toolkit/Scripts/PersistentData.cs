@@ -7,7 +7,6 @@ public class PersistentData
     // extend this class to your needs
     #region Varbiables
 
-    public bool Paused = false;
     public float Example;
 
     #endregion
