@@ -48,3 +48,6 @@ MonoBehaviour:
   DefaultPlayerController: {fileID: 8489360536102688366, guid: f98258edeb41c624ea5d23c6c6bc0f17,
     type: 3}
   MaxPlayers: 4
+  StartDirectly: 0
+  InfiniteTime: 0
+  RoundTime: 300

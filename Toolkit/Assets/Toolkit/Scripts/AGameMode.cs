@@ -6,20 +6,33 @@ using UnityEngine;
 public abstract class AGameMode : ToolkitBehaviour
 {
 
+    [Header("Player Settings")]
     public GameObject DefaultPawn = null;
     public GameObject DefaultPlayerController = null;
 
     public int MaxPlayers = 1;
 
+    [Header("Round time")]
+    public bool StartDirectly = false;
+
+    public bool InfiniteTime = false;
+    [Tooltip("1 == 1sec")]
+    public float RoundTime = 300f;
+    
+    private float timeElapsed;
+    private bool roundStarted = false;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual IEnumerator Start()
     {
-        
+        if (StartDirectly == true)
+        {
+            yield return StartRound();
+        }
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         
     }
@@ -67,5 +80,48 @@ public abstract class AGameMode : ToolkitBehaviour
     }
     #endregion
 
+
+    #region Round time
+
+    public IEnumerator StartRound()
+    {
+        roundStarted = true;
+        yield return StartCoroutine(RoundTimer());
+    }
+
+    public void EndRound()
+    {
+        roundStarted = false;
+        StopCoroutine(RoundTimer());
+    }
+
+    public bool HasBegun()
+    {
+        return roundStarted;
+    }
+
+    public float TimeElapsed()
+    {
+        return timeElapsed;
+    }
+
+    public float TimeLeft()
+    {
+        return RoundTime - timeElapsed;
+    }
+
+    #endregion
+
+    private IEnumerator RoundTimer()
+    {
+        while (timeElapsed < RoundTime)
+        {
+            yield return new WaitForSeconds(0.01f);
+            Debug.Log("GameMode time elapsed: " + timeElapsed);
+            timeElapsed += 0.01f;
+        }
+
+        EndRound();
+    }
 
 }
