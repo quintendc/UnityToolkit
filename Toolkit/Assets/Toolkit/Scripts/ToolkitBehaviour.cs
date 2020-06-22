@@ -219,16 +219,18 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <summary>
     /// this will save the current Game
     /// </summary>
-    public void SaveGame(string saveGameName)
+    /// <param name="saveGameName">this is an optional parameter, by default the saveGame will be named like SaveGameX.save where X is an Id based on the found SaveGames</param>
+    /// <returns>is saveGame saved successfully</returns>
+    public bool SaveGame(string saveGameName = null)
     {
         // pass saveGameName to SaveGameManager
-        SaveGameManager.Instance.SaveGame(saveGameName);
+        return SaveGameManager.Instance.SaveGame(saveGameName);
     }
 
     /// <summary>
     /// load game by name
     /// </summary>
-    /// <param name="saveGameName"></param>
+    /// <param name="saveGameName">name of the saveGame you want to be loaded</param>
     public void LoadGameByName(string saveGameName)
     {
         SaveGameManager.Instance.LoadGameByName(saveGameName);

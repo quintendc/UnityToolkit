@@ -44,18 +44,6 @@ public class SaveGameManager : ToolkitBehaviour
 
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 
     #region Save & Load Methods
 
@@ -105,19 +93,37 @@ public class SaveGameManager : ToolkitBehaviour
     /// </summary>
     /// <param name="persistentData">PeristentData from the GameManager</param>
     /// <param name="saveGameName">name of the SaveGame</param>
-    public new void SaveGame(string saveGameName)
+    /// <returns>boolean is saveGame saved successfully</returns>
+    public new bool SaveGame(string saveGameName = null)
     {
 
-        PersistentData persistentData = GetPersistentData();
+        try
+        {
+            string defaultSaveGameName = "SaveGame" + GetAllSaveGames().Count;
 
-        BinaryFormatter formatter = new BinaryFormatter();
-        string path = SaveGameBaseDirectory + saveGameName + ".save";
-        FileStream stream = new FileStream(path, FileMode.Create);
+            if (saveGameName != string.Empty)
+            {
+                defaultSaveGameName = saveGameName;
+            }
 
-        SaveGame saveGame = new SaveGame(persistentData);
+            PersistentData persistentData = GetPersistentData();
 
-        formatter.Serialize(stream, saveGame);
-        stream.Close();
+            BinaryFormatter formatter = new BinaryFormatter();
+            string path = SaveGameBaseDirectory + defaultSaveGameName + ".save";
+            FileStream stream = new FileStream(path, FileMode.Create);
+
+            SaveGame saveGame = new SaveGame(persistentData);
+
+            formatter.Serialize(stream, saveGame);
+            stream.Close();
+
+            return true;
+        }
+        catch (Exception)
+        {
+            Debug.LogError("SaveGame could not be saved!");
+            return false;
+        }
     }
 
     /// <summary>
@@ -139,8 +145,8 @@ public class SaveGameManager : ToolkitBehaviour
             currentSaveGame = saveGame;
 
             // set current persistent Data with SaveGame Data
-            PersistentData x = new PersistentData(saveGame); // fill new PersistentData object with saveGame data
-            OverridePersistentData(x);
+            PersistentData data = new PersistentData(saveGame); // fill new PersistentData object with saveGame data
+            OverridePersistentData(data);
         }
         else
         {
@@ -158,8 +164,8 @@ public class SaveGameManager : ToolkitBehaviour
         currentSaveGame = saveGame;
 
         // set current persistent Data with SaveGame Data
-        PersistentData x = new PersistentData(saveGame); // fill new PersistentData object with saveGame data
-        OverridePersistentData(x);
+        PersistentData data = new PersistentData(saveGame); // fill new PersistentData object with saveGame data
+        OverridePersistentData(data);
 
     }
 
