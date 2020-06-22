@@ -13,6 +13,7 @@ public abstract class AGameMode : ToolkitBehaviour
     public int MaxPlayers = 1;
 
     [Header("Round time")]
+    [Tooltip("this will start the round directly, it is better to call the StartRound by yourself.")]
     public bool StartDirectly = false;
 
     public bool InfiniteTime = false;

@@ -161,9 +161,48 @@ public class ToolkitBehaviour : MonoBehaviour
 
     #region GameModeMethods
 
-    public GameObject GetCurrentGameMode()
+    /// <summary>
+    /// get the currentGameMode that is running
+    /// </summary>
+    /// <returns></returns>
+    public AGameMode GetCurrentGameMode()
     {
-        return GameManager.Instance.GetCurrentGameMode();
+        return GameManager.Instance.GetCurrentGameMode().GetComponent<AGameMode>();
+    }
+
+
+    /// <summary>
+    /// Start the round of the GameMode
+    /// </summary>
+    public void StartRound()
+    {
+        GetCurrentGameMode().StartRound();
+    }
+
+    /// <summary>
+    /// End the round of the GameMode
+    /// </summary>
+    public void EndRound()
+    {
+        GetCurrentGameMode().EndRound();
+    }
+
+    /// <summary>
+    /// how many time is already elapsed for this Round
+    /// </summary>
+    /// <returns>time elapsed for current round if the GameMode</returns>
+    public float RoundElapsedTime()
+    {
+        return GetCurrentGameMode().TimeElapsed();
+    }
+
+    /// <summary>
+    /// how many time is left before the round ends
+    /// </summary>
+    /// <returns>time left before round ends</returns>
+    public float RoundTimeLeft()
+    {
+        return GetCurrentGameMode().TimeLeft();
     }
 
     #endregion
