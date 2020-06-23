@@ -13,7 +13,15 @@ public class UIBinder : MonoBehaviour
     [Tooltip("read property")]
     public Selectable Source = null;
 
+    public UnityEvent GetTextEvent;
+
     #region Type Methods
+
+    private void Start()
+    {
+        //GetTextEvent.AddListener(GetText);
+    }
+
 
     /// <summary>
     /// method for slider
@@ -47,6 +55,15 @@ public class UIBinder : MonoBehaviour
     }
 
 
+    //public void GetText()
+    //{
+    //    Target.text = Random.Range(0, 1000).ToString();
+    //}
+
+    //private void Update()
+    //{
+    //    GetText();
+    //}
 
     #endregion
 
