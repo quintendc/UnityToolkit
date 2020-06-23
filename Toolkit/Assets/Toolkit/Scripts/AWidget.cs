@@ -12,7 +12,7 @@ public abstract class AWidget : ToolkitBehaviour
     private Selectable selectedElement = null;
     public EventSystem EventSystem;
 
-    public void Start()
+    protected virtual void Start()
     {
         if (EventSystem != null)
         {
@@ -66,7 +66,7 @@ public abstract class AWidget : ToolkitBehaviour
 
     #endregion
 
-    private void Update()
+    protected virtual void Update()
     {
 
     }
