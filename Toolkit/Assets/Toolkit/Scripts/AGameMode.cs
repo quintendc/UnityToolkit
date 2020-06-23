@@ -111,8 +111,6 @@ public abstract class AGameMode : ToolkitBehaviour
         return RoundTime - timeElapsed;
     }
 
-    #endregion
-
     private IEnumerator RoundTimer()
     {
         while (timeElapsed < RoundTime)
@@ -127,5 +125,8 @@ public abstract class AGameMode : ToolkitBehaviour
             EndRound();
         }
     }
+
+    #endregion
+
 
 }
