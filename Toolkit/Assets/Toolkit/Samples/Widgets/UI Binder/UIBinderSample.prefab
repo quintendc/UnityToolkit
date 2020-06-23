@@ -734,7 +734,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2586952070431357844}
-        m_MethodName: OnTextChanged
+        m_MethodName: OnInputFieldChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1118,7 +1118,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 180008760288511094}
-        m_MethodName: OnCheckboxClicked
+        m_MethodName: OnCheckboxChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1496,7 +1496,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2292515503305808080}
-        m_MethodName: SliderChanged
+        m_MethodName: OnSliderChanged
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

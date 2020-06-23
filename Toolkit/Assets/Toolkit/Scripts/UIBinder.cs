@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -12,14 +13,13 @@ public class UIBinder : MonoBehaviour
     [Tooltip("read property")]
     public Selectable Source = null;
 
-
     #region Type Methods
 
     /// <summary>
     /// method for slider
     /// </summary>
     /// <param name="value">value delivered by the Slider</param>
-    public void SliderChanged(float value)
+    public void OnSliderChanged(float value)
     {
         Target.text = value.ToString();
     }
@@ -28,13 +28,13 @@ public class UIBinder : MonoBehaviour
     /// method for InputField
     /// </summary>
     /// <param name="text">text delivered by the InputField/param>
-    public void OnTextChanged(string text)
+    public void OnInputFieldChanged(string text)
     {
         Target.text = text;
     }
 
 
-    public void OnCheckboxClicked(bool check)
+    public void OnCheckboxChanged(bool check)
     {
         if (check == true)
         {
@@ -45,6 +45,8 @@ public class UIBinder : MonoBehaviour
             Target.text = "unchecked";
         }
     }
+
+
 
     #endregion
 

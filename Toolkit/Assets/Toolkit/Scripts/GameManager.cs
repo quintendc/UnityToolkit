@@ -57,7 +57,7 @@ public class GameManager : ToolkitBehaviour
         // set persistentData
         PersistentData = new PersistentData(null);
 
-        SetupInitialScene();
+        Init();
     }
 
     // Update is called once per frame
@@ -99,9 +99,9 @@ public class GameManager : ToolkitBehaviour
 
 
     /// <summary>
-    /// the InitialSceneObject will setup the Initial Scene
+    /// this is called only once when the Initial Scene is Loaded
     /// </summary>
-    private void SetupInitialScene()
+    private void Init()
     {
         // spawn widget
         if (InitialSceneSettings != null)
