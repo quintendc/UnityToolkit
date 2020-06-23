@@ -86,8 +86,24 @@ public class WidgetManager : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Get the current displayed widget
+    /// </summary>
+    /// <returns>current widget</returns>
     public AWidget GetCurrentWidget()
     {
+        return currentWidget.GetComponent<AWidget>();
+    }
+
+
+    /// <summary>
+    /// Hide current Widget
+    /// </summary>
+    /// <returns>widget that is removed</returns>
+    public AWidget HideCurrentWidget()
+    {
+        Destroy(currentWidget);
+
         return currentWidget.GetComponent<AWidget>();
     }
 

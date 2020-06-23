@@ -24,16 +24,21 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <param name="unPause">When the method is called again the game will be unpaused again</param>
     public void PauseGame(WidgetTypes? overrideDefaultWidgetType = null, bool unPauseWhenPaused = true)
     {
+
+        bool skip = false;
+
         // when method is called again and game is already paused unpause the game
         if (unPauseWhenPaused == true)
         {
             if (GameState.Paused == true)
             {
+                skip = true;
+                HideCurrentWidget();
                 GameState.Paused = false;
             }
         }
 
-        if (GameState.Paused == false)
+        if (GameState.Paused == false && skip == false)
         {
             Time.timeScale = 0;
 
@@ -258,6 +263,15 @@ public class ToolkitBehaviour : MonoBehaviour
     public AWidget GetCurrentWidget()
     {
         return WidgetManager.Instance.GetCurrentWidget();
+    }
+
+
+    /// <summary>
+    /// hide the current diplayed widget
+    /// </summary>
+    public void HideCurrentWidget()
+    {
+        WidgetManager.Instance.HideCurrentWidget();
     }
 
     #endregion
