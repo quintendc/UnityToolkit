@@ -7,9 +7,7 @@ using UnityEngine.UI;
 
 public abstract class AWidget : ToolkitBehaviour
 {
-    //public Selectable InitialSelectedElement = null;
     public WidgetTypes WidgetType;
-    private Selectable selectedElement = null;
     public EventSystem EventSystem;
 
     protected virtual void Start()
@@ -17,20 +15,9 @@ public abstract class AWidget : ToolkitBehaviour
         if (EventSystem != null)
         {
 
-            if (EventSystem.firstSelectedGameObject != null)
+            if (EventSystem.firstSelectedGameObject == null)
             {
-                //InitialSelectedElement.Select();
-                selectedElement = EventSystem.firstSelectedGameObject.GetComponent<Selectable>();
-                EventSystem.firstSelectedGameObject.GetComponent<Selectable>().Select();
-
-                //selectedElement.FindSelectableOnUp();
-                //selectedElement.FindSelectableOnDown();
-                //selectedElement.FindSelectableOnLeft();
-                //selectedElement.FindSelectableOnRight();
-            }
-            else
-            {
-                Debug.LogWarning("No initial selected element provided, Some functions may not work");
+                Debug.LogWarning("No initial selected element provided ot the EventSystem, Some functions may not work.");
             }
         
         }
@@ -39,32 +26,6 @@ public abstract class AWidget : ToolkitBehaviour
             Debug.LogWarning("No EventSystem provided");
         }
     }
-
-
-    #region Navigation
-
-    public void NavigateUp()
-    {
-        Debug.Log("navigate up");
-
-    }
-
-    public void NavigateDown()
-    {
-        Debug.Log("navigate down");
-    }
-
-    public void NavigateLeft()
-    {
-        Debug.Log("navigate left");
-    }
-
-    public void NavigateRight()
-    {
-        Debug.Log("navigate right");
-    }
-
-    #endregion
 
     protected virtual void Update()
     {
