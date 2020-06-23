@@ -14,15 +14,24 @@ public class ToolkitBehaviour : MonoBehaviour
     /// GamePaused boolean in persistentData is true
     /// default widget to show "Pause"
     /// 
-    /// default settinsg when unpaused
+    /// default settings when unpaused
     /// time scale 1
     /// GamePaused boolean in PersistentData is false
     /// default widget to show "HUD"
     /// 
     /// </summary>
     /// <param name="overrideDefaultWidgetType">override the default WidgetType (pause)</param>
-    public void PauseGame(WidgetTypes? overrideDefaultWidgetType = null)
+    /// <param name="unPause">When the method is called again the game will be unpaused again</param>
+    public void PauseGame(WidgetTypes? overrideDefaultWidgetType = null, bool unPauseWhenPaused = true)
     {
+        // when method is called again and game is already paused unpause the game
+        if (unPauseWhenPaused == true)
+        {
+            if (GameState.Paused == true)
+            {
+                GameState.Paused = false;
+            }
+        }
 
         if (GameState.Paused == false)
         {

@@ -10,42 +10,16 @@ public class SamplePlayerController : APlayerController
 
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
         InputState = InputState.Widget;
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
 
-        if (InputState == InputState.Widget)
-        {
-
-            AWidget widget = GetCurrentWidget();
-
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                widget.NavigateUp();
-            }
-
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                widget.NavigateDown();
-            }
-
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                widget.NavigateLeft();
-            }
-
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                widget.NavigateRight();
-            }
-
-        }
-        else
+        if (InputState != InputState.Widget)
         {
             // input
             // gives float value between -1 and 1
@@ -54,6 +28,11 @@ public class SamplePlayerController : APlayerController
                 movement.x = Input.GetAxisRaw("Horizontal");
                 movement.z = Input.GetAxisRaw("Vertical");
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            PauseGame();
         }
 
     }
