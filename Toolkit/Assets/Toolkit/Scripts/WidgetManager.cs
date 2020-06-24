@@ -57,7 +57,14 @@ public class WidgetManager : MonoBehaviour
         else
         {
             // instantiate new widget
-            currentWidget = GameObject.Instantiate(Widgets.Find(w => w.GetComponent<AWidget>().WidgetType == widgetType));
+            try
+            {
+                currentWidget = GameObject.Instantiate(Widgets.Find(w => w.GetComponent<AWidget>().WidgetType == widgetType));
+            }
+            catch (System.Exception)
+            {
+                Debug.LogError("Can't instantiate Widget: " + widgetType + ", make sure it is provided to the WidgetManager!");
+            }
         }
 
     }
