@@ -84,13 +84,13 @@ public abstract class AGameMode : ToolkitBehaviour
 
     #region Round time
 
-    public virtual IEnumerator StartRound()
+    public new virtual IEnumerator StartRound()
     {
         roundStarted = true;
         yield return StartCoroutine(RoundTimer());
     }
 
-    public virtual void EndRound()
+    public new virtual void EndRound()
     {
         roundStarted = false;
         StopCoroutine(RoundTimer());
