@@ -49,6 +49,13 @@ public class Player
         {
             PlayerController = (APlayerController)playerController;
         }
+
+        if (Pawn != null)
+        {
+            Pawn.PlayerRef = this;
+        }
+
+        PlayerController.PlayerRef = this;
     }
 
 }
