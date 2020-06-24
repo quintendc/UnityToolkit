@@ -7,13 +7,13 @@ using UnityEngine;
 public class KillZ : ToolkitBehaviour
 {
 
-    [Tooltip("GameObjects with a tag from this list will not be destroyed.")]
-    public List<string> tags = new List<string>();
+    [Tooltip("GameObjects with a tag from this list will not be destroyed when entering the KillZ.")]
+    public List<string> IgnoreObjectsWithTag = new List<string>();
 
     private void OnTriggerEnter(Collider other)
     {
         // if tags doesn't conatins the tag of the entering object -> destroy
-        if (!tags.Contains(other.tag))
+        if (!IgnoreObjectsWithTag.Contains(other.tag))
         {
             Destroy(other.gameObject);
         }
