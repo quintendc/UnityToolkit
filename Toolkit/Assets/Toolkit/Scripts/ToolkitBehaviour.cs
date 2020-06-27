@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ToolkitBehaviour : MonoBehaviour
@@ -168,6 +169,15 @@ public class ToolkitBehaviour : MonoBehaviour
     public void CreatePawnForPlayer(int playerId, Vector3 position, Quaternion rotation)
     {
         GameManager.Instance.CreatePawnForPlayer(playerId, position, rotation);
+    }
+
+    /// <summary>
+    /// get all spawnpoints for the scene
+    /// </summary>
+    /// <returns>list of spawnpoints</returns>
+    public List<Spawnpoint> GetSpawnpoints()
+    {
+        return FindObjectsOfType<Spawnpoint>().ToList();
     }
 
 
