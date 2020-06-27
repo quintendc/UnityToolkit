@@ -9,5 +9,6 @@ public static class GameFeelSettings
 {
 
     public static bool IsFrozen = false;
+    public static bool MotionFXActive = false;
 
 }

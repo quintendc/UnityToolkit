@@ -337,26 +337,27 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <summary>
     /// shake the Toolkit camera
     /// </summary>
+    /// <param name="applyToOtherFX">when true the shake FX will be applied even when there is another FX active like MotionFX or GameFreeze</param>
     /// <param name="overrideDefaultDuration">duration of the shake in seconds</param>
     /// <param name="overrideDefaultMagnitude">the magnitude of the shake</param>
     /// <param name="overrideShakeX">override default camers X Axis setting</param>
     /// <param name="overrideShakeY">override default camers Y Axis setting</param>
     /// <param name="overrideShakeZ">override default camers Z Axis setting</param>
-    public void ToolkitCameraShake(bool shakeWhenFrozen = false, float? overrideDefaultDuration = null, float? overrideDefaultMagnitude = null, bool overrideShakeX = true, bool overrideShakeY = true, bool overrideShakeZ = false)
+    public void ToolkitCameraShake(bool applyToOtherFX = false, float? overrideDefaultDuration = null, float? overrideDefaultMagnitude = null, bool overrideShakeX = true, bool overrideShakeY = true, bool overrideShakeZ = false)
     {
         ToolkitCamera toolkitCamera = FindObjectOfType<ToolkitCamera>();
 
         // always shake even when frozen
-        if (shakeWhenFrozen == true)
+        if (applyToOtherFX == true)
         {
             toolkitCamera.ShakeToolkitCamera(overrideDefaultDuration, overrideDefaultMagnitude, overrideShakeX, overrideShakeY, overrideShakeZ);
         }
         else
         {
             // only shake if the game is not frozen
-            if (GameFeelSettings.IsFrozen == true)
+            if (GameFeelSettings.IsFrozen == true || GameFeelSettings.MotionFXActive == true)
             {
-                Debug.LogWarning("can't shake camera when game is frozen");
+                Debug.LogWarning("can't shake camera when game is frozen or if there is an MotionFX applied");
             }
             else
             {
@@ -385,6 +386,30 @@ public class ToolkitBehaviour : MonoBehaviour
 
         Time.timeScale = storedTimeScale;
         GameFeelSettings.IsFrozen = false;
+    }
+
+
+    /// <summary>
+    /// apply a motion effect to the game for a period of time
+    /// </summary>
+    /// <param name="timescale">a value under 1 will give a Slow Motion effect, a value greater then 1 will give a Fast Motion effect</param>
+    /// <param name="duration">time of the motion effect in seconds</param>
+    public void MotionFX(float timescale, float duration)
+    {
+        StartCoroutine(Motion(timescale, duration));
+    }
+
+    private IEnumerator Motion(float newTimeScale, float duration)
+    {
+        float storedTimeScale = Time.timeScale;
+
+        Time.timeScale = newTimeScale;
+        GameFeelSettings.MotionFXActive = true;
+
+        yield return new WaitForSecondsRealtime(duration);
+
+        GameFeelSettings.MotionFXActive = false;
+        Time.timeScale = storedTimeScale;
     }
 
     #endregion
