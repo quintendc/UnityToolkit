@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -341,12 +342,50 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <param name="overrideShakeX">override default camers X Axis setting</param>
     /// <param name="overrideShakeY">override default camers Y Axis setting</param>
     /// <param name="overrideShakeZ">override default camers Z Axis setting</param>
-    public void ToolkitCameraShake(float? overrideDefaultDuration = null, float? overrideDefaultMagnitude = null, bool overrideShakeX = true, bool overrideShakeY = true, bool overrideShakeZ = false)
+    public void ToolkitCameraShake(bool shakeWhenFrozen = false, float? overrideDefaultDuration = null, float? overrideDefaultMagnitude = null, bool overrideShakeX = true, bool overrideShakeY = true, bool overrideShakeZ = false)
     {
         ToolkitCamera toolkitCamera = FindObjectOfType<ToolkitCamera>();
-        toolkitCamera.ShakeToolkitCamera(overrideDefaultDuration, overrideDefaultMagnitude, overrideShakeX, overrideShakeY, overrideShakeZ);
+
+        // always shake even when frozen
+        if (shakeWhenFrozen == true)
+        {
+            toolkitCamera.ShakeToolkitCamera(overrideDefaultDuration, overrideDefaultMagnitude, overrideShakeX, overrideShakeY, overrideShakeZ);
+        }
+        else
+        {
+            // only shake if the game is not frozen
+            if (GameFeelSettings.IsFrozen == true)
+            {
+                Debug.LogWarning("can't shake camera when game is frozen");
+            }
+            else
+            {
+                toolkitCamera.ShakeToolkitCamera(overrideDefaultDuration, overrideDefaultMagnitude, overrideShakeX, overrideShakeY, overrideShakeZ);
+            }
+        }   
     }
 
+    /// <summary>
+    /// freeze the game for an amount of time
+    /// </summary>
+    /// <param name="duration">time in seconds</param>
+    public void GameFreeze(float duration = 0.1f)
+    {
+        StartCoroutine(Freeze(duration));
+    }
+
+    private IEnumerator Freeze(float duration)
+    {
+        float storedTimeScale = Time.timeScale;
+
+        Time.timeScale = 0;
+        GameFeelSettings.IsFrozen = true;
+
+        yield return new WaitForSecondsRealtime(duration);
+
+        Time.timeScale = storedTimeScale;
+        GameFeelSettings.IsFrozen = false;
+    }
 
     #endregion
 

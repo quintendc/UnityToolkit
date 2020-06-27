@@ -51,7 +51,7 @@ public class CameraShake : ToolkitBehaviour
                                                                (shakeY == true) ? y : originalPos.y,
                                                                (shakeZ == true) ? z : originalPos.z);
 
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
 
             yield return null;
         }
