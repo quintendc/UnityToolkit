@@ -79,7 +79,7 @@ public class ToolkitBehaviour : MonoBehaviour
     {
         return GameState.Paused;
     }
-
+    
     #endregion
 
     #region Player, Pawn and PlayerController Methods
@@ -318,6 +318,25 @@ public class ToolkitBehaviour : MonoBehaviour
     {
         return SaveGameManager.Instance.GetAllSaveGames();
     }
+
+    #endregion
+
+    #region GameFeel
+
+    /// <summary>
+    /// shake the Toolkit camera
+    /// </summary>
+    /// <param name="overrideDefaultDuration">duration of the shake in seconds</param>
+    /// <param name="overrideDefaultMagnitude">the magnitude of the shake</param>
+    /// <param name="overrideShakeX">override default camers X Axis setting</param>
+    /// <param name="overrideShakeY">override default camers Y Axis setting</param>
+    /// <param name="overrideShakeZ">override default camers Z Axis setting</param>
+    public void ToolkitCameraShake(float? overrideDefaultDuration = null, float? overrideDefaultMagnitude = null, bool overrideShakeX = true, bool overrideShakeY = true, bool overrideShakeZ = false)
+    {
+        ToolkitCamera toolkitCamera = FindObjectOfType<ToolkitCamera>();
+        toolkitCamera.ShakeToolkitCamera(overrideDefaultDuration, overrideDefaultMagnitude, overrideShakeX, overrideShakeY, overrideShakeZ);
+    }
+
 
     #endregion
 

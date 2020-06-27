@@ -9,6 +9,8 @@ public class GameFeelWidget : AWidget
 
     public void CameraShake()
     {
-        StartCoroutine(cameraShake.Shake());
+        //StartCoroutine(cameraShake.Shake());
+
+        ToolkitCameraShake();
     }
 }

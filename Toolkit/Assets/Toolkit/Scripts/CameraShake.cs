@@ -19,15 +19,23 @@ public class CameraShake : ToolkitBehaviour
 
     #endregion
 
-    public IEnumerator Shake(float? overrideDefaultDuration = null, float? overrideDefaultMagnitude = null, bool? overrideShakeX = null, bool? overrideShakeY = null, bool? overrideShakeZ = null)
+    /// <summary>
+    /// shake the Toolkit camera
+    /// </summary>
+    /// <param name="overrideDefaultDuration">duration of the shake in seconds</param>
+    /// <param name="overrideDefaultMagnitude">the magnitude of the shake</param>
+    /// <param name="overrideShakeX">override default camers X Axis setting</param>
+    /// <param name="overrideShakeY">override default camers Y Axis setting</param>
+    /// <param name="overrideShakeZ">override default camers Z Axis setting</param>
+    public IEnumerator Shake(float? overrideDefaultDuration = null, float? overrideDefaultMagnitude = null, bool overrideShakeX = true, bool overrideShakeY = true, bool overrideShakeZ = false)
     {
 
-        float duration = (overrideDefaultDuration != null) ? (float)overrideDefaultDuration : DefaultDuration;
-        float magnitude = (overrideDefaultMagnitude != null) ? (float)overrideDefaultMagnitude : DefaultMagnitude;
+        float duration = (overrideDefaultDuration > DefaultDuration) ? (float)overrideDefaultDuration : DefaultDuration;
+        float magnitude = (overrideDefaultMagnitude > DefaultMagnitude) ? (float)overrideDefaultMagnitude : DefaultMagnitude;
 
-        bool shakeX = (overrideShakeX != null) ? (bool)overrideShakeX : ShakeX;
-        bool shakeY = (overrideShakeY != null) ? (bool)overrideShakeX : ShakeY;
-        bool shakeZ = (overrideShakeZ != null) ? (bool)overrideShakeX : ShakeZ;
+        bool shakeX = (overrideShakeX == true) ? overrideShakeX : ShakeX;
+        bool shakeY = (overrideShakeY == true) ? overrideShakeX : ShakeY;
+        bool shakeZ = (overrideShakeZ == true) ? overrideShakeX : ShakeZ;
 
         Vector3 originalPos = Camera.main.transform.localPosition;
 
