@@ -337,55 +337,33 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <summary>
     /// shake the Toolkit camera
     /// </summary>
-    /// <param name="applyToOtherFX">when true the shake FX will be applied even when there is another FX active like MotionFX or GameFreeze</param>
+    /// <param name="ForceShake">when true the shake FX will be applied even when there is another FX active like MotionFX</param>
     /// <param name="overrideDefaultDuration">duration of the shake in seconds</param>
     /// <param name="overrideDefaultMagnitude">the magnitude of the shake</param>
     /// <param name="overrideShakeX">override default camers X Axis setting</param>
     /// <param name="overrideShakeY">override default camers Y Axis setting</param>
     /// <param name="overrideShakeZ">override default camers Z Axis setting</param>
-    public void ToolkitCameraShake(bool applyToOtherFX = false, float? overrideDefaultDuration = null, float? overrideDefaultMagnitude = null, bool overrideShakeX = true, bool overrideShakeY = true, bool overrideShakeZ = false)
+    public void ToolkitCameraShake(bool ForceShake = false, float? overrideDefaultDuration = null, float? overrideDefaultMagnitude = null, bool overrideShakeX = true, bool overrideShakeY = true, bool overrideShakeZ = false)
     {
         ToolkitCamera toolkitCamera = FindObjectOfType<ToolkitCamera>();
 
         // always shake even when frozen
-        if (applyToOtherFX == true)
+        if (ForceShake == true)
         {
             toolkitCamera.ShakeToolkitCamera(overrideDefaultDuration, overrideDefaultMagnitude, overrideShakeX, overrideShakeY, overrideShakeZ);
         }
         else
         {
-            // only shake if the game is not frozen
-            if (GameFeelSettings.IsFrozen == true || GameFeelSettings.MotionFXActive == true)
-            {
-                Debug.LogWarning("can't shake camera when game is frozen or if there is an MotionFX applied");
-            }
-            else
+            // only shake timescale is 1
+            if (Time.timeScale == 1)
             {
                 toolkitCamera.ShakeToolkitCamera(overrideDefaultDuration, overrideDefaultMagnitude, overrideShakeX, overrideShakeY, overrideShakeZ);
             }
+            else
+            {
+                Debug.LogWarning("can't shake camera when games timeScale is not 1, this means there is an other MotionFX applied already");
+            }
         }   
-    }
-
-    /// <summary>
-    /// freeze the game for an amount of time
-    /// </summary>
-    /// <param name="duration">time in seconds</param>
-    public void GameFreeze(float duration = 0.1f)
-    {
-        StartCoroutine(Freeze(duration));
-    }
-
-    private IEnumerator Freeze(float duration)
-    {
-        float storedTimeScale = Time.timeScale;
-
-        Time.timeScale = 0;
-        GameFeelSettings.IsFrozen = true;
-
-        yield return new WaitForSecondsRealtime(duration);
-
-        Time.timeScale = storedTimeScale;
-        GameFeelSettings.IsFrozen = false;
     }
 
 
@@ -404,11 +382,9 @@ public class ToolkitBehaviour : MonoBehaviour
         float storedTimeScale = Time.timeScale;
 
         Time.timeScale = newTimeScale;
-        GameFeelSettings.MotionFXActive = true;
 
         yield return new WaitForSecondsRealtime(duration);
 
-        GameFeelSettings.MotionFXActive = false;
         Time.timeScale = storedTimeScale;
     }
 
