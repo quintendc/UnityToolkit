@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class SamplePawn : APawn
 {
-    // Start is called before the first frame update
-    void Start()
+
+    protected override void Awake()
     {
-        
+        base.Awake();
+    }
+
+
+    // Start is called before the first frame update
+    protected override void Start()
+    {
+        base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        
+        base.Update();
     }
 }

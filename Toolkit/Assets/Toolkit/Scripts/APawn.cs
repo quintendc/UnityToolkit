@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public abstract class APawn : ToolkitBehaviour
 {
@@ -14,6 +16,11 @@ public abstract class APawn : ToolkitBehaviour
     public float RotationSpeed = 1f;
 
     #endregion
+
+    protected virtual void Awake()
+    {
+
+    }
 
 
     // Start is called before the first frame update

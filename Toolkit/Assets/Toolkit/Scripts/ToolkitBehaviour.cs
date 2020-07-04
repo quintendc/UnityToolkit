@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -87,41 +88,11 @@ public class ToolkitBehaviour : MonoBehaviour
     #region Player, Pawn and PlayerController Methods
 
 
-    /// <summary>
-    /// this method creates a player by calling the CreatePlayer from the GameManager
-    /// </summary>
-    /// <param name="spawnPawn">should a pawn be instantiated</param>
-    public static void CreatePlayer(bool spawnPawn) 
-    {
-        GameManager.Instance.CreatePlayer(spawnPawn);
-    }
-
-    /// <summary>
-    /// get a player by Id this will return the Player poco class from GameManager Players list
-    /// </summary>
-    /// <param name="id">player id</param>
-    /// <returns>poco item from Players list</returns>
-    public Player GetPlayerById(int id)
-    {
-        return GameState.Players.Find(p => p.Id == id);
-    }
 
 
-    /// <summary>
-    /// move the pawn to a specific location
-    /// </summary>
-    /// <param name="playerIndex">player index</param>
-    /// <param name="position">pawn location in the scene</param>
-    /// <param name="rotation">set rotation of the pawn</param>
-    public void PlacePawn(int playerIndex, Vector3 position, Quaternion rotation)
-    {
-        // get player by id
-        Player player = GameState.Players.Find(p => p.Id == playerIndex);
 
-        // set position and rotation of pawn
-        player.Pawn.gameObject.transform.position = position;
-        player.Pawn.gameObject.transform.rotation = rotation;
-    }
+
+
 
     /// <summary>
     /// move the pawn to a specific location
@@ -136,30 +107,7 @@ public class ToolkitBehaviour : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// check if player with id has a pawn assigned
-    /// </summary>
-    /// <param name="playerId"></param>
-    /// <returns>true player has a pawn assigned, false player doesn't have a pawn assigned, null player doesn't exists</returns>
-    public bool? DoesPlayerHasPawn(int playerId)
-    {
-
-        Player player = GameState.Players.Find(p => p.Id == playerId);
-
-        if (player == null)
-        {
-            return null;
-        }
-
-        if (player.Pawn != null)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+ 
 
     /// <summary>
     /// create a pawn for a player that doesn't have a pawn yet, the pawn that will be instantiated is from the currentGameMode
