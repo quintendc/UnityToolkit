@@ -17,11 +17,7 @@ public abstract class APlayerController : ToolkitBehaviour
 
     protected virtual void Awake()
     {
-        // validate Pawn
-        if (Pawn == null)
-        {
-            Debug.LogWarning("No Pawn script provided to PlayerController, some functions may not work!");
-        }
+        ValidateProperties();
     }
 
     // Start is called before the first frame update
@@ -34,6 +30,22 @@ public abstract class APlayerController : ToolkitBehaviour
     protected virtual void Update()
     {
         
+    }
+
+
+    private void ValidateProperties()
+    {
+        // validate Pawn
+        if (Pawn == null)
+        {
+            Debug.LogWarning("No Pawn script provided to PlayerController, some functions may not work!");
+        }
+
+        // validate RigiBody
+        if (Rigidbody == null)
+        {
+            Debug.LogWarning("No RigidBody component provided to PlayerController, some functions may not work!");
+        }
     }
 
 }
