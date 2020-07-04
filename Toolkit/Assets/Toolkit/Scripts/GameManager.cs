@@ -133,7 +133,7 @@ public class GameManager : ToolkitBehaviour
     /// <summary>
     /// handle scenesettings provided by the SceneSettingsProvider
     /// </summary>
-    /// <param name="sceneSettingsObject"></param>
+    /// <param name="sceneSettingsObject">scene settings object</param>
     private void SceneSettingsHandler(SceneSettingsObject sceneSettingsObject)
     {
         // change input State

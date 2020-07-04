@@ -5,9 +5,9 @@ using UnityEngine;
 public class Scene1GameMode : AGameMode
 {
     // Start is called before the first frame update
-    protected override IEnumerator Start()
+    protected override void Start()
     {
-        return base.Start();
+        base.Start();
     }
 
     // Update is called once per frame
