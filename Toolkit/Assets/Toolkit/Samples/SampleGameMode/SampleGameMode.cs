@@ -1,20 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.Timeline;
 using UnityEngine;
 
 public class SampleGameMode : AGameMode
 {
     // Start is called before the first frame update
-    void Start()
+    protected override IEnumerator Start()
     {
-        //GameManager.Instance.CreatePlayer(true);
-        //CreatePlayer(true); // shorthand method
+        return base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        
+        base.Update();
     }
 }

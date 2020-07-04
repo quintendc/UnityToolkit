@@ -8,7 +8,6 @@ public abstract class AGameMode : ToolkitBehaviour
 
     [Header("Player Settings")]
     public GameObject DefaultPawn = null;
-    public GameObject DefaultPlayerController = null;
 
     public int MaxPlayers = 1;
 
