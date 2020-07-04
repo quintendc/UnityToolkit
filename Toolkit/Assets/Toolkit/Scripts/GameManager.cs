@@ -12,9 +12,7 @@ public class GameManager : ToolkitBehaviour
 {
 
     public static GameManager Instance = null;
-    //public List<Player> Players = new List<Player>();
     public PersistentData PersistentData = null;
-    public SceneSettingsObject InitialSceneSettings = null;
     private AGameMode currentGameMode = null;
 
     public GameObject SaveGameManagerPrefab = null;
@@ -94,11 +92,6 @@ public class GameManager : ToolkitBehaviour
             GameObject.Instantiate(WidgetManagerPrefab);
         }
 
-        if (InitialSceneSettings == null)
-        {
-            Debug.LogWarning("No InitialSceneSettings object is provided!");
-        }
-
         if (PlayerInputManager == null)
         {
             Debug.LogWarning("No Player Input Manager component is provided!");
@@ -111,7 +104,16 @@ public class GameManager : ToolkitBehaviour
     /// </summary>
     private void Init()
     {
-        SceneSettingsHandler(InitialSceneSettings);
+        SceneSettingsObject sceneSettingsObject = GameObject.FindObjectOfType<SceneSettingsProvider>().SceneSettings;
+
+        if (sceneSettingsObject != null)
+        {
+            SceneSettingsHandler(sceneSettingsObject);
+        }
+        else
+        {
+            Debug.LogWarning("Can't find SceneSettingsProvider");
+        }
     }
 
 
@@ -126,7 +128,15 @@ public class GameManager : ToolkitBehaviour
 
         // get sceneSettingsObject from the Scene
         SceneSettingsObject sceneSettingsObject = GameObject.FindObjectOfType<SceneSettingsProvider>().SceneSettings;
-        SceneSettingsHandler(sceneSettingsObject);
+
+        if (sceneSettingsObject != null)
+        {
+            SceneSettingsHandler(sceneSettingsObject);
+        }
+        else
+        {
+            Debug.LogWarning("Can't find SceneSettingsProvider");
+        }
     }
 
 
