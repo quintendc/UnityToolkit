@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(PlayerInputManager))]
 public class GameManager : ToolkitBehaviour
 {
 
@@ -17,6 +19,7 @@ public class GameManager : ToolkitBehaviour
 
     public GameObject SaveGameManagerPrefab = null;
     public GameObject WidgetManagerPrefab = null;
+    public PlayerInputManager PlayerInputManager = null;
 
     [Header("Initial player")]
     [Tooltip("there will at least be one playercontroller initialized")]
@@ -95,6 +98,11 @@ public class GameManager : ToolkitBehaviour
         {
             Debug.LogWarning("No InitialSceneSettings object is provided!");
         }
+
+        if (PlayerInputManager == null)
+        {
+            Debug.LogWarning("No Player Input Manager component is provided!");
+        }
     }
 
 
@@ -127,7 +135,7 @@ public class GameManager : ToolkitBehaviour
     {
         Debug.Log("scene is loaded");
         // get sceneSettingsObject from the Scene
-        SceneSettingsObject sceneSettingsObject = GameObject.FindGameObjectWithTag("SceneSettingsProvider").GetComponent<SceneSettingsProvider>().SceneSettings;
+        SceneSettingsObject sceneSettingsObject = GameObject.FindObjectOfType<SceneSettingsProvider>().SceneSettings;
 
         // handle SceneSettingsObject
         // set widget to be shown
@@ -144,7 +152,77 @@ public class GameManager : ToolkitBehaviour
     }
 
 
-    
+    #region Player Methods
+
+    /// <summary>
+    /// this will create a player instance by calling JoinPlayer for the PlayerInputManager
+    /// </summary>
+    /// <param name="newPlayerPrefab">optional parameter, create a player with a specific prefab, Note! it will only instantiate one player with this prefab if you want to set a new PlayerPrefab for all upcoming players to join use the method "ReplacePlayerPrefab"</param>
+    /// <param name="playerIndex">optional paramater</param>
+    /// <param name="splitScreenIndex">optional parameter</param>
+    /// <param name="controlScheme">optional paramater</param>
+    public void CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null)
+    {
+
+        PlayerInput player;
+
+        if (newPlayerPrefab != null)
+        {
+            // store old playerprefab
+            GameObject oldPlayerPrefab = PlayerInputManager.playerPrefab;
+
+            // override player prefab with a new one
+            PlayerInputManager.playerPrefab = newPlayerPrefab;
+            
+            // join player
+            player = PlayerInputManager.JoinPlayer(playerIndex, splitScreenIndex, controlScheme);
+
+            // restore old playerPrefab
+            PlayerInputManager.playerPrefab = oldPlayerPrefab;
+        }
+        else
+        {
+            player = PlayerInputManager.JoinPlayer(playerIndex, splitScreenIndex, controlScheme);
+        }
+    }
+
+
+    /// <summary>
+    /// replace PlayerPrefab for upcoming players to join
+    /// </summary>
+    /// <param name="newPlayerPrefab">new GameObject as PlayerPrefab</param>
+    public void ReplacePlayerPrefab(GameObject newPlayerPrefab)
+    {
+        PlayerInputManager.playerPrefab = newPlayerPrefab;
+    }
+
+    #endregion
+
+
+    #region PlayerInputManager Methods
+
+
+    /// <summary>
+    /// change settings for PlayerInputManager on runtime
+    /// </summary>
+    /// <param name="playerJoinBehavior">set joinBehavior</param>
+    /// <param name="joiningEnabled">enable or disable joining for player</param>
+    public void ChangePlayerInputManagerJoinSettings(PlayerJoinBehavior playerJoinBehavior, bool joiningEnabled)
+    {
+        PlayerInputManager.joinBehavior = playerJoinBehavior;
+
+        if (joiningEnabled == true)
+        {
+            PlayerInputManager.EnableJoining();
+        }
+        else
+        {
+            PlayerInputManager.DisableJoining();
+        }
+
+    }
+
+    #endregion
 
 
     #region PersistentData Methods

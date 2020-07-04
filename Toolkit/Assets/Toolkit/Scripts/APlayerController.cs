@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(Rigidbody))]
 public abstract class APlayerController : ToolkitBehaviour
 {
 

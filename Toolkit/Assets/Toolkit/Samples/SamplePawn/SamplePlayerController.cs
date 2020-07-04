@@ -36,14 +36,10 @@ public class SamplePlayerController : APlayerController
 
     private void Move()
     {
-        //Vector3 m = new Vector3(movement.x, 0, movement.y) * Pawn.MoveSpeed * Time.deltaTime;
-        //transform.Translate(m);
-        //Rigidbody.MovePosition(m);
+        // movement
         Rigidbody.MovePosition(Rigidbody.position + movement * Pawn.MoveSpeed * Time.fixedDeltaTime);
 
-        // calculate rotation based on movement
-        //transform.eulerAngles = Vector3.up * Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg;
-
+        // rotation
         float angle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
         Rigidbody.rotation = Quaternion.Euler(new Vector3(0, angle, 0));
     }
