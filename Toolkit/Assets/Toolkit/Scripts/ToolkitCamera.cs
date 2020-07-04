@@ -6,6 +6,7 @@ public class ToolkitCamera : MonoBehaviour
 {
 
     public CameraShake cameraShake;
+    public Camera Camera;
 
     /// <summary>
     /// shake the Toolkit camera

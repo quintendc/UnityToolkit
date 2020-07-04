@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraShake: {fileID: 2792083760656230589}
+  Camera: {fileID: 2792083760656230591}
 --- !u!1 &2792083760656230585
 GameObject:
   m_ObjectHideFlags: 0
