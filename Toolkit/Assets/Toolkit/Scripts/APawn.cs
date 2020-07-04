@@ -8,15 +8,22 @@ public abstract class APawn : ToolkitBehaviour
 {
     #region Properties
 
+    public int Id;
+
     public float Health = 100f;
     public float MoveSpeed = 1f;
     public float RotationSpeed = 1f;
+
+    public new bool DontDestroyOnLoad = true;
 
     #endregion
 
     protected virtual void Awake()
     {
-
+        if (DontDestroyOnLoad == true)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
 

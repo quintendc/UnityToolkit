@@ -161,7 +161,7 @@ public class GameManager : ToolkitBehaviour
     /// <param name="playerIndex">optional paramater</param>
     /// <param name="splitScreenIndex">optional parameter</param>
     /// <param name="controlScheme">optional paramater</param>
-    public void CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null)
+    public new void CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null)
     {
 
         PlayerInput player;
@@ -191,7 +191,7 @@ public class GameManager : ToolkitBehaviour
     /// replace PlayerPrefab for upcoming players to join
     /// </summary>
     /// <param name="newPlayerPrefab">new GameObject as PlayerPrefab</param>
-    public void ReplacePlayerPrefab(GameObject newPlayerPrefab)
+    public new void ReplacePlayerPrefab(GameObject newPlayerPrefab)
     {
         PlayerInputManager.playerPrefab = newPlayerPrefab;
     }
@@ -207,7 +207,7 @@ public class GameManager : ToolkitBehaviour
     /// </summary>
     /// <param name="playerJoinBehavior">set joinBehavior</param>
     /// <param name="joiningEnabled">enable or disable joining for player</param>
-    public void ChangePlayerInputManagerJoinSettings(PlayerJoinBehavior playerJoinBehavior, bool joiningEnabled)
+    public new void ChangePlayerInputManagerJoinSettings(PlayerJoinBehavior playerJoinBehavior, bool joiningEnabled)
     {
         PlayerInputManager.joinBehavior = playerJoinBehavior;
 

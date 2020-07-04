@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ToolkitBehaviour : MonoBehaviour
 {
@@ -82,43 +83,56 @@ public class ToolkitBehaviour : MonoBehaviour
     {
         return GameState.Paused;
     }
-    
+
     #endregion
 
     #region Player, Pawn and PlayerController Methods
 
-
-
-
-
-
-
+    /// <summary>
+    /// this will create a player instance by calling JoinPlayer for the PlayerInputManager
+    /// </summary>
+    /// <param name="newPlayerPrefab">optional parameter, create a player with a specific prefab, Note! it will only instantiate one player with this prefab if you want to set a new PlayerPrefab for all upcoming players to join use the method "ReplacePlayerPrefab"</param>
+    /// <param name="playerIndex">optional paramater</param>
+    /// <param name="splitScreenIndex">optional parameter</param>
+    /// <param name="controlScheme">optional paramater</param>
+    public void CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null)
+    {
+        GameManager.Instance.CreatePlayer(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme);
+    }
 
     /// <summary>
-    /// move the pawn to a specific location
+    /// replace PlayerPrefab for upcoming players to join
     /// </summary>
-    /// <param name="pawn">player pawn</param>
-    /// <param name="position">pawn location in the scene</param>
-    /// <param name="rotation">set rotation of the pawn</param>
-    public void PlacePawn(GameObject pawn, Vector3 position, Quaternion rotation)
+    /// <param name="newPlayerPrefab">new GameObject as PlayerPrefab</param>
+    public void ReplacePlayerPrefab(GameObject newPlayerPrefab)
     {
-        pawn.transform.position = position;
-        pawn.transform.rotation = rotation;
+        GameManager.Instance.ReplacePlayerPrefab(newPlayerPrefab);
     }
 
 
+    ///// <summary>
+    ///// move the pawn to a specific location
+    ///// </summary>
+    ///// <param name="pawn">player pawn</param>
+    ///// <param name="position">pawn location in the scene</param>
+    ///// <param name="rotation">set rotation of the pawn</param>
+    //public void PlacePawn(GameObject pawn, Vector3 position, Quaternion rotation)
+    //{
+    //    pawn.transform.position = position;
+    //    pawn.transform.rotation = rotation;
+    //}
  
 
-    /// <summary>
-    /// create a pawn for a player that doesn't have a pawn yet, the pawn that will be instantiated is from the currentGameMode
-    /// </summary>
-    /// <param name="playerId">id of the player</param>
-    /// <param name="position">position in the scene</param>
-    /// <param name="rotation">rotation of the pawn</param>
-    public void CreatePawnForPlayer(int playerId, Vector3 position, Quaternion rotation)
-    {
-        GameManager.Instance.CreatePawnForPlayer(playerId, position, rotation);
-    }
+    ///// <summary>
+    ///// create a pawn for a player that doesn't have a pawn yet, the pawn that will be instantiated is from the currentGameMode
+    ///// </summary>
+    ///// <param name="playerId">id of the player</param>
+    ///// <param name="position">position in the scene</param>
+    ///// <param name="rotation">rotation of the pawn</param>
+    //public void CreatePawnForPlayer(int playerId, Vector3 position, Quaternion rotation)
+    //{
+    //    GameManager.Instance.CreatePawnForPlayer(playerId, position, rotation);
+    //}
 
     /// <summary>
     /// get all spawnpoints for the scene
@@ -132,7 +146,22 @@ public class ToolkitBehaviour : MonoBehaviour
 
     #endregion
 
-    #region GameModeMethods
+    #region PlayerInputManager methods
+
+    /// <summary>
+    /// change settings for PlayerInputManager on runtime
+    /// </summary>
+    /// <param name="playerJoinBehavior">set joinBehavior</param>
+    /// <param name="joiningEnabled">enable or disable joining for player</param>
+    public void ChangePlayerInputManagerJoinSettings(PlayerJoinBehavior playerJoinBehavior, bool joiningEnabled)
+    {
+        GameManager.Instance.ChangePlayerInputManagerJoinSettings(playerJoinBehavior, joiningEnabled);
+    }
+
+    #endregion
+
+
+    #region GameMode Methods
 
     /// <summary>
     /// get the currentGameMode that is running
