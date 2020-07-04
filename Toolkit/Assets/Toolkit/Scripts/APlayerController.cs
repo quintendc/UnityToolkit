@@ -8,6 +8,7 @@ public abstract class APlayerController : ToolkitBehaviour
 {
 
     public APawn Pawn = null;
+    public Rigidbody Rigidbody = null;
 
     [HideInInspector]
     //public Player PlayerRef = null;

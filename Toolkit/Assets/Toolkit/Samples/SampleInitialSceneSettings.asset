@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9468a85ee13bd04eb728e4c0dd76e82, type: 3}
   m_Name: SampleInitialSceneSettings
   m_EditorClassIdentifier: 
-  WidgetType: 1
+  WidgetType: 0
   Camera: {fileID: 0}
   GameMode: {fileID: 6948868477842781782, guid: 6ec05e1668ef62147a2b41232d08ab59,
     type: 3}
+  InputState: 0
+  OverridePlayerPawns: 1
+  OverridePlayerPlayerControllers: 1
+  StartRoundWhenSceneIsLoaded: 0

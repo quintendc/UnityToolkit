@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Toolkit/Demo-01-Switching Pawns and PlayerControllers by GameMode/scenes/InitialScene.unity
+    path: Assets/Toolkit/Demo-01 Switching Pawns and PlayerControllers by GameMode/scenes/InitialScene.unity
     guid: 10b403d23b9fbfe4db15d99e13db6994
   - enabled: 1
-    path: Assets/Toolkit/Demo-01-Switching Pawns and PlayerControllers by GameMode/scenes/Scene1.unity
+    path: Assets/Toolkit/Demo-01 Switching Pawns and PlayerControllers by GameMode/scenes/Scene1.unity
     guid: 3461184be3df608489fc37ae8aebfd9f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 8f806a90b8a925a4196b4529b57bdc15,
