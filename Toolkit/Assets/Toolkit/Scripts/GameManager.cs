@@ -15,7 +15,7 @@ public class GameManager : ToolkitBehaviour
     //public List<Player> Players = new List<Player>();
     public PersistentData PersistentData = null;
     public SceneSettingsObject InitialSceneSettings = null;
-    private GameObject currentGameMode = null;
+    private AGameMode currentGameMode = null;
 
     public GameObject SaveGameManagerPrefab = null;
     public GameObject WidgetManagerPrefab = null;
@@ -111,18 +111,7 @@ public class GameManager : ToolkitBehaviour
     /// </summary>
     private void Init()
     {
-        // spawn widget
-        if (InitialSceneSettings != null)
-        {
-            // spawn widget
-            WidgetManager.Instance.ShowWidget(InitialSceneSettings.WidgetType);
-
-            // spawn gameMode
-            currentGameMode = GameObject.Instantiate(InitialSceneSettings.GameMode);
-
-            // set input state
-            GameState.InputState = InitialSceneSettings.InputState;
-        }
+        HandleSceneSettings(InitialSceneSettings);
     }
 
 
@@ -134,20 +123,37 @@ public class GameManager : ToolkitBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("scene is loaded");
+
         // get sceneSettingsObject from the Scene
         SceneSettingsObject sceneSettingsObject = GameObject.FindObjectOfType<SceneSettingsProvider>().SceneSettings;
+        HandleSceneSettings(sceneSettingsObject);
+    }
 
-        // handle SceneSettingsObject
-        // set widget to be shown
-        WidgetManager.Instance.ShowWidget(sceneSettingsObject.WidgetType);
 
-        // Instantiate GameMode and set currentGameMode to new instantiated GameMode
-        currentGameMode = GameObject.Instantiate(sceneSettingsObject.GameMode);
+    /// <summary>
+    /// handle scenesettings provided by the SceneSettingsProvider
+    /// </summary>
+    /// <param name="sceneSettingsObject"></param>
+    private void HandleSceneSettings(SceneSettingsObject sceneSettingsObject)
+    {
+        // change input State
+        GameState.InputState = sceneSettingsObject.InputState;
 
-        // start round when scene is loaded -> make sure to call this as last first handle all player stuff
+        // show widget
+        if (sceneSettingsObject.ShowWidgetOnSceneLoaded == true)
+        {
+            ShowWidget(sceneSettingsObject.WidgetType);
+        }
+
+        // instantiate GameMode
+        currentGameMode = GameObject.Instantiate(sceneSettingsObject.GameMode).GetComponent<AGameMode>();
+
+        // place pawns to spawnpoints
+
+        // start roundtimer
         if (sceneSettingsObject.StartRoundWhenSceneIsLoaded == true)
         {
-            currentGameMode.GetComponent<AGameMode>().StartRound();
+            currentGameMode.StartRound();
         }
     }
 
@@ -238,7 +244,7 @@ public class GameManager : ToolkitBehaviour
 
 
     #region GameMode Methods
-    public new GameObject GetCurrentGameMode()
+    public new AGameMode GetCurrentGameMode()
     {
         return currentGameMode;
     }

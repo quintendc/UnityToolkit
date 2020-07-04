@@ -11,10 +11,6 @@ public abstract class AGameMode : ToolkitBehaviour
 
     public int MaxPlayers = 1;
 
-    [Header("Round time")]
-    [Tooltip("this will start the round directly, it is better to call the StartRound by yourself.")]
-    public bool StartDirectly = false;
-
     public bool InfiniteTime = false;
     [Tooltip("in seconds")]
     public float RoundTime = 300f;
@@ -23,12 +19,9 @@ public abstract class AGameMode : ToolkitBehaviour
     private bool roundStarted = false;
 
     // Start is called before the first frame update
-    protected virtual IEnumerator Start()
+    protected virtual void Start()
     {
-        if (StartDirectly == true)
-        {
-            yield return StartRound();
-        }
+
     }
 
     // Update is called once per frame

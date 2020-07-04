@@ -34,7 +34,7 @@ public class SceneSettingsProvider : MonoBehaviour
                 Debug.LogWarning("WidgetType is set to Default!");
             }
 
-            if (SceneSettings.Camera == null)
+            if (SceneSettings.RenderCamera == null)
             {
                 Debug.LogWarning("Camera is not Provided the GameManager will take the MainCamera!");
             }
