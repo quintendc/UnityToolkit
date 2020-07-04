@@ -111,7 +111,7 @@ public class GameManager : ToolkitBehaviour
     /// </summary>
     private void Init()
     {
-        HandleSceneSettings(InitialSceneSettings);
+        SceneSettingsHandler(InitialSceneSettings);
     }
 
 
@@ -126,7 +126,7 @@ public class GameManager : ToolkitBehaviour
 
         // get sceneSettingsObject from the Scene
         SceneSettingsObject sceneSettingsObject = GameObject.FindObjectOfType<SceneSettingsProvider>().SceneSettings;
-        HandleSceneSettings(sceneSettingsObject);
+        SceneSettingsHandler(sceneSettingsObject);
     }
 
 
@@ -134,7 +134,7 @@ public class GameManager : ToolkitBehaviour
     /// handle scenesettings provided by the SceneSettingsProvider
     /// </summary>
     /// <param name="sceneSettingsObject"></param>
-    private void HandleSceneSettings(SceneSettingsObject sceneSettingsObject)
+    private void SceneSettingsHandler(SceneSettingsObject sceneSettingsObject)
     {
         // change input State
         GameState.InputState = sceneSettingsObject.InputState;
