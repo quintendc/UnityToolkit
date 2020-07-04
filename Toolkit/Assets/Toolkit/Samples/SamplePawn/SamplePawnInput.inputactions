@@ -1,0 +1,33 @@
+{
+    "name": "SamplePawnInput",
+    "maps": [
+        {
+            "name": "Pawn",
+            "id": "0ea32da4-0a4d-4513-93af-3570739e4121",
+            "actions": [
+                {
+                    "name": "Movement",
+                    "type": "Value",
+                    "id": "1ead5f59-f802-4a9c-a3f1-d2b8b27a8216",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "39e26fe6-8baa-4ff7-b3ea-73b76deeab5c",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

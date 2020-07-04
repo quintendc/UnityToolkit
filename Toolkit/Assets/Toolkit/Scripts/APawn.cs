@@ -8,9 +8,6 @@ public abstract class APawn : ToolkitBehaviour
 {
     #region Properties
 
-    [HideInInspector]
-    public Player PlayerRef = null;
-
     public float Health = 100f;
     public float MoveSpeed = 1f;
     public float RotationSpeed = 1f;
@@ -33,11 +30,6 @@ public abstract class APawn : ToolkitBehaviour
     protected virtual void Update()
     {
         
-    }
-
-    public void Init(Player player)
-    {
-        PlayerRef = player;
     }
 
     protected virtual void Hit(Damager damager)

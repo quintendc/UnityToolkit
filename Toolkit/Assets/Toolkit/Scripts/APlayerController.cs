@@ -6,9 +6,22 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public abstract class APlayerController : ToolkitBehaviour
 {
+
+    public APawn Pawn = null;
+
     [HideInInspector]
-    public Player PlayerRef = null;
+    //public Player PlayerRef = null;
     public InputState InputState;
+
+
+    protected virtual void Awake()
+    {
+        // validate Pawn
+        if (Pawn == null)
+        {
+            Debug.LogWarning("No Pawn script provided to PlayerController, some functions may not work!");
+        }
+    }
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -20,11 +33,6 @@ public abstract class APlayerController : ToolkitBehaviour
     protected virtual void Update()
     {
         
-    }
-
-    public void Init(Player player)
-    {
-        PlayerRef = player;
     }
 
 }
