@@ -106,7 +106,7 @@ public class GameManager : ToolkitBehaviour
     /// </summary>
     private void Init()
     {
-        SceneSettingsProvider sceneSettings = GameObject.FindObjectOfType<SceneSettingsProvider>();
+        SceneSettingsManager sceneSettings = GameObject.FindObjectOfType<SceneSettingsManager>();
 
         if (sceneSettings != null)
         {
@@ -129,7 +129,7 @@ public class GameManager : ToolkitBehaviour
         Debug.Log("scene is loaded");
 
         // get sceneSettingsObject from the Scene
-        SceneSettingsProvider sceneSettings = GameObject.FindObjectOfType<SceneSettingsProvider>();
+        SceneSettingsManager sceneSettings = GameObject.FindObjectOfType<SceneSettingsManager>();
 
         if (sceneSettings != null)
         {
@@ -146,7 +146,7 @@ public class GameManager : ToolkitBehaviour
     /// handle scenesettings provided by the SceneSettingsProvider
     /// </summary>
     /// <param name="sceneSettingsObject">scene settings object</param>
-    private void SceneSettingsHandler(SceneSettingsProvider sceneSettings)
+    private void SceneSettingsHandler(SceneSettingsManager sceneSettings)
     {
         // change input State
         GameState.InputState = sceneSettings.InputState;

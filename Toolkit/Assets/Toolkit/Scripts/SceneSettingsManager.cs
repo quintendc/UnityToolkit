@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneSettingsProvider : MonoBehaviour
+public class SceneSettingsManager : MonoBehaviour
 {
 
     [Header("Widget parameters")]
@@ -16,7 +16,7 @@ public class SceneSettingsProvider : MonoBehaviour
     // widgetRenderCamera -> get maincamera when no RenderCamera is provided
     public Camera RenderCamera = null;
 
-    [Header("Input handling")]
+    [Header("Input Settings")]
     [Tooltip("set the InputState when this scene is loaded")]
     public InputState InputState;
 
