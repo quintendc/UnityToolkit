@@ -6,7 +6,32 @@ using UnityEngine.SceneManagement;
 public class SceneSettingsProvider : MonoBehaviour
 {
 
-    public SceneSettingsObject SceneSettings = null;
+    [Header("Widget parameters")]
+    [Tooltip("The GameManager will not try to show widget when scene is loaded")]
+    public bool ShowWidgetOnSceneLoaded = true;
+
+    [Tooltip("define which Widget should be shown when the scene is loaded.")]
+    public WidgetTypes WidgetType;
+
+    // widgetRenderCamera -> get maincamera when no RenderCamera is provided
+    public Camera RenderCamera = null;
+
+    [Header("Input handling")]
+    [Tooltip("set the InputState when this scene is loaded")]
+    public InputState InputState;
+
+
+    [Header("GameMode settings")]
+    [Tooltip("Gamemode to instantiate")]
+    public GameObject GameMode = null;
+    [Tooltip("The GameManager will call the StartRound when scene is loaded.")]
+    public bool StartRoundWhenSceneIsLoaded = false;
+
+    private void Awake()
+    {
+        // validate SceneSettings
+
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -18,32 +43,6 @@ public class SceneSettingsProvider : MonoBehaviour
     void Update()
     {
         
-    }
-
-
-    private void ValidateSceneSettingsObject()
-    {
-        if (SceneSettings == null)
-        {
-            Debug.LogWarning("No SceneSettingsObject provided to the SceneSettingsManager! Some functions may not work.");
-        }
-        else
-        {
-            if (SceneSettings.WidgetType == WidgetTypes.Default)
-            {
-                Debug.LogWarning("WidgetType is set to Default!");
-            }
-
-            if (SceneSettings.RenderCamera == null)
-            {
-                Debug.LogWarning("Camera is not Provided the GameManager will take the MainCamera!");
-            }
-
-            if (SceneSettings.GameMode == null)
-            {
-                Debug.LogWarning("No GameMode provided to the SceneSettingsObject, There will be no GameMode instantiated");
-            }
-        }
     }
 
 }
