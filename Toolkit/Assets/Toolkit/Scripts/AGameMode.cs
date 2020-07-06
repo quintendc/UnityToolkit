@@ -2,17 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public abstract class AGameMode : ToolkitBehaviour
 {
 
-    [Header("Player Settings")]
+
+    [Header("PlayerInputManager Settings")]
     [Tooltip("Change the Playerprefab in PlayerInputManager on awake")]
     public bool ChangePlayerPrefabForPlayerInputManager = true;
     public GameObject DefaultPawn = null;
+    public PlayerJoinBehavior PlayerJoinBehavior;
+    public bool joiningEnabled = false;
 
+
+    [Header("Player Settings")]
     public int MaxPlayers = 1;
 
+    [Header("Round Settings")]
     public bool InfiniteTime = false;
     [Tooltip("in seconds")]
     public float RoundTime = 300f;
@@ -28,6 +35,8 @@ public abstract class AGameMode : ToolkitBehaviour
             ReplacePlayerPrefab(DefaultPawn);
             Debug.Log("PlayerPrefab has been changed in the PlayerInputManager!");
         }
+
+        ChangePlayerInputManagerJoinSettings(PlayerJoinBehavior, joiningEnabled);
     }
 
     // Start is called before the first frame update

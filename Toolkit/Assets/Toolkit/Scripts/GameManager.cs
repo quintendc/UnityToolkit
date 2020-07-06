@@ -14,6 +14,8 @@ public class GameManager : ToolkitBehaviour
     public static GameManager Instance = null;
     public PersistentData PersistentData = null;
     private AGameMode currentGameMode = null;
+    [Tooltip("Amount of players that can join is limited by current GameMode Settings")]
+    public bool LimitPlayersByGameMode = true;
 
     public GameObject SaveGameManagerPrefab = null;
     public GameObject WidgetManagerPrefab = null;
@@ -179,7 +181,32 @@ public class GameManager : ToolkitBehaviour
     /// <param name="controlScheme">optional paramater</param>
     public new void CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null)
     {
+        if (LimitPlayersByGameMode == true)
+        {
+            if (GameState.Players.Count < currentGameMode.MaxPlayers)
+            {
+                CreatePlayerHandler(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme);
+            }
+            else
+            {
+                Debug.LogError("Can't create player amount is limited by GameMode");
+            }
+        }
+        else
+        {
+            CreatePlayerHandler(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme);
+        }
+    }
 
+    /// <summary>
+    /// handles the player creation, called by CreatePlayer
+    /// </summary>
+    /// <param name="newPlayerPrefab">optional parameter, create a player with a specific prefab, Note! it will only instantiate one player with this prefab if you want to set a new PlayerPrefab for all upcoming players to join use the method "ReplacePlayerPrefab"</param>
+    /// <param name="playerIndex">optional paramater</param>
+    /// <param name="splitScreenIndex">optional paramater</param>
+    /// <param name="controlScheme">optional paramater</param>
+    private void CreatePlayerHandler(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null)
+    {
         PlayerInput player;
 
         // create player with a specific PlayerPrefab
@@ -190,7 +217,7 @@ public class GameManager : ToolkitBehaviour
 
             // override player prefab with a new one (temporary)
             PlayerInputManager.playerPrefab = newPlayerPrefab;
-            
+
             // join player
             player = PlayerInputManager.JoinPlayer(playerIndex, splitScreenIndex, controlScheme);
 
