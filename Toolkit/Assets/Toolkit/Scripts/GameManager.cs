@@ -182,12 +182,13 @@ public class GameManager : ToolkitBehaviour
 
         PlayerInput player;
 
+        // create player with a specific PlayerPrefab
         if (newPlayerPrefab != null)
         {
             // store old playerprefab
             GameObject oldPlayerPrefab = PlayerInputManager.playerPrefab;
 
-            // override player prefab with a new one
+            // override player prefab with a new one (temporary)
             PlayerInputManager.playerPrefab = newPlayerPrefab;
             
             // join player
@@ -196,10 +197,12 @@ public class GameManager : ToolkitBehaviour
             // restore old playerPrefab
             PlayerInputManager.playerPrefab = oldPlayerPrefab;
         }
-        else
+        else // create player with default PlayerPrefab
         {
             player = PlayerInputManager.JoinPlayer(playerIndex, splitScreenIndex, controlScheme);
         }
+
+        GameState.Players.Add(player);
     }
 
 

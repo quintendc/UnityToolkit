@@ -110,6 +110,17 @@ public class ToolkitBehaviour : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// get PlayerInput by player index
+    /// </summary>
+    /// <param name="index">index of playerInput</param>
+    /// <returns>corresponding PlayerInput</returns>
+    public PlayerInput GetPlayerByIndex(int index)
+    {
+        return GameState.Players.Find(p => p.playerIndex == index);
+    }
+
+
     ///// <summary>
     ///// move the pawn to a specific location
     ///// </summary>
