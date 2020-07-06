@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class DemoGameMode : AGameMode
 {
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     // Start is called before the first frame update
     protected override void Start()
     {

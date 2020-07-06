@@ -120,31 +120,6 @@ public class ToolkitBehaviour : MonoBehaviour
         return GameState.Players.Find(p => p.playerIndex == index);
     }
 
-
-    ///// <summary>
-    ///// move the pawn to a specific location
-    ///// </summary>
-    ///// <param name="pawn">player pawn</param>
-    ///// <param name="position">pawn location in the scene</param>
-    ///// <param name="rotation">set rotation of the pawn</param>
-    //public void PlacePawn(GameObject pawn, Vector3 position, Quaternion rotation)
-    //{
-    //    pawn.transform.position = position;
-    //    pawn.transform.rotation = rotation;
-    //}
- 
-
-    ///// <summary>
-    ///// create a pawn for a player that doesn't have a pawn yet, the pawn that will be instantiated is from the currentGameMode
-    ///// </summary>
-    ///// <param name="playerId">id of the player</param>
-    ///// <param name="position">position in the scene</param>
-    ///// <param name="rotation">rotation of the pawn</param>
-    //public void CreatePawnForPlayer(int playerId, Vector3 position, Quaternion rotation)
-    //{
-    //    GameManager.Instance.CreatePawnForPlayer(playerId, position, rotation);
-    //}
-
     /// <summary>
     /// get all spawnpoints for the scene
     /// </summary>

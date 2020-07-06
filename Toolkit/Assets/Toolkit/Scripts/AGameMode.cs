@@ -7,6 +7,8 @@ public abstract class AGameMode : ToolkitBehaviour
 {
 
     [Header("Player Settings")]
+    [Tooltip("Change the Playerprefab in PlayerInputManager on awake")]
+    public bool ChangePlayerPrefabForPlayerInputManager = true;
     public GameObject DefaultPawn = null;
 
     public int MaxPlayers = 1;
@@ -17,6 +19,16 @@ public abstract class AGameMode : ToolkitBehaviour
     
     private float timeElapsed;
     private bool roundStarted = false;
+
+
+    protected virtual void Awake()
+    {
+        if (ChangePlayerPrefabForPlayerInputManager == true)
+        {
+            ReplacePlayerPrefab(DefaultPawn);
+            Debug.Log("PlayerPrefab has been changed in the PlayerInputManager!");
+        }
+    }
 
     // Start is called before the first frame update
     protected virtual void Start()
