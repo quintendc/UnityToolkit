@@ -84,6 +84,14 @@ public class ToolkitBehaviour : MonoBehaviour
         return GameState.Paused;
     }
 
+    /// <summary>
+    /// update the PlayerList in GameState
+    /// </summary>
+    public void UpdatePlayerList()
+    {
+        GameState.Players = GameObject.FindObjectsOfType<PlayerInput>().ToList();
+    }
+
     #endregion
 
     #region Player, Pawn and PlayerController Methods
@@ -124,6 +132,15 @@ public class ToolkitBehaviour : MonoBehaviour
         GameManager.Instance.ReplacePlayerPrefab(newPlayerPrefab);
     }
 
+    /// <summary>
+    /// Destroy player with index
+    /// </summary>
+    /// <param name="index">index of the player</param>
+    /// <param name="delay">delay before destroy, default instant</param>
+    public void DestroyPlayerByIndex(int index, float delay = 0)
+    {
+        Destroy(GameState.Players.Find(p => p.playerIndex == index).gameObject, delay);
+    }
 
     /// <summary>
     /// get PlayerInput by player index
@@ -132,7 +149,9 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <returns>corresponding PlayerInput</returns>
     public PlayerInput GetPlayerByIndex(int index)
     {
-        return GameState.Players.Find(p => p.playerIndex == index);
+        List<PlayerInput> players = GameObject.FindObjectsOfType<PlayerInput>().ToList();
+
+        return players.Find(p => p.playerIndex == index);
     }
 
     /// <summary>

@@ -9,13 +9,13 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Toolkit/Demos/Demo-01/Scenes/InitialScene.unity
+    path: Assets/Toolkit/Demos/Demo-01-BasicGameSetup/Scenes/InitialScene.unity
     guid: d31adc384ea6c69409538d7a37b855fd
   - enabled: 1
-    path: Assets/Toolkit/Demos/Demo-01/Scenes/GameScene.unity
+    path: Assets/Toolkit/Demos/Demo-01-BasicGameSetup/Scenes/GameScene.unity
     guid: 780d826bf3c74844fa5341243e55b21f
   - enabled: 1
-    path: Assets/Toolkit/Demos/Demo-01/Scenes/GameFeelScene.unity
+    path: Assets/Toolkit/Demos/Demo-01-BasicGameSetup/Scenes/GameFeelScene.unity
     guid: c634c6817d0cc25498dd86f457c024e9
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 8f806a90b8a925a4196b4529b57bdc15,

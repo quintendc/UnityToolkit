@@ -50,4 +50,10 @@ public class SamplePlayerController : APlayerController
         movement = new Vector3(m.x, 0, m.y);
     }
 
+    private void OnPause()
+    {
+        Debug.Log("PauseGame");
+        PauseGame();
+    }
+
 }

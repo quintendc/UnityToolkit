@@ -46,7 +46,7 @@ MonoBehaviour:
   OverridePlayerInputManagerSettings: 1
   DefaultPawn: {fileID: 8110397995337662196, guid: 7b7a0557d8837ac4085c5dbf7464065d,
     type: 3}
-  PlayerJoinBehavior: 0
+  PlayerJoinBehavior: 2
   joiningEnabled: 1
   MaxPlayers: 1
   InfiniteTime: 0

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -59,9 +60,11 @@ public class GameManager : ToolkitBehaviour
 
         // set persistentData
         PersistentData = new PersistentData(null);
+        
 
         Init();
     }
+
 
     // Update is called once per frame
     void Update()
@@ -179,6 +182,8 @@ public class GameManager : ToolkitBehaviour
 
     #region Player Methods
 
+    #region Create Player Methods
+
     /// <summary>
     /// this will create a player instance by calling JoinPlayer for the PlayerInputManager
     /// </summary>
@@ -238,8 +243,6 @@ public class GameManager : ToolkitBehaviour
         {
             player = PlayerInputManager.JoinPlayer(playerIndex, splitScreenIndex, controlScheme, pairWithDevice);
         }
-
-        GameState.Players.Add(player);
     }
 
 
@@ -301,9 +304,10 @@ public class GameManager : ToolkitBehaviour
         {
             player = PlayerInputManager.JoinPlayer(playerIndex, splitScreenIndex, controlScheme, pairWithDevices);
         }
-
-        GameState.Players.Add(player);
     }
+
+    #endregion
+
 
 
     /// <summary>
@@ -354,6 +358,24 @@ public class GameManager : ToolkitBehaviour
     }
 
     #endregion
+
+    /// <summary>
+    /// gets triggered when player is joined
+    /// </summary>
+    private void OnPlayerJoined()
+    {
+        Debug.Log("Player has joined");
+        UpdatePlayerList();    
+    }
+
+    /// <summary>
+    /// gets triggered when player is left
+    /// </summary>
+    private void OnPlayerLeft()
+    {
+        Debug.Log("Player has left");
+        UpdatePlayerList();
+    }
 
 
     #region GameMode Methods

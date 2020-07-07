@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Demo01GameMode : AGameMode
 {
@@ -13,6 +15,8 @@ public class Demo01GameMode : AGameMode
     // Start is called before the first frame update
     protected override void Start()
     {
+        CreatePlayer();
+
         base.Start();
     }
 
