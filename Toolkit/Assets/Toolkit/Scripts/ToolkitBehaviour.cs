@@ -95,9 +95,24 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <param name="playerIndex">optional paramater</param>
     /// <param name="splitScreenIndex">optional parameter</param>
     /// <param name="controlScheme">optional paramater</param>
-    public void CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null)
+    /// <param name="pairWithDevice">optional paramater, input device to assign</param>
+    public void CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, InputDevice pairWithDevice = null)
     {
-        GameManager.Instance.CreatePlayer(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme);
+        GameManager.Instance.CreatePlayer(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme, pairWithDevice);
+    }
+
+
+    /// <summary>
+    /// this will create a player instance by calling JoinPlayer for the PlayerInputManager
+    /// </summary>
+    /// <param name="newPlayerPrefab">optional parameter, create a player with a specific prefab, Note! it will only instantiate one player with this prefab if you want to set a new PlayerPrefab for all upcoming players to join use the method "ReplacePlayerPrefab"</param>
+    /// <param name="playerIndex">optional paramater</param>
+    /// <param name="splitScreenIndex">optional parameter</param>
+    /// <param name="controlScheme">optional paramater</param>
+    /// <param name="pairWithDevice">optional paramater, input devices to assign</param>
+    public void CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, params InputDevice[] pairWithDevices)
+    {
+        GameManager.Instance.CreatePlayer(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme, pairWithDevices);
     }
 
     /// <summary>
