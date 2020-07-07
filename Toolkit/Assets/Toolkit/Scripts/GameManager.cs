@@ -158,7 +158,14 @@ public class GameManager : ToolkitBehaviour
         }
 
         // instantiate GameMode
-        currentGameMode = GameObject.Instantiate(sceneSettings.GameMode).GetComponent<AGameMode>();
+        try
+        {
+            currentGameMode = GameObject.Instantiate(sceneSettings.GameMode).GetComponent<AGameMode>();
+        }
+        catch (Exception)
+        {
+            Debug.LogWarning("Can't instantiate GameMode, No GameMode assigned to SceneSettingsManager!");
+        }
 
         // place pawns to spawnpoints
 

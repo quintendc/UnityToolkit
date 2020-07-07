@@ -9,8 +9,8 @@ public abstract class AGameMode : ToolkitBehaviour
 
 
     [Header("PlayerInputManager Settings")]
-    [Tooltip("Change the Playerprefab in PlayerInputManager on awake")]
-    public bool ChangePlayerPrefabForPlayerInputManager = true;
+    [Tooltip("Override the PlayerInputManager Settings on awake")]
+    public bool OverridePlayerInputManagerSettings = true;
     public GameObject DefaultPawn = null;
     public PlayerJoinBehavior PlayerJoinBehavior;
     public bool joiningEnabled = false;
@@ -30,13 +30,20 @@ public abstract class AGameMode : ToolkitBehaviour
 
     protected virtual void Awake()
     {
-        if (ChangePlayerPrefabForPlayerInputManager == true)
+        if (OverridePlayerInputManagerSettings == true)
         {
-            ReplacePlayerPrefab(DefaultPawn);
-            Debug.Log("PlayerPrefab has been changed in the PlayerInputManager!");
-        }
+            if (DefaultPawn != null)
+            {
+                ReplacePlayerPrefab(DefaultPawn);
+                Debug.Log("PlayerPrefab has been changed in the PlayerInputManager!");
+            }
+            else
+            {
+                Debug.LogWarning("PlayerPrefab is null, and is not changed in PlayerInputManager");
+            }
 
-        ChangePlayerInputManagerJoinSettings(PlayerJoinBehavior, joiningEnabled);
+            ChangePlayerInputManagerJoinSettings(PlayerJoinBehavior, joiningEnabled);
+        }
     }
 
     // Start is called before the first frame update
