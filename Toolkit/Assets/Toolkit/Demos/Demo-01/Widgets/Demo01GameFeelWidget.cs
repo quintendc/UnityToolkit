@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Demo01GameFeelWidget : AWidget
 {
@@ -28,6 +29,11 @@ public class Demo01GameFeelWidget : AWidget
     public void SpeedGame()
     {
         MotionFX(2f, 0.15f);
+    }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene("InitialScene");
     }
 
 }

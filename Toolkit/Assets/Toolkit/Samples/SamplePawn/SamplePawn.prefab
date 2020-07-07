@@ -235,9 +235,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8fa8a0cff5a524484ee0d9beeed726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Id: 0
   Health: 100
-  MoveSpeed: 10
+  MoveSpeed: 1
   RotationSpeed: 1
+  DontDestroyOnLoad: 1
 --- !u!114 &-5816032951724764963
 MonoBehaviour:
   m_ObjectHideFlags: 0

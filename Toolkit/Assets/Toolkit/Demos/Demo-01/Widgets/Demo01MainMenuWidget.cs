@@ -28,6 +28,6 @@ public class Demo01MainMenuWidget : AWidget
 
     public void ShowSettings()
     {
-
+        ShowWidget(WidgetTypes.Settings);
     }
 }
