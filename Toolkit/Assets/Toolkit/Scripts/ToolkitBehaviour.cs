@@ -34,12 +34,13 @@ public class ToolkitBehaviour : MonoBehaviour
     /// default widget to show "HUD"
     /// 
     /// </summary>
+    /// <param name="force">when true PauseGame will always be executed</param>
     /// <param name="overrideDefaultWidgetType">override the default WidgetType (pause)</param>
     /// <param name="unPause">When the method is called again the game will be unpaused again</param>
-    public void PauseGame(WidgetTypes? overrideDefaultWidgetType = null, bool unPauseWhenPaused = true)
+    public void PauseGame(bool force = false, WidgetTypes? overrideDefaultWidgetType = null, bool unPauseWhenPaused = true)
     {
 
-        if (GetToolkitSettings().PauseGameEnabledWidgets.Find(x => x.WidgetType == GetCurrentWidget().WidgetType) != null)
+        if (GetToolkitSettings().PauseGameEnabledWidgets.Find(x => x.WidgetType == GetCurrentWidget().WidgetType) != null || force == true)
         {
 
             bool skip = false;

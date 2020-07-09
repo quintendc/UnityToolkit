@@ -9,7 +9,7 @@ using UnityEngine;
 public class ToolkitSettings
 {
 
-    [Tooltip("Ässign Widgets to this list where you can call the PauseGame method")]
+    [Tooltip("Ässign Widgets to this list where you can call the PauseGame method, always include your PauseScreen")]
     public List<AWidget> PauseGameEnabledWidgets = new List<AWidget>();
 
 }
