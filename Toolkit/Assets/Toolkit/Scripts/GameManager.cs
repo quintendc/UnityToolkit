@@ -22,6 +22,10 @@ public class GameManager : ToolkitBehaviour
     public GameObject WidgetManagerPrefab = null;
     public PlayerInputManager PlayerInputManager = null;
 
+    [Header("Additional Toolkit Settings")]
+    [Tooltip("define the ToolkitSettings")]
+    public ToolkitSettings ToolkitSettings = new ToolkitSettings();
+
     [Header("Initial player")]
     [Tooltip("there will at least be one playercontroller initialized")]
     public bool SpawnPawn = false;

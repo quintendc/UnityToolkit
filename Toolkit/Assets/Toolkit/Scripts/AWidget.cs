@@ -9,16 +9,10 @@ public abstract class AWidget : ToolkitBehaviour
 {
     public WidgetTypes WidgetType;
     public EventSystem EventSystem;
-    [Tooltip("when this widget is active the PauseGame method is disabled")]
-    public bool DisableToPauseGame = true;
 
     protected virtual void Awake()
     {
-        if (DisableToPauseGame == true)
-        {
-            GameState.PauseGameDisabled = true;
-            Debug.Log("Pausing game is disabled");
-        }
+
     }
 
     protected virtual void Start()
@@ -41,11 +35,6 @@ public abstract class AWidget : ToolkitBehaviour
     protected virtual void Update()
     {
 
-    }
-
-    private void OnDestroy()
-    {
-        GameState.PauseGameDisabled = false;
     }
 
 }

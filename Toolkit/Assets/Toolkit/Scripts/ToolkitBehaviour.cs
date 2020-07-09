@@ -10,6 +10,13 @@ public class ToolkitBehaviour : MonoBehaviour
 
     #region General Methods
 
+
+    public ToolkitSettings GetToolkitSettings()
+    {
+        return GameManager.Instance.ToolkitSettings;
+    }
+
+
     /// <summary>
     /// pause or unpause the game
     /// 
@@ -29,7 +36,7 @@ public class ToolkitBehaviour : MonoBehaviour
     public void PauseGame(WidgetTypes? overrideDefaultWidgetType = null, bool unPauseWhenPaused = true)
     {
 
-        if (GameState.PauseGameDisabled == false)
+        if (GetToolkitSettings().PauseGameEnabledWidgets.Find(x => x.WidgetType == GetCurrentWidget().WidgetType) != null)
         {
 
             bool skip = false;
@@ -79,7 +86,7 @@ public class ToolkitBehaviour : MonoBehaviour
         }
         else
         {
-            Debug.Log("Pause Game is disabled, you are probably already in a menu");
+            Debug.Log("Pause Game is disabled for this widget");
         }
     }
 
