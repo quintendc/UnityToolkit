@@ -11,5 +11,5 @@ public static class GameState
     public static bool Paused = false;
     public static List<PlayerInput> Players = new List<PlayerInput>();
     public static InputState InputState = InputState.Default;
-
+    public static bool PauseGameDisabled = false;
 }

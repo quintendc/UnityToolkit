@@ -12,6 +12,7 @@ public class WidgetManager : MonoBehaviour
     public Camera WidgetRenderCamera = null;
 
 
+
     private void Awake()
     {
         #region Singleton Pattern WidgetManager instance

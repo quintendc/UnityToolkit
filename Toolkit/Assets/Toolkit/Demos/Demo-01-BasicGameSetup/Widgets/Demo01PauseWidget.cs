@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Demo01PauseWidget : AWidget
 {
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     protected override void Start()
     {
         base.Start();

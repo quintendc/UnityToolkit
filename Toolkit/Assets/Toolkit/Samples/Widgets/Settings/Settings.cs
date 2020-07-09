@@ -9,6 +9,11 @@ public class Settings : AWidget
     public string saveGameName = "";
     public Text sliderValue = null;
 
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
     public void ShowMainMenu()
     {
         WidgetManager.Instance.ShowWidget(WidgetTypes.MainMenu);

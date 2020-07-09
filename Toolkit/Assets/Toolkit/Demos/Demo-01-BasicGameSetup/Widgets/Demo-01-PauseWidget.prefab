@@ -355,6 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WidgetType: 3
   EventSystem: {fileID: 2489488624148694308}
+  DisableToPauseGame: 0
 --- !u!1 &7678629848053434148
 GameObject:
   m_ObjectHideFlags: 0

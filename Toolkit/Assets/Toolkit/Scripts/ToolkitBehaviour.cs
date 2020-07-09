@@ -29,49 +29,57 @@ public class ToolkitBehaviour : MonoBehaviour
     public void PauseGame(WidgetTypes? overrideDefaultWidgetType = null, bool unPauseWhenPaused = true)
     {
 
-        bool skip = false;
-
-        // when method is called again and game is already paused unpause the game
-        if (unPauseWhenPaused == true)
+        if (GameState.PauseGameDisabled == false)
         {
-            if (GameState.Paused == true)
+
+            bool skip = false;
+
+            // when method is called again and game is already paused unpause the game
+            if (unPauseWhenPaused == true)
             {
-                skip = true;
-                HideCurrentWidget();
-                GameState.Paused = false;
+                if (GameState.Paused == true)
+                {
+                    skip = true;
+                    HideCurrentWidget();
+                    GameState.Paused = false;
+                }
             }
-        }
 
-        if (GameState.Paused == false && skip == false)
-        {
-            Time.timeScale = 0;
-
-            GameState.Paused = true;
-
-            // show pause widget (default setting)
-            if (overrideDefaultWidgetType == null)
+            if (GameState.Paused == false && skip == false)
             {
-                ShowWidget(WidgetTypes.Pause);
+                Time.timeScale = 0;
+
+                GameState.Paused = true;
+
+                // show pause widget (default setting)
+                if (overrideDefaultWidgetType == null)
+                {
+                    ShowWidget(WidgetTypes.Pause);
+                }
+                else
+                {
+                    ShowWidget((WidgetTypes)overrideDefaultWidgetType);
+                }
             }
             else
             {
-                ShowWidget((WidgetTypes)overrideDefaultWidgetType);
+                Time.timeScale = 1;
+                GameState.Paused = false;
+
+                // show HUD again (default setting)
+                if (overrideDefaultWidgetType == null)
+                {
+                    ShowWidget(WidgetTypes.HUD);
+                }
+                else
+                {
+                    ShowWidget((WidgetTypes)overrideDefaultWidgetType);
+                }
             }
         }
         else
         {
-            Time.timeScale = 1;
-            GameState.Paused = false;
-
-            // show HUD again (default setting)
-            if (overrideDefaultWidgetType == null)
-            {
-                ShowWidget(WidgetTypes.HUD);
-            }
-            else
-            {
-                ShowWidget((WidgetTypes)overrideDefaultWidgetType);
-            }
+            Debug.Log("Pause Game is disabled, you are probably already in a menu");
         }
     }
 

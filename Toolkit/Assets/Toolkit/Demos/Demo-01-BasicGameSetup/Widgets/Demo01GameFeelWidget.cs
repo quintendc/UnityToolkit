@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Demo01GameFeelWidget : AWidget
 {
-
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     protected override void Start()
     {
         base.Start();

@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Demo01MainMenuWidget : AWidget
 {
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     protected override void Start()
     {
         base.Start();
