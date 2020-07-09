@@ -10,7 +10,10 @@ public class ToolkitBehaviour : MonoBehaviour
 
     #region General Methods
 
-
+    /// <summary>
+    /// Get Toolkit settings from GameManager
+    /// </summary>
+    /// <returns>ToolkitSettings Object</returns>
     public ToolkitSettings GetToolkitSettings()
     {
         return GameManager.Instance.ToolkitSettings;
