@@ -122,6 +122,7 @@ public class ToolkitSceneLoader: ToolkitBehaviour
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
+            GameState.LoadingProgress = asyncLoad.progress;
             yield return null;
         }
 
@@ -146,6 +147,7 @@ public class ToolkitSceneLoader: ToolkitBehaviour
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
+            GameState.LoadingProgress = asyncLoad.progress;
             yield return null;
         }
 
@@ -170,6 +172,7 @@ public class ToolkitSceneLoader: ToolkitBehaviour
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
+            GameState.LoadingProgress = asyncLoad.progress;
             yield return null;
         }
 
@@ -198,6 +201,7 @@ public class ToolkitSceneLoader: ToolkitBehaviour
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
+            GameState.LoadingProgress = asyncLoad.progress;
             yield return null;
         }
 
@@ -227,6 +231,7 @@ public class ToolkitSceneLoader: ToolkitBehaviour
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
+            GameState.LoadingProgress = asyncLoad.progress;
             yield return null;
         }
 
@@ -257,6 +262,7 @@ public class ToolkitSceneLoader: ToolkitBehaviour
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
+            GameState.LoadingProgress = asyncLoad.progress;
             yield return null;
         }
 

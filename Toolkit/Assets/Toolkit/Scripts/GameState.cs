@@ -13,4 +13,5 @@ public static class GameState
     public static List<PlayerInput> Players = new List<PlayerInput>();
     public static InputState InputState = InputState.Default;
     public static Scene LastLoadedAdditiveScene;
+    public static float LoadingProgress;
 }
