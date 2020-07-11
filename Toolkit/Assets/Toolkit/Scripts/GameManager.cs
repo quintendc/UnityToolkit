@@ -29,9 +29,9 @@ public class GameManager : ToolkitBehaviour
     [Tooltip("define the ToolkitSettings")]
     public ToolkitSettings ToolkitSettings = new ToolkitSettings();
 
-    [Header("Initial player")]
-    [Tooltip("there will at least be one playercontroller initialized")]
-    public bool SpawnPawn = false;
+    //[Header("Initial player")]
+    //[Tooltip("there will at least be one playercontroller initialized")]
+    //public bool SpawnPawn = false;
 
     private void Awake()
     {
