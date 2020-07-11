@@ -25,7 +25,7 @@ public class GameManager : ToolkitBehaviour
     public GameObject WidgetManagerPrefab = null;
     public PlayerInputManager PlayerInputManager = null;
 
-    [Header("Additional Toolkit Settings")]
+    [Header("Toolkit Settings")]
     [Tooltip("define the ToolkitSettings")]
     public ToolkitSettings ToolkitSettings = new ToolkitSettings();
 
@@ -146,10 +146,7 @@ public class GameManager : ToolkitBehaviour
         // get sceneSettingsObject from the Scene
         SceneSettingsManager sceneSettings = null;
         List<SceneSettingsManager> SceneSettingsManagers = GameObject.FindObjectsOfType<SceneSettingsManager>().ToList();
-
         sceneSettings = SceneSettingsManagers.Find(m => m.PersistentSceneSceneSettingsManager == false);
-
-        Debug.LogError("SceneSettings manager found : " + SceneSettingsManagers.Count);
 
         if (sceneSettings != null)
         {

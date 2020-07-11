@@ -9,7 +9,7 @@ public class SceneSettingsManager : MonoBehaviour
     public bool PersistentSceneSceneSettingsManager = false;
 
     [Header("Widget parameters")]
-    [Tooltip("The GameManager will not try to show widget when scene is loaded")]
+    [Tooltip("The GameManager will not try to show widget when scene is loaded, Note! this will remove automatically the Loading screen widget")]
     public bool ShowWidgetOnSceneLoaded = true;
 
     [Tooltip("define which Widget should be shown when the scene is loaded.")]

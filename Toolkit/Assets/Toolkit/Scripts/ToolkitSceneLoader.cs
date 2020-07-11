@@ -88,7 +88,6 @@ public class ToolkitSceneLoader: ToolkitBehaviour
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
-            HideLoadingScreen();
             yield return null;
         }
     }
@@ -107,7 +106,6 @@ public class ToolkitSceneLoader: ToolkitBehaviour
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
-            HideLoadingScreen();
             yield return null;
         }
     }
@@ -143,7 +141,6 @@ public class ToolkitSceneLoader: ToolkitBehaviour
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
-            HideLoadingScreen();
             yield return null;
         }
     }
@@ -162,7 +159,6 @@ public class ToolkitSceneLoader: ToolkitBehaviour
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
-            HideLoadingScreen();
             yield return null;
         }
     }
@@ -181,7 +177,6 @@ public class ToolkitSceneLoader: ToolkitBehaviour
         // Wait until the asynchronous scene fully loads
         while (!asyncLoad.isDone)
         {
-            HideLoadingScreen();
             yield return null;
         }
     }
@@ -196,18 +191,6 @@ public class ToolkitSceneLoader: ToolkitBehaviour
         {
             ShowWidget(WidgetTypes.Loading);
         }
-    }
-
-    private void HideLoadingScreen()
-    {
-        if (GameManager.Instance.ToolkitSettings.HideLoadingScreenOnSceneLoaded == true)
-        {
-            if (GetCurrentWidget().WidgetType == WidgetTypes.Loading)
-            {
-                HideCurrentWidget();
-            }
-        }
-
     }
 
     #endregion

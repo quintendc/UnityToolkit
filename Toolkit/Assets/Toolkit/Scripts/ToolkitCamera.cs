@@ -5,8 +5,10 @@ using UnityEngine;
 public class ToolkitCamera : MonoBehaviour
 {
 
+    public ToolkitCamera Instance;
     public CameraShake cameraShake;
     public Camera Camera;
+
 
     /// <summary>
     /// shake the Toolkit camera

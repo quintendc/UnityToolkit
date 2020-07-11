@@ -188,6 +188,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6685493568237271058, guid: 2e930990e4e50974f9bb4f2e58c48515,
+        type: 3}
+      propertyPath: Persistent
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e930990e4e50974f9bb4f2e58c48515, type: 3}
 --- !u!1001 &935751952
@@ -341,6 +346,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ToolkitSettings.HideLoadingScreenOnSceneLoaded
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578059006167325649, guid: f9854fa22a332bb46987366ce0617d7e,
+        type: 3}
+      propertyPath: ToolkitSettings.ShowLoadingScreenWhenLoadingScene
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6555457972291682985, guid: f9854fa22a332bb46987366ce0617d7e,
         type: 3}
