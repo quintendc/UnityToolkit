@@ -131,6 +131,9 @@ public class ToolkitSceneLoader: ToolkitBehaviour
             Scene scene = SceneManager.GetSceneByName(sceneName);
             SceneManager.SetActiveScene(scene);
         }
+
+        // loading has been completed
+        GameState.LoadingProgress = 1;
     }
 
 
@@ -156,6 +159,9 @@ public class ToolkitSceneLoader: ToolkitBehaviour
             Scene scene = SceneManager.GetSceneByBuildIndex(sceneBuildIndex);
             SceneManager.SetActiveScene(scene);
         }
+
+        // loading has been completed
+        GameState.LoadingProgress = 1;
     }
 
 
@@ -186,6 +192,9 @@ public class ToolkitSceneLoader: ToolkitBehaviour
                 GameState.LastLoadedAdditiveScene = scene;
             }
         }
+
+        // loading has been completed
+        GameState.LoadingProgress = 1;
     }
 
 
@@ -215,6 +224,9 @@ public class ToolkitSceneLoader: ToolkitBehaviour
                 GameState.LastLoadedAdditiveScene = scene;
             }
         }
+
+        // loading has been completed
+        GameState.LoadingProgress = 1;
     }
 
 
@@ -246,6 +258,9 @@ public class ToolkitSceneLoader: ToolkitBehaviour
             }
         }
 
+        // loading has been completed
+        GameState.LoadingProgress = 1;
+
     }
 
 
@@ -276,6 +291,9 @@ public class ToolkitSceneLoader: ToolkitBehaviour
                 GameState.LastLoadedAdditiveScene = scene;
             }
         }
+
+        // loading has been completed
+        GameState.LoadingProgress = 1;
     }
 
     #endregion

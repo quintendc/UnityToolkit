@@ -299,6 +299,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WidgetType: 2
   EventSystem: {fileID: 0}
+  Bindings:
+  - Text: {fileID: 8283563049890440207}
+    VariableName: LoadingProgress
+  LoadingProgress: 0
 --- !u!1 &8577659964941567926
 GameObject:
   m_ObjectHideFlags: 0

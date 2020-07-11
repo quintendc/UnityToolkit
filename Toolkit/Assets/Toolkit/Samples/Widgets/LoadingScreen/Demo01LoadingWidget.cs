@@ -4,5 +4,26 @@ using UnityEngine;
 
 public class Demo01LoadingWidget : AWidget
 {
-    
+
+    public float LoadingProgress;
+
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
+    }
+
+    protected override void Update()
+    {
+        // get the loading progress from the GameState
+        LoadingProgress = GameState.LoadingProgress * 100;
+
+        base.Update();
+    }
 }

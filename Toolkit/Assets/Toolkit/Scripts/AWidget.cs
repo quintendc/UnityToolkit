@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,6 +10,9 @@ public abstract class AWidget : ToolkitBehaviour
 {
     public WidgetTypes WidgetType;
     public EventSystem EventSystem;
+
+    [Tooltip("List of bindings")]
+    public List<WidgetTextBinder> Bindings = new List<WidgetTextBinder>();
 
     protected virtual void Awake()
     {
@@ -34,7 +38,16 @@ public abstract class AWidget : ToolkitBehaviour
 
     protected virtual void Update()
     {
+        Reflection();
+    }
 
+
+    protected virtual void Reflection()
+    {
+        foreach (var b in Bindings)
+        {
+            b.Text.text = this.GetType().GetField(b.VariableName).GetValue(this).ToString();
+        }
     }
 
 }
