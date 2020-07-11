@@ -41,41 +41,75 @@ public class ToolkitSceneLoader: ToolkitBehaviour
 
     #region LoadScene Async methods
 
-    public void LoadSceneAsync(int sceneBuildIndex)
+    /// <summary>
+    /// Load scene asynchronous
+    /// </summary>
+    /// <param name="sceneBuildIndex">index of scene</param>
+    /// <param name="makeSceneActive">when true the new loaded scene will be set to active</param>
+    public void LoadSceneAsync(int sceneBuildIndex, bool makeSceneActive = true)
     {
-        StartCoroutine(LoadYourAsyncScene(sceneBuildIndex));
+        StartCoroutine(LoadYourAsyncScene(sceneBuildIndex, makeSceneActive));
     }
 
-    public void LoadSceneAsync(string sceneName)
+    /// <summary>
+    /// Load scene asynchronous
+    /// </summary>
+    /// <param name="sceneName">name of scene</param>
+    /// <param name="makeSceneActive">when true the new loaded scene will be set to active</param>
+    public void LoadSceneAsync(string sceneName, bool makeSceneActive = true)
     {
-        StartCoroutine(LoadYourAsyncScene(sceneName));
+        StartCoroutine(LoadYourAsyncScene(sceneName, makeSceneActive));
     }
 
-    public void LoadSceneAsync(int sceneBuildIndex, LoadSceneMode mode)
+    /// <summary>
+    /// Load scene asynchronous
+    /// </summary>
+    /// <param name="sceneBuildIndex">index of scene</param>
+    /// <param name="mode">mode to load the scene, additive will add to current single will switch to new scene when completed</param>
+    /// <param name="makeSceneActive">when true the new loaded scene will be set to active</param>
+    public void LoadSceneAsync(int sceneBuildIndex, LoadSceneMode mode, bool makeSceneActive = true)
     {
-        StartCoroutine(LoadYourAsyncScene(sceneBuildIndex, mode));
+        StartCoroutine(LoadYourAsyncScene(sceneBuildIndex, mode, makeSceneActive));
     }
 
-    public void LoadSceneAsync(int sceneBuildIndex, LoadSceneParameters parameters)
+    /// <summary>
+    /// Load scene asynchronous
+    /// </summary>
+    /// <param name="sceneBuildIndex">index of scene</param>
+    /// <param name="parameters">struct of LoadScene parameters</param>
+    /// <param name="makeSceneActive">when true the new loaded scene will be set to active</param>
+    public void LoadSceneAsync(int sceneBuildIndex, LoadSceneParameters parameters, bool makeSceneActive = true)
     {
-        StartCoroutine(LoadYourAsyncScene(sceneBuildIndex, parameters));
+        StartCoroutine(LoadYourAsyncScene(sceneBuildIndex, parameters, makeSceneActive));
     }
 
-    public void LoadSceneAsync(string sceneName, LoadSceneMode mode)
+    /// <summary>
+    /// Load scene asynchronous
+    /// </summary>
+    /// <param name="sceneName">name of scene</param>
+    /// <param name="mode">mode to load the scene, additive will add to current single will switch to new scene when completed</param>
+    /// <param name="makeSceneActive">when true the new loaded scene will be set to active</param>
+    public void LoadSceneAsync(string sceneName, LoadSceneMode mode, bool makeSceneActive = true)
     {
-        StartCoroutine(LoadYourAsyncScene(sceneName, mode));
+        StartCoroutine(LoadYourAsyncScene(sceneName, mode, makeSceneActive));
     }
 
-    public void LoadSceneAsync(string sceneName, LoadSceneParameters parameters)
+    /// <summary>
+    /// Load scene asynchronous
+    /// </summary>
+    /// <param name="sceneName">name of scene</param>
+    /// <param name="parameters">struct of LoadScene parameters</param>
+    /// <param name="makeSceneActive">when true the new loaded scene will be set to active</param>
+    public void LoadSceneAsync(string sceneName, LoadSceneParameters parameters, bool makeSceneActive = true)
     {
-        StartCoroutine(LoadYourAsyncScene(sceneName, parameters));
+        StartCoroutine(LoadYourAsyncScene(sceneName, parameters, makeSceneActive));
     }
 
     #endregion
 
     #region LoadSceneAsync IEnumerators
 
-    private IEnumerator LoadYourAsyncScene(string sceneName)
+    private IEnumerator LoadYourAsyncScene(string sceneName, bool makeSceneActive)
     {
         // The Application loads the Scene in the background as the current Scene runs.
         // This is particularly good for creating loading screens.
@@ -90,10 +124,16 @@ public class ToolkitSceneLoader: ToolkitBehaviour
         {
             yield return null;
         }
+
+        if (makeSceneActive == true)
+        {
+            Scene scene = SceneManager.GetSceneByName(sceneName);
+            SceneManager.SetActiveScene(scene);
+        }
     }
 
 
-    private IEnumerator LoadYourAsyncScene(int sceneBuildIndex)
+    private IEnumerator LoadYourAsyncScene(int sceneBuildIndex, bool makeSceneActive)
     {
         // The Application loads the Scene in the background as the current Scene runs.
         // This is particularly good for creating loading screens.
@@ -108,10 +148,16 @@ public class ToolkitSceneLoader: ToolkitBehaviour
         {
             yield return null;
         }
+
+        if (makeSceneActive == true)
+        {
+            Scene scene = SceneManager.GetSceneByBuildIndex(sceneBuildIndex);
+            SceneManager.SetActiveScene(scene);
+        }
     }
 
 
-    private IEnumerator LoadYourAsyncScene(int sceneBuildIndex, LoadSceneMode mode)
+    private IEnumerator LoadYourAsyncScene(int sceneBuildIndex, LoadSceneMode mode, bool makeSceneActive)
     {
         // The Application loads the Scene in the background as the current Scene runs.
         // This is particularly good for creating loading screens.
@@ -126,10 +172,21 @@ public class ToolkitSceneLoader: ToolkitBehaviour
         {
             yield return null;
         }
+
+        if (makeSceneActive == true)
+        {
+            Scene scene = SceneManager.GetSceneByBuildIndex(sceneBuildIndex);
+            SceneManager.SetActiveScene(scene);
+
+            if (mode == LoadSceneMode.Additive)
+            {
+                GameState.LastLoadedAdditiveScene = scene;
+            }
+        }
     }
 
 
-    private IEnumerator LoadYourAsyncScene(int sceneBuildIndex, LoadSceneParameters parameters)
+    private IEnumerator LoadYourAsyncScene(int sceneBuildIndex, LoadSceneParameters parameters, bool makeSceneActive)
     {
         // The Application loads the Scene in the background as the current Scene runs.
         // This is particularly good for creating loading screens.
@@ -143,10 +200,21 @@ public class ToolkitSceneLoader: ToolkitBehaviour
         {
             yield return null;
         }
+
+        if (makeSceneActive == true)
+        {
+            Scene scene = SceneManager.GetSceneByBuildIndex(sceneBuildIndex);
+            SceneManager.SetActiveScene(scene);
+
+            if (parameters.loadSceneMode == LoadSceneMode.Additive)
+            {
+                GameState.LastLoadedAdditiveScene = scene;
+            }
+        }
     }
 
 
-    private IEnumerator LoadYourAsyncScene(string sceneName, LoadSceneMode mode)
+    private IEnumerator LoadYourAsyncScene(string sceneName, LoadSceneMode mode, bool makeSceneActive)
     {
         // The Application loads the Scene in the background as the current Scene runs.
         // This is particularly good for creating loading screens.
@@ -161,10 +229,22 @@ public class ToolkitSceneLoader: ToolkitBehaviour
         {
             yield return null;
         }
+
+        if (makeSceneActive == true)
+        {
+            Scene scene = SceneManager.GetSceneByName(sceneName);
+            SceneManager.SetActiveScene(scene);
+
+            if (mode == LoadSceneMode.Additive)
+            {
+                GameState.LastLoadedAdditiveScene = scene;
+            }
+        }
+
     }
 
 
-    private IEnumerator LoadYourAsyncScene(string sceneName, LoadSceneParameters parameters)
+    private IEnumerator LoadYourAsyncScene(string sceneName, LoadSceneParameters parameters, bool makeSceneActive)
     {
         // The Application loads the Scene in the background as the current Scene runs.
         // This is particularly good for creating loading screens.
@@ -178,6 +258,17 @@ public class ToolkitSceneLoader: ToolkitBehaviour
         while (!asyncLoad.isDone)
         {
             yield return null;
+        }
+
+        if (makeSceneActive == true)
+        {
+            Scene scene = SceneManager.GetSceneByName(sceneName);
+            SceneManager.SetActiveScene(scene);
+
+            if (parameters.loadSceneMode == LoadSceneMode.Additive)
+            {
+                GameState.LastLoadedAdditiveScene = scene;
+            }
         }
     }
 
