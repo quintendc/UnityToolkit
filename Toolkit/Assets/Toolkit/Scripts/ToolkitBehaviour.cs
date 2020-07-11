@@ -4,12 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class ToolkitBehaviour : MonoBehaviour
 {
-
-    public ToolkitSceneLoader SceneLoader = new ToolkitSceneLoader();
 
     #region General Methods
 
