@@ -350,6 +350,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneSettingsManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8632958857689478364, guid: 243af023515ccd649b1458e7cebbf91f,
+        type: 3}
+      propertyPath: ShowWidgetOnSceneLoaded
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 243af023515ccd649b1458e7cebbf91f, type: 3}
 --- !u!1 &1091682082

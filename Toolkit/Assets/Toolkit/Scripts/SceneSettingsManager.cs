@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneSettingsManager : MonoBehaviour
 {
+    [Tooltip("Check this when this is the SceneSettingsManager for the PersistentScene")]
+    public bool PersistentSceneSceneSettingsManager = false;
 
     [Header("Widget parameters")]
     [Tooltip("The GameManager will not try to show widget when scene is loaded")]

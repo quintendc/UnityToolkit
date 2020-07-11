@@ -122,9 +122,6 @@ public class GameManager : ToolkitBehaviour
     private void Init()
     {
         SceneSettingsManager sceneSettings = GameObject.FindObjectOfType<SceneSettingsManager>();
-        List<SceneSettingsManager> SceneSettingsManagers = GameObject.FindObjectsOfType<SceneSettingsManager>().ToList();
-
-        Debug.LogError("SceneSettings manager found : " + SceneSettingsManagers.Count);
 
         if (sceneSettings != null)
         {
@@ -147,7 +144,12 @@ public class GameManager : ToolkitBehaviour
         Debug.Log("scene is loaded");
 
         // get sceneSettingsObject from the Scene
-        SceneSettingsManager sceneSettings = GameObject.FindObjectOfType<SceneSettingsManager>();
+        SceneSettingsManager sceneSettings = null;
+        List<SceneSettingsManager> SceneSettingsManagers = GameObject.FindObjectsOfType<SceneSettingsManager>().ToList();
+
+        sceneSettings = SceneSettingsManagers.Find(m => m.PersistentSceneSceneSettingsManager == false);
+
+        Debug.LogError("SceneSettings manager found : " + SceneSettingsManagers.Count);
 
         if (sceneSettings != null)
         {
@@ -155,7 +157,7 @@ public class GameManager : ToolkitBehaviour
         }
         else
         {
-            Debug.LogWarning("Can't find SceneSettingsProvider");
+            Debug.LogWarning("Can't find SceneSettingsManager");
         }
     }
 
