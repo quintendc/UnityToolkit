@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ToolkitSceneLoader : ToolkitBehaviour
+public class ToolkitSceneLoader: ToolkitBehaviour
 {
-
     #region LoadScene methods
 
     public void LoadScene(int sceneBuildIndex)
@@ -76,7 +75,7 @@ public class ToolkitSceneLoader : ToolkitBehaviour
 
     #region LoadSceneAsync IEnumerators
 
-    public IEnumerator LoadYourAsyncScene(string sceneName)
+    private IEnumerator LoadYourAsyncScene(string sceneName)
     {
         // The Application loads the Scene in the background as the current Scene runs.
         // This is particularly good for creating loading screens.
@@ -95,7 +94,7 @@ public class ToolkitSceneLoader : ToolkitBehaviour
     }
 
 
-    public IEnumerator LoadYourAsyncScene(int sceneBuildIndex)
+    private IEnumerator LoadYourAsyncScene(int sceneBuildIndex)
     {
         // The Application loads the Scene in the background as the current Scene runs.
         // This is particularly good for creating loading screens.
@@ -114,7 +113,7 @@ public class ToolkitSceneLoader : ToolkitBehaviour
     }
 
 
-    public IEnumerator LoadYourAsyncScene(int sceneBuildIndex, LoadSceneMode mode)
+    private IEnumerator LoadYourAsyncScene(int sceneBuildIndex, LoadSceneMode mode)
     {
         // The Application loads the Scene in the background as the current Scene runs.
         // This is particularly good for creating loading screens.
@@ -132,7 +131,7 @@ public class ToolkitSceneLoader : ToolkitBehaviour
     }
 
 
-    public IEnumerator LoadYourAsyncScene(int sceneBuildIndex, LoadSceneParameters parameters)
+    private IEnumerator LoadYourAsyncScene(int sceneBuildIndex, LoadSceneParameters parameters)
     {
         // The Application loads the Scene in the background as the current Scene runs.
         // This is particularly good for creating loading screens.
@@ -150,7 +149,7 @@ public class ToolkitSceneLoader : ToolkitBehaviour
     }
 
 
-    public IEnumerator LoadYourAsyncScene(string sceneName, LoadSceneMode mode)
+    private IEnumerator LoadYourAsyncScene(string sceneName, LoadSceneMode mode)
     {
         // The Application loads the Scene in the background as the current Scene runs.
         // This is particularly good for creating loading screens.
@@ -169,7 +168,7 @@ public class ToolkitSceneLoader : ToolkitBehaviour
     }
 
 
-    public IEnumerator LoadYourAsyncScene(string sceneName, LoadSceneParameters parameters)
+    private IEnumerator LoadYourAsyncScene(string sceneName, LoadSceneParameters parameters)
     {
         // The Application loads the Scene in the background as the current Scene runs.
         // This is particularly good for creating loading screens.
@@ -189,20 +188,26 @@ public class ToolkitSceneLoader : ToolkitBehaviour
 
     #endregion
 
-
     #region Loading screen
 
     private void ShowLoadingScreen()
     {
-        ShowWidget(WidgetTypes.Loading);
+        if (GameManager.Instance.ToolkitSettings.ShowLoadingScreenWhenLoadingScene == true)
+        {
+            ShowWidget(WidgetTypes.Loading);
+        }
     }
 
     private void HideLoadingScreen()
     {
-        if (GetCurrentWidget().WidgetType == WidgetTypes.Loading)
+        if (GameManager.Instance.ToolkitSettings.HideLoadingScreenOnSceneLoaded == true)
         {
-            HideCurrentWidget();
+            if (GetCurrentWidget().WidgetType == WidgetTypes.Loading)
+            {
+                HideCurrentWidget();
+            }
         }
+
     }
 
     #endregion

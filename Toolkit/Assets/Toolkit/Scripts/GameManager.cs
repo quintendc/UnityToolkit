@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(PlayerInputManager))]
+[RequireComponent(typeof(ToolkitSceneLoader))]
 public class GameManager : ToolkitBehaviour
 {
 
@@ -17,6 +18,8 @@ public class GameManager : ToolkitBehaviour
     private AGameMode currentGameMode = null;
     [Tooltip("Amount of players that can join is limited by current GameMode Settings")]
     public bool LimitPlayersByGameMode = true;
+
+    public ToolkitSceneLoader ToolkitSceneLoader = null;
 
     public GameObject SaveGameManagerPrefab = null;
     public GameObject WidgetManagerPrefab = null;
@@ -105,6 +108,11 @@ public class GameManager : ToolkitBehaviour
         {
             Debug.LogWarning("No Player Input Manager component is provided!");
         }
+
+        if (ToolkitSceneLoader == null)
+        {
+            Debug.LogWarning("No ToolkitSceneLoader linked!");
+        }
     }
 
 
@@ -114,6 +122,9 @@ public class GameManager : ToolkitBehaviour
     private void Init()
     {
         SceneSettingsManager sceneSettings = GameObject.FindObjectOfType<SceneSettingsManager>();
+        List<SceneSettingsManager> SceneSettingsManagers = GameObject.FindObjectsOfType<SceneSettingsManager>().ToList();
+
+        Debug.LogError("SceneSettings manager found : " + SceneSettingsManagers.Count);
 
         if (sceneSettings != null)
         {

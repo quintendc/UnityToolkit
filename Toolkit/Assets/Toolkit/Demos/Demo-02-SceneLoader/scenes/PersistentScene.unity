@@ -332,6 +332,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6778117576618372103, guid: 43b2571d16d870d42bcf124b5e540227,
         type: 3}
+    - target: {fileID: 1578059006167325649, guid: f9854fa22a332bb46987366ce0617d7e,
+        type: 3}
+      propertyPath: ToolkitSettings.HideLoadingScreenOnSceneLoaded
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6555457972291682985, guid: f9854fa22a332bb46987366ce0617d7e,
         type: 3}
       propertyPath: m_Name

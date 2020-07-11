@@ -8,7 +8,14 @@ using UnityEngine.InputSystem;
 public class ToolkitBehaviour : MonoBehaviour
 {
 
+    //public ToolkitSceneLoader SceneLoader = new ToolkitSceneLoader();
+
     #region General Methods
+
+    public ToolkitSceneLoader GetToolkitSceneLoader()
+    {
+        return GameManager.Instance.ToolkitSceneLoader;
+    }
 
     /// <summary>
     /// Get Toolkit settings from GameManager

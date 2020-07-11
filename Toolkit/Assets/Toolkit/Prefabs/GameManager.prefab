@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1232996816930876860}
   - component: {fileID: 1578059006167325649}
   - component: {fileID: 795045054016157328}
+  - component: {fileID: 4715073791713747591}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -44,13 +45,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f34249e539b5647a5efcd161040d8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialSceneSettings: {fileID: 11400000, guid: 3aad84d8685c21343b1c0ee441f574be,
-    type: 2}
+  LimitPlayersByGameMode: 1
+  ToolkitSceneLoader: {fileID: 4715073791713747591}
   SaveGameManagerPrefab: {fileID: 1459316034744286350, guid: cc0588d2fe163584fae599dec2f90eef,
     type: 3}
   WidgetManagerPrefab: {fileID: 5100918874118508386, guid: af34f1e6967eb7649b1b53c2bbd964cf,
     type: 3}
   PlayerInputManager: {fileID: 795045054016157328}
+  ToolkitSettings:
+    PauseGameEnabledWidgets: []
+    ShowLoadingScreenWhenLoadingScene: 1
+    HideLoadingScreenOnSceneLoaded: 1
   SpawnPawn: 0
 --- !u!114 &795045054016157328
 MonoBehaviour:
@@ -95,3 +100,15 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &4715073791713747591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6555457972291682985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 574e0efbc657c21419ad40ec54cc07ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
