@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LimitPlayersByGameMode: 1
-  ToolkitSceneLoaderPrefab: {fileID: 3785615948384731756, guid: 8421771b309052a41b33b60b13903736,
+  ToolkitSceneManagerPrefab: {fileID: 3785615948384731756, guid: 8421771b309052a41b33b60b13903736,
     type: 3}
   SaveGameManagerPrefab: {fileID: 1459316034744286350, guid: cc0588d2fe163584fae599dec2f90eef,
     type: 3}
@@ -111,4 +111,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 574e0efbc657c21419ad40ec54cc07ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Instance: {fileID: 0}
