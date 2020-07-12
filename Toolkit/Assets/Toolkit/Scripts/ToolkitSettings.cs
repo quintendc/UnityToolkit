@@ -14,7 +14,7 @@ public class ToolkitSettings
     public List<AWidget> PauseGameEnabledWidgets = new List<AWidget>();
 
     [Header("Loading screen settings")]
-    [Tooltip("when true the loading screen will automatically displayed when scene is loading")]
+    [Tooltip("when true the loading screen will automatically displayed when scene is loading. Note! When a Scene is Loaded the LoadingScreen will be removed automatically depending on the SceneSettingsManager (ShowWidgetOnSceneLoaded).")]
     public bool ShowLoadingScreenWhenLoadingScene = true;
 
 }
