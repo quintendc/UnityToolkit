@@ -9,6 +9,10 @@ using UnityEngine;
 public class ToolkitSettings
 {
 
+    [Header("Player Settings")]
+    [Tooltip("Amount of players that can join is limited by current GameMode Settings")]
+    public bool LimitPlayersByGameMode = true;
+
     [Header("Pause screen settings")]
     [Tooltip("Ässign Widgets to this list where you can call the PauseGame method, always include your PauseScreen")]
     public List<AWidget> PauseGameEnabledWidgets = new List<AWidget>();

@@ -16,8 +16,8 @@ public class GameManager : ToolkitBehaviour
     public static GameManager Instance = null;
     public PersistentData PersistentData = null;
     private AGameMode currentGameMode = null;
-    [Tooltip("Amount of players that can join is limited by current GameMode Settings")]
-    public bool LimitPlayersByGameMode = true;
+    //[Tooltip("Amount of players that can join is limited by current GameMode Settings")]
+    //public bool LimitPlayersByGameMode = true;
 
     [Header("Managers")]
     public GameObject ToolkitSceneManagerPrefab = null;
@@ -28,10 +28,6 @@ public class GameManager : ToolkitBehaviour
     [Header("Toolkit Settings")]
     [Tooltip("define the ToolkitSettings")]
     public ToolkitSettings ToolkitSettings = new ToolkitSettings();
-
-    //[Header("Initial player")]
-    //[Tooltip("there will at least be one playercontroller initialized")]
-    //public bool SpawnPawn = false;
 
     private void Awake()
     {
@@ -212,7 +208,7 @@ public class GameManager : ToolkitBehaviour
     /// <param name="pairWithDevice">optional paramater, input device to assign</param>
     public new void CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, InputDevice pairWithDevice = null)
     {
-        if (LimitPlayersByGameMode == true)
+        if (ToolkitSettings.LimitPlayersByGameMode == true)
         {
             if (GameState.Players.Count < currentGameMode.MaxPlayers)
             {
@@ -274,7 +270,7 @@ public class GameManager : ToolkitBehaviour
     /// <param name="pairWithDevice">optional paramater, input devices to assign</param>
     public new void CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, params InputDevice[] pairWithDevices)
     {
-        if (LimitPlayersByGameMode == true)
+        if (ToolkitSettings.LimitPlayersByGameMode == true)
         {
             if (GameState.Players.Count < currentGameMode.MaxPlayers)
             {
