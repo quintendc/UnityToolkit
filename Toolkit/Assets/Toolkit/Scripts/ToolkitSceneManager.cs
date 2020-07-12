@@ -3,8 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ToolkitSceneLoader: ToolkitBehaviour
+public class ToolkitSceneManager : ToolkitBehaviour
 {
+    
+    public static ToolkitSceneManager  Instance = null;
+
+    private void Awake()
+    {
+        #region Singleton Pattern ToolkitSceneLoader instance
+
+        // check if instance already exists
+        if (Instance == null)
+        {
+            // if not, set instance to this
+            Debug.Log("ToolkitSceneLoader Instance created");
+            Instance = this;
+        }
+        // if instance already exists and it's not this:
+        else if (Instance != null)
+        {
+            // then destroy this. this enforces our singleton pattern, meaning there can only ever be one instance of the ToolkitSceneLoader
+            Debug.Log("ToolkitSceneLoader Instance already exists this.destroyed");
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(this);
+
+        #endregion
+    }
+
     #region LoadScene methods
 
     public void LoadScene(int sceneBuildIndex)

@@ -357,6 +357,12 @@ PrefabInstance:
       propertyPath: ToolkitSettings.ShowLoadingScreenWhenLoadingScene
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1578059006167325649, guid: f9854fa22a332bb46987366ce0617d7e,
+        type: 3}
+      propertyPath: ToolkitSceneManagerPrefab
+      value: 
+      objectReference: {fileID: 3785615948384731756, guid: 8421771b309052a41b33b60b13903736,
+        type: 3}
     - target: {fileID: 6555457972291682985, guid: f9854fa22a332bb46987366ce0617d7e,
         type: 3}
       propertyPath: m_Name

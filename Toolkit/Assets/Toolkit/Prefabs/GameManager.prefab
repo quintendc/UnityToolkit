@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LimitPlayersByGameMode: 1
-  ToolkitSceneLoader: {fileID: 4715073791713747591}
+  ToolkitSceneLoaderPrefab: {fileID: 3785615948384731756, guid: 8421771b309052a41b33b60b13903736,
+    type: 3}
   SaveGameManagerPrefab: {fileID: 1459316034744286350, guid: cc0588d2fe163584fae599dec2f90eef,
     type: 3}
   WidgetManagerPrefab: {fileID: 5100918874118508386, guid: af34f1e6967eb7649b1b53c2bbd964cf,
@@ -55,8 +56,6 @@ MonoBehaviour:
   ToolkitSettings:
     PauseGameEnabledWidgets: []
     ShowLoadingScreenWhenLoadingScene: 1
-    HideLoadingScreenOnSceneLoaded: 1
-  SpawnPawn: 0
 --- !u!114 &795045054016157328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,3 +111,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 574e0efbc657c21419ad40ec54cc07ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Instance: {fileID: 0}

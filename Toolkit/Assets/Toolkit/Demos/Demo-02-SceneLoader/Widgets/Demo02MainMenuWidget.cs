@@ -9,12 +9,12 @@ public class Demo02MainMenuWidget : AWidget
     {
         // scene 01 is a child of the PersistentScene when loading Additive, 
         // when loading Single you see the Loading screen until "new" Scene loading is completed and Persistent Scene will be unloaded
-        GetToolkitSceneLoader().LoadSceneAsync("Scene01", LoadSceneMode.Additive);
+        ToolkitSceneManager .Instance.LoadSceneAsync("Scene01", LoadSceneMode.Additive);
     }
 
     public void LoadScene02()
     {
         // load/switch to Scene 02
-        GetToolkitSceneLoader().LoadScene("Scene02");
+        ToolkitSceneManager .Instance.LoadScene("Scene02");
     }
 }
