@@ -41,6 +41,13 @@ public abstract class AWidget : ToolkitBehaviour
         Reflection();
     }
 
+    /// <summary>
+    /// return to the previous widget in the WidgetStack
+    /// </summary>
+    public void Back()
+    {
+
+    }
 
     protected virtual void Reflection()
     {
