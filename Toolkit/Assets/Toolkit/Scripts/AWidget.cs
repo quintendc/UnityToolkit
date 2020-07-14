@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading;
 using UnityEngine;
@@ -46,7 +47,26 @@ public abstract class AWidget : ToolkitBehaviour
     /// </summary>
     public void Back()
     {
-        
+        if (ToolkitData.WidgetStack.Count > 1)
+        {
+            // find lastindex of the WidgetStack => count -1
+            int lastIndex = ToolkitData.WidgetStack.Count - 1;
+
+            // get second last element => lastindex - 1
+            WidgetTypes previousWidgetType = ToolkitData.WidgetStack.ElementAt(lastIndex - 1);
+
+            // remove current widget from the stack current widget is always the last element=> element at lastindex
+            ToolkitData.WidgetStack.RemoveAt(lastIndex);
+
+            // instantiate previous widget without adding again to the stack
+            ShowWidget(previousWidgetType, false);
+
+        }
+        else
+        {
+            Debug.LogError("Can't go to the Previous Widget, you are already at the first element in the stack");
+        }
+
     }
 
     protected virtual void Reflection()
