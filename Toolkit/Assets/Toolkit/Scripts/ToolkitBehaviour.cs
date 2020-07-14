@@ -17,74 +17,34 @@ public class ToolkitBehaviour : MonoBehaviour
     {
         return GameManager.Instance.ToolkitSettings;
     }
-
-
-    /// <summary>
-    /// pause or unpause the game
-    /// 
-    /// default settings when paused are:
-    /// timeScale 0
-    /// GamePaused boolean in persistentData is true
-    /// default widget to show "Pause"
-    /// 
-    /// default settings when unpaused
-    /// time scale 1
-    /// GamePaused boolean in PersistentData is false
-    /// default widget to show "HUD"
-    /// 
-    /// </summary>
-    /// <param name="force">when true PauseGame will always be executed</param>
-    /// <param name="overrideDefaultWidgetType">override the default WidgetType (pause)</param>
-    /// <param name="unPause">When the method is called again the game will be unpaused again</param>
-    public void PauseGame(bool force = false, WidgetTypes? overrideDefaultWidgetType = null, bool unPauseWhenPaused = true)
+    
+    
+    public void PauseGame()
     {
-
-        if (GetToolkitSettings().PauseGameEnabledWidgets.Find(x => x.WidgetType == GetCurrentWidget().WidgetType) != null || force == true)
+        // first check if you can unpause from the current Widget
+        if (GetToolkitSettings().PauseGameEnabledWidgets.Find(x => x.WidgetType == GetCurrentWidget().WidgetType) != null)
         {
-
-            bool skip = false;
-
-            // when method is called again and game is already paused unpause the game
-            if (unPauseWhenPaused == true)
+            if (GameState.Paused == true)
             {
-                if (GameState.Paused == true)
-                {
-                    skip = true;
-                    HideCurrentWidget();
-                    GameState.Paused = false;
-                }
-            }
+                // set game to un paused
+                GameState.Paused = false;
 
-            if (GameState.Paused == false && skip == false)
-            {
-                Time.timeScale = 0;
+                // set time scale to 1
+                Time.timeScale = 1;
 
-                GameState.Paused = true;
-
-                // show pause widget (default setting)
-                if (overrideDefaultWidgetType == null)
-                {
-                    ShowWidget(WidgetTypes.Pause);
-                }
-                else
-                {
-                    ShowWidget((WidgetTypes)overrideDefaultWidgetType);
-                }
+                // return to previous widget -> call back method, this will remove the pause screen from the WidgetStack
+                GetCurrentWidget().Back();
             }
             else
             {
-                Time.timeScale = 1;
-                GameState.Paused = false;
+                // set game to paused
+                GameState.Paused = true;
 
-                // show HUD again (default setting)
-                if (overrideDefaultWidgetType == null)
-                {
-                    ShowWidget(WidgetTypes.HUD);
-                }
-                else
-                {
-                    ShowWidget((WidgetTypes)overrideDefaultWidgetType);
-                }
+                // set timescale to 0
+                Time.timeScale = 0;
+
+                // add pause screen to the stack
+                ShowWidget(WidgetTypes.Pause);
             }
         }
         else
