@@ -45,6 +45,15 @@ public class WidgetManager : MonoBehaviour
     /// <param name="newStack">Automatically a widget is added to the existing stack, when this is true the previous stack will be discarded and a new Stack will be build you probably want a new Stack on the MainMenu or HUD</param>
     public void ShowWidget(WidgetTypes widgetType, bool addToExistingStack = true, bool newStack = false)
     {
+
+        bool _addToExistingStack = addToExistingStack;
+
+        if (newStack == true)
+        {
+            // when creating a new WidgetStack it is required to add it to the Stack!
+            _addToExistingStack = true;
+        }
+
         // destroy current widget
         if (currentWidget != null)
         {
@@ -75,8 +84,8 @@ public class WidgetManager : MonoBehaviour
                 // instantiate widget
                 currentWidget = GameObject.Instantiate(Widgets.Find(w => w.GetComponent<AWidget>().WidgetType == widgetType));
 
-                // add instantiated widget to the WidgetStack
-                if (addToExistingStack == true)
+                // add instantiated widget to the WidgetStack, the widget will always be added if it is the first widget of the new stack
+                if (_addToExistingStack == true)
                 {
                     ToolkitData.WidgetStack.Add(currentWidget.GetComponent<AWidget>().WidgetType);
                 }

@@ -171,7 +171,7 @@ public class GameManager : ToolkitBehaviour
         // show widget
         if (sceneSettings.ShowWidgetOnSceneLoaded == true)
         {
-            ShowWidget(sceneSettings.WidgetType);
+            ShowWidget(sceneSettings.WidgetType, true, sceneSettings.NewWidgetStack);
         }
 
         // instantiate GameMode
