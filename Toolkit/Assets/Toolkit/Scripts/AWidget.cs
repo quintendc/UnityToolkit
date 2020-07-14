@@ -46,7 +46,7 @@ public abstract class AWidget : ToolkitBehaviour
     /// </summary>
     public void Back()
     {
-
+        
     }
 
     protected virtual void Reflection()

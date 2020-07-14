@@ -20,6 +20,12 @@ public class Demo01PauseWidget : AWidget
         base.Update();
     }
 
+
+    public void ShowSettings()
+    {
+        ShowWidget(WidgetTypes.Settings);
+    }
+
     public void UnPause()
     {
         PauseGame();

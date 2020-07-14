@@ -37,8 +37,12 @@ public class WidgetManager : MonoBehaviour
         #endregion
     }
 
-
-    public void ShowWidget(WidgetTypes widgetType)
+    /// <summary>
+    /// this will ask the WidgetManager to show Widget X
+    /// </summary>
+    /// <param name="widget">widget to show</param>
+    /// <param name="newStack">Automatically a widget is added to the existing stack, when this is true the previous stack will be discarded and a new Stack will be build you probably want a new Stack on the MainMenu or HUD</param>
+    public void ShowWidget(WidgetTypes widgetType, bool newStack = false)
     {
         // destroy current widget
         if (currentWidget != null)

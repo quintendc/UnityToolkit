@@ -18,10 +18,4 @@ public class Demo01SettingsWidget : AWidget
         base.Update();
     }
 
-
-    public void ShowMainMenu()
-    {
-        ShowWidget(WidgetTypes.MainMenu);
-    }
-
 }
