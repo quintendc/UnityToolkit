@@ -278,7 +278,7 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <param name="newStack">Automatically a widget is added to the existing stack, when this is true the previous stack will be discarded and a new Stack will be build you probably want a new Stack on the MainMenu or HUD</param>
     public void ShowWidget(WidgetTypes widget, bool newStack = false)
     {
-        WidgetManager.Instance.ShowWidget(widget);
+        WidgetManager.Instance.ShowWidget(widget, newStack);
     }
 
 
