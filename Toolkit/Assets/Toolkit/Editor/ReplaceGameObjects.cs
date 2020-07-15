@@ -7,7 +7,7 @@ public class ReplaceGameObjects : EditorWindow
 {
     [SerializeField] private GameObject prefab;
 
-    [MenuItem("Tools/Replace With Prefab")]
+    [MenuItem("Toolkit/Replace With Prefab")]
     static void CreateReplaceWithPrefab()
     {
         EditorWindow.GetWindow(typeof(ReplaceGameObjects));
