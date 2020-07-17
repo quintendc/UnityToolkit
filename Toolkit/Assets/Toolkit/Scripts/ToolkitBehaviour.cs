@@ -347,15 +347,14 @@ public class ToolkitBehaviour : MonoBehaviour
     {
         ToolkitCamera toolkitCamera = FindObjectOfType<ToolkitCamera>();
 
-        // always shake even when frozen
+        // always shake even when frozen, Not when Game is paused
         if (ForceShake == true)
         {
             toolkitCamera.ShakeToolkitCamera(overrideDefaultDuration, overrideDefaultMagnitude, overrideShakeX, overrideShakeY, overrideShakeZ);
         }
         else
         {
-            // only shake timescale is 1
-            if (Time.timeScale == 1)
+            if (IsGamePaused() == false)
             {
                 toolkitCamera.ShakeToolkitCamera(overrideDefaultDuration, overrideDefaultMagnitude, overrideShakeX, overrideShakeY, overrideShakeZ);
             }
