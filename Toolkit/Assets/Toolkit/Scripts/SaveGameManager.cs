@@ -11,6 +11,11 @@ public class SaveGameManager : ToolkitBehaviour
 {
 
     public static SaveGameManager Instance = null;
+    [Header("AutoSave Settings")]
+    public bool AutoSave = false;
+    [Tooltip("interval in seconds")]
+    public float AutoSaveInterval = 300f;
+
     private string SaveGameBaseDirectory;
     private SaveGame currentSaveGame = null;
 
@@ -41,6 +46,11 @@ public class SaveGameManager : ToolkitBehaviour
         // remove productName from the SaveGameBaseDirectory
         string tempPath = Application.persistentDataPath;
         SaveGameBaseDirectory = tempPath.Replace(Application.productName, "");
+
+        if (AutoSave == true)
+        {
+            StartCoroutine(AutoSaveCoroutine());
+        }
 
     }
 
@@ -99,6 +109,7 @@ public class SaveGameManager : ToolkitBehaviour
 
         try
         {
+            GameState.Saving = true;
             string defaultSaveGameName = "SaveGame" + GetAllSaveGames().Count;
 
             if (saveGameName != string.Empty)
@@ -117,11 +128,14 @@ public class SaveGameManager : ToolkitBehaviour
             formatter.Serialize(stream, saveGame);
             stream.Close();
 
+            GameState.Saving = false;
+
             return true;
         }
         catch (Exception)
         {
             Debug.LogError("SaveGame could not be saved!");
+            GameState.Saving = false;
             return false;
         }
     }
@@ -185,6 +199,34 @@ public class SaveGameManager : ToolkitBehaviour
     }
 
     #endregion
+
+    /// <summary>
+    /// this will set AutoSave to true and start the AutoSaveCoroutine
+    /// </summary>
+    public new void EnableAutoSave()
+    {
+        AutoSave = true;
+        StartCoroutine(AutoSaveCoroutine());
+    }
+
+    /// <summary>
+    /// this will set AutoSave to false and stops the AutoSaveCoroutine
+    /// </summary>
+    public new void DisableAutoSave()
+    {
+        AutoSave = false;
+        StopCoroutine(AutoSaveCoroutine());
+    }
+
+    private IEnumerator AutoSaveCoroutine()
+    {
+        while (AutoSave == true)
+        {
+            yield return new WaitForSecondsRealtime(AutoSaveInterval);
+            SaveGame("AutoSave");
+            Debug.Log("Saved automatically");
+        }
+    }
 
 
 }

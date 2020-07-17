@@ -78,7 +78,7 @@ public class WidgetManager : MonoBehaviour
                 {
                     // clear existing stack
                     ToolkitData.WidgetStack.Clear();
-                    Debug.Log("Widget stack is cleard");
+                    Debug.Log("Widget stack is cleared");
                 }
 
                 // instantiate widget

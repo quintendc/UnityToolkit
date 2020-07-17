@@ -295,6 +295,31 @@ public class ToolkitBehaviour : MonoBehaviour
         return SaveGameManager.Instance.LoadGameByIndex(index);
     }
 
+    /// <summary>
+    /// this will return the AutoSave boolean from the SaveGameManager
+    /// </summary>
+    /// <returns>auto Save boolean from SaveGameManager</returns>
+    public bool IsAutoSaveEnabled()
+    {
+        return SaveGameManager.Instance.AutoSave;
+    }
+
+    /// <summary>
+    /// this will enable and start auto saving
+    /// </summary>
+    public void EnableAutoSave()
+    {
+        SaveGameManager.Instance.EnableAutoSave();
+    }
+
+
+    /// <summary>
+    /// this will disable and stop autosaving
+    /// </summary>
+    public void DiableAutoSave()
+    {
+        SaveGameManager.Instance.DisableAutoSave();
+    }
 
     /// <summary>
     /// get a list of all saveGames found on the local Disk

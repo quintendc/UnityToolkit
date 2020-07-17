@@ -14,4 +14,5 @@ public static class GameState
     public static InputState InputState = InputState.Default;
     public static Scene LastLoadedAdditiveScene;
     public static float LoadingProgress;
+    public static bool Saving;
 }
