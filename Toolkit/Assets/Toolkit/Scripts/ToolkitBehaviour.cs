@@ -219,7 +219,7 @@ public class ToolkitBehaviour : MonoBehaviour
 
 
     /// <summary>
-    /// override the PersistentData in the GameManager -> call this methdo after loading a saveGame
+    /// override the PersistentData in the GameManager
     /// </summary>
     /// <param name="persistentData">new persistentData object</param>
     public void OverridePersistentData(PersistentData persistentData)
@@ -272,7 +272,6 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <returns>is saveGame saved successfully</returns>
     public bool SaveGame(string saveGameName = null)
     {
-        // pass saveGameName to SaveGameManager
         return SaveGameManager.Instance.SaveGame(saveGameName);
     }
 
@@ -280,7 +279,7 @@ public class ToolkitBehaviour : MonoBehaviour
     /// load game by name
     /// </summary>
     /// <param name="saveGameName">name of the saveGame you want to be loaded</param>
-    /// <returns>is loading teh saveGame successfull</returns>
+    /// <returns>is loading the saveGame successfull</returns>
     public bool LoadGameByName(string saveGameName)
     {
         return SaveGameManager.Instance.LoadGameByName(saveGameName);
