@@ -33,8 +33,7 @@ public class SceneSettingsManager : MonoBehaviour
 
     private void Awake()
     {
-        // validate SceneSettings
-
+        
     }
 
     // Start is called before the first frame update

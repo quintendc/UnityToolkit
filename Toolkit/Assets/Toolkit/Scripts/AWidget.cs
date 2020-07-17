@@ -45,7 +45,7 @@ public abstract class AWidget : ToolkitBehaviour
     /// <summary>
     /// return to the previous widget in the WidgetStack
     /// </summary>
-    public void Back()
+    public virtual void Back()
     {
         if (ToolkitData.WidgetStack.Count > 1)
         {
