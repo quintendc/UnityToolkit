@@ -316,7 +316,7 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <summary>
     /// this will disable and stop autosaving
     /// </summary>
-    public void DiableAutoSave()
+    public void DisableAutoSave()
     {
         SaveGameManager.Instance.DisableAutoSave();
     }
