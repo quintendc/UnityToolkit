@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ToolkitSceneManager : ToolkitBehaviour
 {
-    
-    public static ToolkitSceneManager  Instance = null;
+
+    public static ToolkitSceneManager Instance = null;
 
     private void Awake()
     {
@@ -73,8 +73,8 @@ public class ToolkitSceneManager : ToolkitBehaviour
     /// </summary>
     /// <param name="sceneBuildIndex">index of scene</param>
     /// <param name="makeSceneActive">when true the new loaded scene will be set to active</param>
-    /// <param name="ignoreLoadingScreen">when true this will ignore the loading screen for when loading this scene</param>
-    public void LoadSceneAsync(int sceneBuildIndex, bool makeSceneActive = true, bool ignoreLoadingScreen = false)
+    /// <param name="ignoreLoadingScreen">when true this will ignore the loading screen, when loading this scene</param>
+    public void LoadSceneAsync(int sceneBuildIndex, bool ignoreLoadingScreen, bool makeSceneActive = true)
     {
         StartCoroutine(LoadYourAsyncScene(sceneBuildIndex, makeSceneActive, ignoreLoadingScreen));
     }
@@ -84,8 +84,8 @@ public class ToolkitSceneManager : ToolkitBehaviour
     /// </summary>
     /// <param name="sceneName">name of scene</param>
     /// <param name="makeSceneActive">when true the new loaded scene will be set to active</param>
-    /// <param name="ignoreLoadingScreen">when true this will ignore the loading screen for when loading this scene</param>
-    public void LoadSceneAsync(string sceneName, bool makeSceneActive = true, bool ignoreLoadingScreen = false)
+    /// <param name="ignoreLoadingScreen">when true this will ignore the loading screen, when loading this scene</param>
+    public void LoadSceneAsync(string sceneName, bool ignoreLoadingScreen, bool makeSceneActive = true)
     {
         StartCoroutine(LoadYourAsyncScene(sceneName, makeSceneActive, ignoreLoadingScreen));
     }
@@ -96,8 +96,8 @@ public class ToolkitSceneManager : ToolkitBehaviour
     /// <param name="sceneBuildIndex">index of scene</param>
     /// <param name="mode">mode to load the scene, additive will add to current single will switch to new scene when completed</param>
     /// <param name="makeSceneActive">when true the new loaded scene will be set to active</param>
-    /// <param name="ignoreLoadingScreen">when true this will ignore the loading screen for when loading this scene</param>
-    public void LoadSceneAsync(int sceneBuildIndex, LoadSceneMode mode, bool makeSceneActive = true, bool ignoreLoadingScreen = false)
+    /// <param name="ignoreLoadingScreen">when true this will ignore the loading screen, when loading this scene</param>
+    public void LoadSceneAsync(int sceneBuildIndex, bool ignoreLoadingScreen, LoadSceneMode mode, bool makeSceneActive = true)
     {
         StartCoroutine(LoadYourAsyncScene(sceneBuildIndex, mode, makeSceneActive, ignoreLoadingScreen));
     }
@@ -108,8 +108,8 @@ public class ToolkitSceneManager : ToolkitBehaviour
     /// <param name="sceneBuildIndex">index of scene</param>
     /// <param name="parameters">struct of LoadScene parameters</param>
     /// <param name="makeSceneActive">when true the new loaded scene will be set to active</param>
-    /// <param name="ignoreLoadingScreen">when true this will ignore the loading screen for when loading this scene</param>
-    public void LoadSceneAsync(int sceneBuildIndex, LoadSceneParameters parameters, bool makeSceneActive = true, bool ignoreLoadingScreen = false)
+    /// <param name="ignoreLoadingScreen">when true this will ignore the loading screen, when loading this scene</param>
+    public void LoadSceneAsync(int sceneBuildIndex, bool ignoreLoadingScreen, LoadSceneParameters parameters, bool makeSceneActive = true)
     {
         StartCoroutine(LoadYourAsyncScene(sceneBuildIndex, parameters, makeSceneActive, ignoreLoadingScreen));
     }
@@ -120,8 +120,8 @@ public class ToolkitSceneManager : ToolkitBehaviour
     /// <param name="sceneName">name of scene</param>
     /// <param name="mode">mode to load the scene, additive will add to current single will switch to new scene when completed</param>
     /// <param name="makeSceneActive">when true the new loaded scene will be set to active</param>
-    /// <param name="ignoreLoadingScreen">when true this will ignore the loading screen for when loading this scene</param>
-    public void LoadSceneAsync(string sceneName, LoadSceneMode mode, bool makeSceneActive = true, bool ignoreLoadingScreen = false)
+    /// <param name="ignoreLoadingScreen">when true this will ignore the loading screen, when loading this scene</param>
+    public void LoadSceneAsync(string sceneName, bool ignoreLoadingScreen, LoadSceneMode mode, bool makeSceneActive = true)
     {
         StartCoroutine(LoadYourAsyncScene(sceneName, mode, makeSceneActive, ignoreLoadingScreen));
     }
@@ -132,8 +132,8 @@ public class ToolkitSceneManager : ToolkitBehaviour
     /// <param name="sceneName">name of scene</param>
     /// <param name="parameters">struct of LoadScene parameters</param>
     /// <param name="makeSceneActive">when true the new loaded scene will be set to active</param>
-    /// <param name="ignoreLoadingScreen">when true this will ignore the loading screen for when loading this scene</param>
-    public void LoadSceneAsync(string sceneName, LoadSceneParameters parameters, bool makeSceneActive = true, bool ignoreLoadingScreen = false)
+    /// <param name="ignoreLoadingScreen">when true this will ignore the loading screen, when loading this scene</param>
+    public void LoadSceneAsync(string sceneName, bool ignoreLoadingScreen, LoadSceneParameters parameters, bool makeSceneActive = true)
     {
         StartCoroutine(LoadYourAsyncScene(sceneName, parameters, makeSceneActive, ignoreLoadingScreen));
     }
@@ -334,9 +334,9 @@ public class ToolkitSceneManager : ToolkitBehaviour
 
     #region Loading screen
 
-    private void ShowLoadingScreen(bool ignoreLoadingScreen = false)
+    private void ShowLoadingScreen(bool ignoreLoadingScreen)
     {
-        if (ignoreLoadingScreen == false)
+        if (ignoreLoadingScreen != true)
         {
             if (GameManager.Instance.ToolkitSettings.ShowLoadingScreenWhenLoadingScene == true)
             {
