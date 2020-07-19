@@ -22,7 +22,7 @@ public class SceneSettingsManager : MonoBehaviour
 
     [Header("Input Settings")]
     [Tooltip("set the InputState when this scene is loaded")]
-    public InputState InputState;
+    public InputStates InputState;
 
 
     [Header("GameMode settings")]

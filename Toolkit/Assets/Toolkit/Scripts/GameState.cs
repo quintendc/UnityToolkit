@@ -11,7 +11,7 @@ public static class GameState
 
     public static bool Paused = false;
     public static List<PlayerInput> Players = new List<PlayerInput>();
-    public static InputState InputState = InputState.Default;
+    public static InputStates InputState = InputStates.Default;
     public static Scene LastLoadedAdditiveScene;
     public static float LoadingProgress;
     public static bool Saving;

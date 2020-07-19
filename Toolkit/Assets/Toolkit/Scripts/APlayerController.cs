@@ -13,7 +13,7 @@ public abstract class APlayerController : ToolkitBehaviour
 
     [HideInInspector]
     //public Player PlayerRef = null;
-    public InputState InputState;
+    public InputStates InputState;
 
 
     protected virtual void Awake()
