@@ -2,20 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pause : AWidget
+public class SampleMainMenuWidget : AWidget
 {
     protected override void Awake()
     {
         base.Awake();
     }
 
-    public void GoToMainMenu()
+    public void ShowSettings()
     {
-
-    }
-
-    public void Continue()
-    {
-
+        WidgetManager.Instance.ShowWidget(WidgetTypes.Settings);
     }
 }

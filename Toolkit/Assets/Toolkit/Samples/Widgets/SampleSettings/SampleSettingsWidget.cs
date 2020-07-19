@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Settings : AWidget
+public class SampleSettingsWidget : AWidget
 {
 
     public string saveGameName = "";
@@ -14,10 +14,6 @@ public class Settings : AWidget
         base.Awake();
     }
 
-    public void ShowMainMenu()
-    {
-        WidgetManager.Instance.ShowWidget(WidgetTypes.MainMenu);
-    }
 
     public void SaveGameBtn()
     {

@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 3359046302517926618}
   - component: {fileID: 4637855136818034557}
   m_Layer: 0
-  m_Name: HUD
+  m_Name: SampleHUD
   m_TagString: Widget
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,11 +141,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3940828361899843217}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7aff75f0363b1a4b8ff112ce82b021e, type: 3}
+  m_Script: {fileID: 11500000, guid: f378147c58e4f3045ae8c309037c6e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   WidgetType: 5
   EventSystem: {fileID: 0}
+  Bindings: []
 --- !u!1 &5636954315340119999
 GameObject:
   m_ObjectHideFlags: 0
