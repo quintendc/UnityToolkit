@@ -73,9 +73,10 @@ public class ToolkitSceneManager : ToolkitBehaviour
     /// </summary>
     /// <param name="sceneBuildIndex">index of scene</param>
     /// <param name="makeSceneActive">when true the new loaded scene will be set to active</param>
-    public void LoadSceneAsync(int sceneBuildIndex, bool makeSceneActive = true)
+    /// <param name="ignoreLoadingScreen">when true this will ignore the loading screen for when loading this scene</param>
+    public void LoadSceneAsync(int sceneBuildIndex, bool makeSceneActive = true, bool ignoreLoadingScreen = false)
     {
-        StartCoroutine(LoadYourAsyncScene(sceneBuildIndex, makeSceneActive));
+        StartCoroutine(LoadYourAsyncScene(sceneBuildIndex, makeSceneActive, ignoreLoadingScreen));
     }
 
     /// <summary>
@@ -83,9 +84,10 @@ public class ToolkitSceneManager : ToolkitBehaviour
     /// </summary>
     /// <param name="sceneName">name of scene</param>
     /// <param name="makeSceneActive">when true the new loaded scene will be set to active</param>
-    public void LoadSceneAsync(string sceneName, bool makeSceneActive = true)
+    /// <param name="ignoreLoadingScreen">when true this will ignore the loading screen for when loading this scene</param>
+    public void LoadSceneAsync(string sceneName, bool makeSceneActive = true, bool ignoreLoadingScreen = false)
     {
-        StartCoroutine(LoadYourAsyncScene(sceneName, makeSceneActive));
+        StartCoroutine(LoadYourAsyncScene(sceneName, makeSceneActive, ignoreLoadingScreen));
     }
 
     /// <summary>
@@ -94,9 +96,10 @@ public class ToolkitSceneManager : ToolkitBehaviour
     /// <param name="sceneBuildIndex">index of scene</param>
     /// <param name="mode">mode to load the scene, additive will add to current single will switch to new scene when completed</param>
     /// <param name="makeSceneActive">when true the new loaded scene will be set to active</param>
-    public void LoadSceneAsync(int sceneBuildIndex, LoadSceneMode mode, bool makeSceneActive = true)
+    /// <param name="ignoreLoadingScreen">when true this will ignore the loading screen for when loading this scene</param>
+    public void LoadSceneAsync(int sceneBuildIndex, LoadSceneMode mode, bool makeSceneActive = true, bool ignoreLoadingScreen = false)
     {
-        StartCoroutine(LoadYourAsyncScene(sceneBuildIndex, mode, makeSceneActive));
+        StartCoroutine(LoadYourAsyncScene(sceneBuildIndex, mode, makeSceneActive, ignoreLoadingScreen));
     }
 
     /// <summary>
@@ -105,9 +108,10 @@ public class ToolkitSceneManager : ToolkitBehaviour
     /// <param name="sceneBuildIndex">index of scene</param>
     /// <param name="parameters">struct of LoadScene parameters</param>
     /// <param name="makeSceneActive">when true the new loaded scene will be set to active</param>
-    public void LoadSceneAsync(int sceneBuildIndex, LoadSceneParameters parameters, bool makeSceneActive = true)
+    /// <param name="ignoreLoadingScreen">when true this will ignore the loading screen for when loading this scene</param>
+    public void LoadSceneAsync(int sceneBuildIndex, LoadSceneParameters parameters, bool makeSceneActive = true, bool ignoreLoadingScreen = false)
     {
-        StartCoroutine(LoadYourAsyncScene(sceneBuildIndex, parameters, makeSceneActive));
+        StartCoroutine(LoadYourAsyncScene(sceneBuildIndex, parameters, makeSceneActive, ignoreLoadingScreen));
     }
 
     /// <summary>
@@ -116,9 +120,10 @@ public class ToolkitSceneManager : ToolkitBehaviour
     /// <param name="sceneName">name of scene</param>
     /// <param name="mode">mode to load the scene, additive will add to current single will switch to new scene when completed</param>
     /// <param name="makeSceneActive">when true the new loaded scene will be set to active</param>
-    public void LoadSceneAsync(string sceneName, LoadSceneMode mode, bool makeSceneActive = true)
+    /// <param name="ignoreLoadingScreen">when true this will ignore the loading screen for when loading this scene</param>
+    public void LoadSceneAsync(string sceneName, LoadSceneMode mode, bool makeSceneActive = true, bool ignoreLoadingScreen = false)
     {
-        StartCoroutine(LoadYourAsyncScene(sceneName, mode, makeSceneActive));
+        StartCoroutine(LoadYourAsyncScene(sceneName, mode, makeSceneActive, ignoreLoadingScreen));
     }
 
     /// <summary>
@@ -127,23 +132,24 @@ public class ToolkitSceneManager : ToolkitBehaviour
     /// <param name="sceneName">name of scene</param>
     /// <param name="parameters">struct of LoadScene parameters</param>
     /// <param name="makeSceneActive">when true the new loaded scene will be set to active</param>
-    public void LoadSceneAsync(string sceneName, LoadSceneParameters parameters, bool makeSceneActive = true)
+    /// <param name="ignoreLoadingScreen">when true this will ignore the loading screen for when loading this scene</param>
+    public void LoadSceneAsync(string sceneName, LoadSceneParameters parameters, bool makeSceneActive = true, bool ignoreLoadingScreen = false)
     {
-        StartCoroutine(LoadYourAsyncScene(sceneName, parameters, makeSceneActive));
+        StartCoroutine(LoadYourAsyncScene(sceneName, parameters, makeSceneActive, ignoreLoadingScreen));
     }
 
     #endregion
 
     #region LoadSceneAsync IEnumerators
 
-    private IEnumerator LoadYourAsyncScene(string sceneName, bool makeSceneActive)
+    private IEnumerator LoadYourAsyncScene(string sceneName, bool makeSceneActive, bool ignoreLoadingScreen)
     {
         // The Application loads the Scene in the background as the current Scene runs.
         // This is particularly good for creating loading screens.
         // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
         // a sceneBuildIndex of 1 as shown in Build Settings.
 
-        ShowLoadingScreen();
+        ShowLoadingScreen(ignoreLoadingScreen);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
 
         // Wait until the asynchronous scene fully loads
@@ -164,14 +170,14 @@ public class ToolkitSceneManager : ToolkitBehaviour
     }
 
 
-    private IEnumerator LoadYourAsyncScene(int sceneBuildIndex, bool makeSceneActive)
+    private IEnumerator LoadYourAsyncScene(int sceneBuildIndex, bool makeSceneActive, bool ignoreLoadingScreen)
     {
         // The Application loads the Scene in the background as the current Scene runs.
         // This is particularly good for creating loading screens.
         // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
         // a sceneBuildIndex of 1 as shown in Build Settings.
 
-        ShowLoadingScreen();
+        ShowLoadingScreen(ignoreLoadingScreen);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneBuildIndex);
 
         // Wait until the asynchronous scene fully loads
@@ -192,14 +198,14 @@ public class ToolkitSceneManager : ToolkitBehaviour
     }
 
 
-    private IEnumerator LoadYourAsyncScene(int sceneBuildIndex, LoadSceneMode mode, bool makeSceneActive)
+    private IEnumerator LoadYourAsyncScene(int sceneBuildIndex, LoadSceneMode mode, bool makeSceneActive, bool ignoreLoadingScreen)
     {
         // The Application loads the Scene in the background as the current Scene runs.
         // This is particularly good for creating loading screens.
         // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
         // a sceneBuildIndex of 1 as shown in Build Settings.
 
-        ShowLoadingScreen();
+        ShowLoadingScreen(ignoreLoadingScreen);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneBuildIndex, mode);
 
         // Wait until the asynchronous scene fully loads
@@ -225,13 +231,14 @@ public class ToolkitSceneManager : ToolkitBehaviour
     }
 
 
-    private IEnumerator LoadYourAsyncScene(int sceneBuildIndex, LoadSceneParameters parameters, bool makeSceneActive)
+    private IEnumerator LoadYourAsyncScene(int sceneBuildIndex, LoadSceneParameters parameters, bool makeSceneActive, bool ignoreLoadingScreen)
     {
         // The Application loads the Scene in the background as the current Scene runs.
         // This is particularly good for creating loading screens.
         // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
         // a sceneBuildIndex of 1 as shown in Build Settings.
 
+        ShowLoadingScreen(ignoreLoadingScreen);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneBuildIndex, parameters);
 
         // Wait until the asynchronous scene fully loads
@@ -257,14 +264,14 @@ public class ToolkitSceneManager : ToolkitBehaviour
     }
 
 
-    private IEnumerator LoadYourAsyncScene(string sceneName, LoadSceneMode mode, bool makeSceneActive)
+    private IEnumerator LoadYourAsyncScene(string sceneName, LoadSceneMode mode, bool makeSceneActive, bool ignoreLoadingScreen)
     {
         // The Application loads the Scene in the background as the current Scene runs.
         // This is particularly good for creating loading screens.
         // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
         // a sceneBuildIndex of 1 as shown in Build Settings.
 
-        ShowLoadingScreen();
+        ShowLoadingScreen(ignoreLoadingScreen);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, mode);
 
         // Wait until the asynchronous scene fully loads
@@ -291,14 +298,14 @@ public class ToolkitSceneManager : ToolkitBehaviour
     }
 
 
-    private IEnumerator LoadYourAsyncScene(string sceneName, LoadSceneParameters parameters, bool makeSceneActive)
+    private IEnumerator LoadYourAsyncScene(string sceneName, LoadSceneParameters parameters, bool makeSceneActive, bool ignoreLoadingScreen)
     {
         // The Application loads the Scene in the background as the current Scene runs.
         // This is particularly good for creating loading screens.
         // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
         // a sceneBuildIndex of 1 as shown in Build Settings.
 
-        ShowLoadingScreen();
+        ShowLoadingScreen(ignoreLoadingScreen);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName, parameters);
 
         // Wait until the asynchronous scene fully loads
@@ -327,11 +334,14 @@ public class ToolkitSceneManager : ToolkitBehaviour
 
     #region Loading screen
 
-    private void ShowLoadingScreen()
+    private void ShowLoadingScreen(bool ignoreLoadingScreen = false)
     {
-        if (GameManager.Instance.ToolkitSettings.ShowLoadingScreenWhenLoadingScene == true)
+        if (ignoreLoadingScreen == false)
         {
-            ShowWidget(WidgetTypes.Loading);
+            if (GameManager.Instance.ToolkitSettings.ShowLoadingScreenWhenLoadingScene == true)
+            {
+                ShowWidget(WidgetTypes.Loading);
+            }
         }
     }
 
