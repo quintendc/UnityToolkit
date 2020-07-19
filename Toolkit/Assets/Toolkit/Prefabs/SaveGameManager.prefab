@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AutoSave: 1
-  AutoSaveInterval: 10
+  AutoSaveInterval: 300

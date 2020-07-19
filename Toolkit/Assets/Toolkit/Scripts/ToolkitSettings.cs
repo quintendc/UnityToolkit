@@ -14,7 +14,7 @@ public class ToolkitSettings
     public bool LimitPlayersByGameMode = true;
 
     [Header("Pause screen settings")]
-    [Tooltip("Ässign Widgets to this list where you can call the PauseGame method, always include your PauseScreen")]
+    [Tooltip("Assign Widgets to this list where you can call the PauseGame method, always include your PauseScreen")]
     public List<AWidget> PauseGameEnabledWidgets = new List<AWidget>();
 
     [Header("Loading screen settings")]
