@@ -145,8 +145,14 @@ public class GameManager : ToolkitBehaviour
 
         // get sceneSettingsObject from the Scene
         SceneSettingsManager sceneSettings = null;
-        List<SceneSettingsManager> SceneSettingsManagers = GameObject.FindObjectsOfType<SceneSettingsManager>().ToList();
-        sceneSettings = SceneSettingsManagers.Find(m => m.PersistentSceneSceneSettingsManager == false);
+        List<SceneSettingsManager> sceneSettingsManagers = GameObject.FindObjectsOfType<SceneSettingsManager>().ToList();
+        sceneSettings = sceneSettingsManagers.Find(m => m.PersistentSceneSceneSettingsManager == false);
+
+        // if there is only one SceneSettingsManager pick that one
+        if (sceneSettingsManagers.Count == 1)
+        {
+            sceneSettings = sceneSettingsManagers.ElementAt(0);
+        }
 
         if (sceneSettings != null)
         {
