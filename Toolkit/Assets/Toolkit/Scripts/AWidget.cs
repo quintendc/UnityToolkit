@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public abstract class AWidget : ToolkitBehaviour
 {
     public WidgetTypes WidgetType;
-    public EventSystem EventSystem;
+    public Selectable Selectable = null;
 
     [Tooltip("List of bindings")]
     public List<WidgetTextBinder> Bindings = new List<WidgetTextBinder>();
@@ -22,18 +22,13 @@ public abstract class AWidget : ToolkitBehaviour
 
     protected virtual void Start()
     {
-        if (EventSystem != null)
+        if (Selectable != null)
         {
-
-            if (EventSystem.firstSelectedGameObject == null)
-            {
-                Debug.LogWarning("No initial selected element provided ot the EventSystem, Some functions may not work.");
-            }
-        
+            Selectable.Select();
         }
         else
         {
-            Debug.LogWarning("No EventSystem provided");
+            Debug.LogWarning("No Selectable provided");
         }
     }
 
