@@ -16,8 +16,6 @@ public class GameManager : ToolkitBehaviour
     public static GameManager Instance = null;
     public PersistentData PersistentData = null;
     private AGameMode currentGameMode = null;
-    //[Tooltip("Amount of players that can join is limited by current GameMode Settings")]
-    //public bool LimitPlayersByGameMode = true;
 
     [Header("Managers")]
     public GameObject ToolkitSceneManagerPrefab = null;
@@ -166,7 +164,7 @@ public class GameManager : ToolkitBehaviour
 
 
     /// <summary>
-    /// handle scenesettings provided by the SceneSettingsProvider
+    /// handle scene settings provided by the SceneSettingsProvider
     /// </summary>
     /// <param name="sceneSettingsObject">scene settings object</param>
     private void SceneSettingsHandler(SceneSettingsManager sceneSettings)
@@ -190,9 +188,9 @@ public class GameManager : ToolkitBehaviour
             Debug.LogWarning("Can't instantiate GameMode, No GameMode assigned to SceneSettingsManager!");
         }
 
-        // place pawns to spawnpoints
+        // place pawns to spawn points
 
-        // start roundtimer
+        // start round timer
         if (sceneSettings.StartRoundWhenSceneIsLoaded == true)
         {
             currentGameMode.StartRound();
@@ -208,10 +206,10 @@ public class GameManager : ToolkitBehaviour
     /// this will create a player instance by calling JoinPlayer for the PlayerInputManager
     /// </summary>
     /// <param name="newPlayerPrefab">optional parameter, create a player with a specific prefab, Note! it will only instantiate one player with this prefab if you want to set a new PlayerPrefab for all upcoming players to join use the method "ReplacePlayerPrefab"</param>
-    /// <param name="playerIndex">optional paramater</param>
+    /// <param name="playerIndex">optional parameter</param>
     /// <param name="splitScreenIndex">optional parameter</param>
-    /// <param name="controlScheme">optional paramater</param>
-    /// <param name="pairWithDevice">optional paramater, input device to assign</param>
+    /// <param name="controlScheme">optional parameter</param>
+    /// <param name="pairWithDevice">optional parameter, input device to assign</param>
     public new void CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, InputDevice pairWithDevice = null)
     {
         if (ToolkitSettings.LimitPlayersByGameMode == true)
@@ -236,10 +234,10 @@ public class GameManager : ToolkitBehaviour
     /// handles the player creation, called by CreatePlayer
     /// </summary>
     /// <param name="newPlayerPrefab">optional parameter, create a player with a specific prefab, Note! it will only instantiate one player with this prefab if you want to set a new PlayerPrefab for all upcoming players to join use the method "ReplacePlayerPrefab"</param>
-    /// <param name="playerIndex">optional paramater</param>
-    /// <param name="splitScreenIndex">optional paramater</param>
-    /// <param name="controlScheme">optional paramater</param>
-    /// <param name="pairWithDevice">optional paramater, input device to assign</param>
+    /// <param name="playerIndex">optional parameter</param>
+    /// <param name="splitScreenIndex">optional parameter</param>
+    /// <param name="controlScheme">optional parameter</param>
+    /// <param name="pairWithDevice">optional parameter, input device to assign</param>
     private void CreatePlayerHandler(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, InputDevice pairWithDevice = null)
     {
         PlayerInput player;
@@ -247,7 +245,7 @@ public class GameManager : ToolkitBehaviour
         // create player with a specific PlayerPrefab
         if (newPlayerPrefab != null)
         {
-            // store old playerprefab
+            // store old player prefab
             GameObject oldPlayerPrefab = PlayerInputManager.playerPrefab;
 
             // override player prefab with a new one (temporary)
@@ -270,10 +268,10 @@ public class GameManager : ToolkitBehaviour
     /// this will create a player instance by calling JoinPlayer for the PlayerInputManager
     /// </summary>
     /// <param name="newPlayerPrefab">optional parameter, create a player with a specific prefab, Note! it will only instantiate one player with this prefab if you want to set a new PlayerPrefab for all upcoming players to join use the method "ReplacePlayerPrefab"</param>
-    /// <param name="playerIndex">optional paramater</param>
+    /// <param name="playerIndex">optional parameter</param>
     /// <param name="splitScreenIndex">optional parameter</param>
-    /// <param name="controlScheme">optional paramater</param>
-    /// <param name="pairWithDevice">optional paramater, input devices to assign</param>
+    /// <param name="controlScheme">optional parameter</param>
+    /// <param name="pairWithDevice">optional parameter, input devices to assign</param>
     public new void CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, params InputDevice[] pairWithDevices)
     {
         if (ToolkitSettings.LimitPlayersByGameMode == true)
@@ -297,10 +295,10 @@ public class GameManager : ToolkitBehaviour
     /// handles the player creation, called by CreatePlayer
     /// </summary>
     /// <param name="newPlayerPrefab">optional parameter, create a player with a specific prefab, Note! it will only instantiate one player with this prefab if you want to set a new PlayerPrefab for all upcoming players to join use the method "ReplacePlayerPrefab"</param>
-    /// <param name="playerIndex">optional paramater</param>
-    /// <param name="splitScreenIndex">optional paramater</param>
-    /// <param name="controlScheme">optional paramater</param>
-    /// <param name="pairWithDevices">optional paramater, input devices to assign</param>
+    /// <param name="playerIndex">optional parameter</param>
+    /// <param name="splitScreenIndex">optional parameter</param>
+    /// <param name="controlScheme">optional parameter</param>
+    /// <param name="pairWithDevices">optional parameter, input devices to assign</param>
     private void CreatePlayerHandler(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, InputDevice[] pairWithDevices = null)
     {
         PlayerInput player;
@@ -308,7 +306,7 @@ public class GameManager : ToolkitBehaviour
         // create player with a specific PlayerPrefab
         if (newPlayerPrefab != null)
         {
-            // store old playerprefab
+            // store old player prefab
             GameObject oldPlayerPrefab = PlayerInputManager.playerPrefab;
 
             // override player prefab with a new one (temporary)

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PersistentData
 {
     // extend this class to your needs
-    #region Varbiables
+    #region Variables
 
     public float Example;
 

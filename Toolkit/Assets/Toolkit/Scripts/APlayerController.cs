@@ -12,7 +12,6 @@ public abstract class APlayerController : ToolkitBehaviour
     public Rigidbody Rigidbody = null;
 
     [HideInInspector]
-    //public Player PlayerRef = null;
     public InputStates InputState;
 
 

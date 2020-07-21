@@ -26,7 +26,7 @@ public class ToolkitBehaviour : MonoBehaviour
         {
             if (GameState.Paused == true)
             {
-                // set game to un paused
+                // set game to unpaused
                 GameState.Paused = false;
 
                 // set time scale to 1
@@ -78,10 +78,10 @@ public class ToolkitBehaviour : MonoBehaviour
     /// this will create a player instance by calling JoinPlayer for the PlayerInputManager
     /// </summary>
     /// <param name="newPlayerPrefab">optional parameter, create a player with a specific prefab, Note! it will only instantiate one player with this prefab if you want to set a new PlayerPrefab for all upcoming players to join use the method "ReplacePlayerPrefab"</param>
-    /// <param name="playerIndex">optional paramater</param>
+    /// <param name="playerIndex">optional parameter</param>
     /// <param name="splitScreenIndex">optional parameter</param>
-    /// <param name="controlScheme">optional paramater</param>
-    /// <param name="pairWithDevice">optional paramater, input device to assign</param>
+    /// <param name="controlScheme">optional parameter</param>
+    /// <param name="pairWithDevice">optional parameter, input device to assign</param>
     public void CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, InputDevice pairWithDevice = null)
     {
         GameManager.Instance.CreatePlayer(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme, pairWithDevice);
@@ -92,10 +92,10 @@ public class ToolkitBehaviour : MonoBehaviour
     /// this will create a player instance by calling JoinPlayer for the PlayerInputManager
     /// </summary>
     /// <param name="newPlayerPrefab">optional parameter, create a player with a specific prefab, Note! it will only instantiate one player with this prefab if you want to set a new PlayerPrefab for all upcoming players to join use the method "ReplacePlayerPrefab"</param>
-    /// <param name="playerIndex">optional paramater</param>
+    /// <param name="playerIndex">optional parameter</param>
     /// <param name="splitScreenIndex">optional parameter</param>
-    /// <param name="controlScheme">optional paramater</param>
-    /// <param name="pairWithDevice">optional paramater, input devices to assign</param>
+    /// <param name="controlScheme">optional parameter</param>
+    /// <param name="pairWithDevice">optional parameter, input devices to assign</param>
     public void CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, params InputDevice[] pairWithDevices)
     {
         GameManager.Instance.CreatePlayer(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme, pairWithDevices);
@@ -133,9 +133,9 @@ public class ToolkitBehaviour : MonoBehaviour
     }
 
     /// <summary>
-    /// get all spawnpoints for the scene
+    /// get all spawn points for the scene
     /// </summary>
-    /// <returns>list of spawnpoints</returns>
+    /// <returns>list of spawn points</returns>
     public List<Spawnpoint> GetSpawnpoints()
     {
         return FindObjectsOfType<Spawnpoint>().ToList();
@@ -235,7 +235,7 @@ public class ToolkitBehaviour : MonoBehaviour
     /// this will ask the WidgetManager to show Widget X
     /// </summary>
     /// <param name="widget">widget to show</param>
-    /// <param name="addToExistingStack">automatically the new widget will be added to the stack, normally you should not change this paramater</param>
+    /// <param name="addToExistingStack">automatically the new widget will be added to the stack, normally you should not change this parameter</param>
     /// <param name="newStack">Automatically a widget is added to the existing stack, when this is true the previous stack will be discarded and a new Stack will be build you probably want a new Stack on the MainMenu or HUD</param>
     public void ShowWidget(WidgetTypes widget, bool addToExistingStack = true, bool newStack = false)
     {
@@ -254,7 +254,7 @@ public class ToolkitBehaviour : MonoBehaviour
 
 
     /// <summary>
-    /// hide the current diplayed widget
+    /// hide the current displayed widget
     /// </summary>
     public void HideCurrentWidget()
     {
@@ -279,7 +279,7 @@ public class ToolkitBehaviour : MonoBehaviour
     /// load game by name
     /// </summary>
     /// <param name="saveGameName">name of the saveGame you want to be loaded</param>
-    /// <returns>is loading the saveGame successfull</returns>
+    /// <returns>is loading the saveGame successful</returns>
     public bool LoadGameByName(string saveGameName)
     {
         return SaveGameManager.Instance.LoadGameByName(saveGameName);
@@ -289,7 +289,7 @@ public class ToolkitBehaviour : MonoBehaviour
     /// load game by index
     /// </summary>
     /// <param name="index">index of saveGame</param>
-    /// <returns>is loading the saveGame successfull</returns>
+    /// <returns>is loading the saveGame successful</returns>
     public bool LoadGameByIndex(int index)
     {
         return SaveGameManager.Instance.LoadGameByIndex(index);
@@ -314,7 +314,7 @@ public class ToolkitBehaviour : MonoBehaviour
 
 
     /// <summary>
-    /// this will disable and stop autosaving
+    /// this will disable and stop auto saving
     /// </summary>
     public void DisableAutoSave()
     {
@@ -340,9 +340,9 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <param name="ForceShake">when true the shake FX will be applied even when there is another FX active like MotionFX</param>
     /// <param name="overrideDefaultDuration">duration of the shake in seconds</param>
     /// <param name="overrideDefaultMagnitude">the magnitude of the shake</param>
-    /// <param name="overrideShakeX">override default camers X Axis setting</param>
-    /// <param name="overrideShakeY">override default camers Y Axis setting</param>
-    /// <param name="overrideShakeZ">override default camers Z Axis setting</param>
+    /// <param name="overrideShakeX">override default camera X Axis setting</param>
+    /// <param name="overrideShakeY">override default camera Y Axis setting</param>
+    /// <param name="overrideShakeZ">override default camera Z Axis setting</param>
     public void ToolkitCameraShake(bool ForceShake = false, float? overrideDefaultDuration = null, float? overrideDefaultMagnitude = null, bool overrideShakeX = true, bool overrideShakeY = true, bool overrideShakeZ = false)
     {
         ToolkitCamera toolkitCamera = FindObjectOfType<ToolkitCamera>();

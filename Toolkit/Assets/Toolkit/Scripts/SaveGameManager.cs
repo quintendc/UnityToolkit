@@ -141,7 +141,7 @@ public class SaveGameManager : ToolkitBehaviour
     }
 
     /// <summary>
-    /// load saveGame based on the name, the persistentData will be overrided by the loaded SaveGame
+    /// load saveGame based on the name, the persistentData will be overridden by the loaded SaveGame
     /// </summary>
     /// <param name="saveGameName">name of saveGame</param>
     public new bool LoadGameByName(string saveGameName)

@@ -41,7 +41,7 @@ public class WidgetManager : MonoBehaviour
     /// this will ask the WidgetManager to show Widget X
     /// </summary>
     /// <param name="widget">widget to show</param>
-    /// <param name="addToExistingStack">automatically the new widget will be added to the stack, normally you should not change this paramater</param>
+    /// <param name="addToExistingStack">automatically the new widget will be added to the stack, normally you should not change this parameter</param>
     /// <param name="newStack">Automatically a widget is added to the existing stack, when this is true the previous stack will be discarded and a new Stack will be build you probably want a new Stack on the MainMenu or HUD</param>
     public void ShowWidget(WidgetTypes widgetType, bool addToExistingStack = true, bool newStack = false)
     {
@@ -58,7 +58,7 @@ public class WidgetManager : MonoBehaviour
         if (currentWidget != null)
         {
 
-            // destroy widget when new WidgetType is not equel to currentWidget
+            // destroy widget when new WidgetType is not equal to currentWidget
             if (widgetType != currentWidget.GetComponent<AWidget>().WidgetType)
             {
                 Destroy(currentWidget);

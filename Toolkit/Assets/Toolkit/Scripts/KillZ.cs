@@ -12,7 +12,7 @@ public class KillZ : ToolkitBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // if tags doesn't conatins the tag of the entering object -> destroy
+        // if tags doesn't contains the tag of the entering object -> destroy
         if (!IgnoreObjectsWithTag.Contains(other.tag))
         {
             Destroy(other.gameObject);

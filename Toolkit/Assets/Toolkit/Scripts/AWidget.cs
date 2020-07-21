@@ -44,13 +44,13 @@ public abstract class AWidget : ToolkitBehaviour
     {
         if (ToolkitData.WidgetStack.Count > 1)
         {
-            // find lastindex of the WidgetStack => count -1
+            // find last index of the WidgetStack => count -1
             int lastIndex = ToolkitData.WidgetStack.Count - 1;
 
-            // get second last element => lastindex - 1
+            // get second last element => last index - 1
             WidgetTypes previousWidgetType = ToolkitData.WidgetStack.ElementAt(lastIndex - 1);
 
-            // remove current widget from the stack current widget is always the last element=> element at lastindex
+            // remove current widget from the stack current widget is always the last element=> element at last index
             ToolkitData.WidgetStack.RemoveAt(lastIndex);
 
             // instantiate previous widget without adding again to the stack

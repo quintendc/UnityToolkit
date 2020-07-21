@@ -17,7 +17,7 @@ public class SceneSettingsManager : MonoBehaviour
     [Tooltip("define which Widget should be shown when the scene is loaded.")]
     public WidgetTypes WidgetType;
 
-    // widgetRenderCamera -> get maincamera when no RenderCamera is provided
+    // widgetRenderCamera -> get main camera when no RenderCamera is provided
     public Camera RenderCamera = null;
 
     [Header("Input Settings")]
@@ -26,7 +26,7 @@ public class SceneSettingsManager : MonoBehaviour
 
 
     [Header("GameMode settings")]
-    [Tooltip("Gamemode to instantiate")]
+    [Tooltip("Game mode to instantiate")]
     public GameObject GameMode = null;
     [Tooltip("The GameManager will call the StartRound when scene is loaded.")]
     public bool StartRoundWhenSceneIsLoaded = false;

@@ -59,11 +59,11 @@ public abstract class AGameMode : ToolkitBehaviour
     }
 
 
-    #region spawnpoint Methods
+    #region spawn point Methods
 
 
     /// <summary>
-    /// get a list of all spawnpoints
+    /// get a list of all spawn points
     /// </summary>
     /// <returns></returns>
     public List<GameObject> GetAllSpawnpoints()
@@ -75,7 +75,7 @@ public abstract class AGameMode : ToolkitBehaviour
 
 
     /// <summary>
-    /// get a list of all spawnpoints where PlayerIndex is equal to ...
+    /// get a list of all spawn points where PlayerIndex is equal to ...
     /// </summary>
     /// <param name="playerIndex">playerIndex filter</param>
     /// <returns></returns>
@@ -89,9 +89,9 @@ public abstract class AGameMode : ToolkitBehaviour
 
 
     /// <summary>
-    /// get a spawnpoint from all spawnpoints at index ...
+    /// get a spawn point from all spawn points at index ...
     /// </summary>
-    /// <param name="index">index of the spawnpoint</param>
+    /// <param name="index">index of the spawn point</param>
     /// <returns></returns>
     public GameObject GetSpawnpointByIndex(int index)
     {
