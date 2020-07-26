@@ -210,13 +210,13 @@ public class GameManager : ToolkitBehaviour
     /// <param name="splitScreenIndex">optional parameter</param>
     /// <param name="controlScheme">optional parameter</param>
     /// <param name="pairWithDevice">optional parameter, input device to assign</param>
-    public new void CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, InputDevice pairWithDevice = null)
+    public new PlayerInput CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, InputDevice pairWithDevice = null)
     {
         if (ToolkitSettings.LimitPlayersByGameMode == true)
         {
             if (GameState.Players.Count < currentGameMode.MaxPlayers)
             {
-                CreatePlayerHandler(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme, pairWithDevice);
+                return CreatePlayerHandler(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme, pairWithDevice);
             }
             else
             {
@@ -225,8 +225,10 @@ public class GameManager : ToolkitBehaviour
         }
         else
         {
-            CreatePlayerHandler(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme, pairWithDevice);
+            return CreatePlayerHandler(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme, pairWithDevice);
         }
+
+        return null;
     }
 
 
@@ -238,7 +240,7 @@ public class GameManager : ToolkitBehaviour
     /// <param name="splitScreenIndex">optional parameter</param>
     /// <param name="controlScheme">optional parameter</param>
     /// <param name="pairWithDevice">optional parameter, input device to assign</param>
-    private void CreatePlayerHandler(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, InputDevice pairWithDevice = null)
+    private PlayerInput CreatePlayerHandler(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, InputDevice pairWithDevice = null)
     {
         PlayerInput player;
 
@@ -261,6 +263,8 @@ public class GameManager : ToolkitBehaviour
         {
             player = PlayerInputManager.JoinPlayer(playerIndex, splitScreenIndex, controlScheme, pairWithDevice);
         }
+
+        return player;
     }
 
 
@@ -272,13 +276,13 @@ public class GameManager : ToolkitBehaviour
     /// <param name="splitScreenIndex">optional parameter</param>
     /// <param name="controlScheme">optional parameter</param>
     /// <param name="pairWithDevice">optional parameter, input devices to assign</param>
-    public new void CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, params InputDevice[] pairWithDevices)
+    public new PlayerInput CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, params InputDevice[] pairWithDevices)
     {
         if (ToolkitSettings.LimitPlayersByGameMode == true)
         {
             if (GameState.Players.Count < currentGameMode.MaxPlayers)
             {
-                CreatePlayerHandler(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme, pairWithDevices);
+                return CreatePlayerHandler(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme, pairWithDevices);
             }
             else
             {
@@ -287,8 +291,10 @@ public class GameManager : ToolkitBehaviour
         }
         else
         {
-            CreatePlayerHandler(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme, pairWithDevices);
+            return CreatePlayerHandler(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme, pairWithDevices);
         }
+
+        return null;
     }
 
     /// <summary>
@@ -299,7 +305,7 @@ public class GameManager : ToolkitBehaviour
     /// <param name="splitScreenIndex">optional parameter</param>
     /// <param name="controlScheme">optional parameter</param>
     /// <param name="pairWithDevices">optional parameter, input devices to assign</param>
-    private void CreatePlayerHandler(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, InputDevice[] pairWithDevices = null)
+    private PlayerInput CreatePlayerHandler(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, InputDevice[] pairWithDevices = null)
     {
         PlayerInput player;
 
@@ -322,6 +328,8 @@ public class GameManager : ToolkitBehaviour
         {
             player = PlayerInputManager.JoinPlayer(playerIndex, splitScreenIndex, controlScheme, pairWithDevices);
         }
+
+        return player;
     }
 
     #endregion

@@ -82,9 +82,9 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <param name="splitScreenIndex">optional parameter</param>
     /// <param name="controlScheme">optional parameter</param>
     /// <param name="pairWithDevice">optional parameter, input device to assign</param>
-    public void CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, InputDevice pairWithDevice = null)
+    public PlayerInput CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, InputDevice pairWithDevice = null)
     {
-        GameManager.Instance.CreatePlayer(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme, pairWithDevice);
+        return GameManager.Instance.CreatePlayer(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme, pairWithDevice);
     }
 
 
@@ -96,9 +96,9 @@ public class ToolkitBehaviour : MonoBehaviour
     /// <param name="splitScreenIndex">optional parameter</param>
     /// <param name="controlScheme">optional parameter</param>
     /// <param name="pairWithDevice">optional parameter, input devices to assign</param>
-    public void CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, params InputDevice[] pairWithDevices)
+    public PlayerInput CreatePlayer(GameObject newPlayerPrefab = null, int playerIndex = -1, int splitScreenIndex = -1, string controlScheme = null, params InputDevice[] pairWithDevices)
     {
-        GameManager.Instance.CreatePlayer(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme, pairWithDevices);
+        return GameManager.Instance.CreatePlayer(newPlayerPrefab, playerIndex, splitScreenIndex, controlScheme, pairWithDevices);
     }
 
     /// <summary>
