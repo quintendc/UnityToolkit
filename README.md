@@ -2,7 +2,7 @@
 
 
 - Author: [Quinten De Clerck](https://github.com/quintendc)
-- [Discord](https://discord.gg/vNBex5F)
+<!-- - [Discord](https://discord.gg/vNBex5F) -->
 
 
 
